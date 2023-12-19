@@ -2,6 +2,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -191,6 +192,13 @@ class _TerminalLogWidgetState extends State<TerminalLogWidget> {
                                                   ).toString(),
                                                   ParamType.String,
                                                 ),
+                                                'binImage': serializeParam(
+                                                  getJsonField(
+                                                    dataItem,
+                                                    r'''$..logo''',
+                                                  ).toString(),
+                                                  ParamType.String,
+                                                ),
                                               }.withoutNulls,
                                             );
                                           },
@@ -222,15 +230,17 @@ class _TerminalLogWidgetState extends State<TerminalLogWidget> {
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: [
-                                                      ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                        child: Image.network(
-                                                          'https://picsum.photos/seed/522/600',
+                                                      Container(
+                                                        width: 45.0,
+                                                        height: 45.0,
+                                                        child: custom_widgets
+                                                            .NewCustomWidget(
                                                           width: 45.0,
                                                           height: 45.0,
-                                                          fit: BoxFit.cover,
+                                                          bin: getJsonField(
+                                                            dataItem,
+                                                            r'''$..logo''',
+                                                          ).toString(),
                                                         ),
                                                       ),
                                                       Padding(

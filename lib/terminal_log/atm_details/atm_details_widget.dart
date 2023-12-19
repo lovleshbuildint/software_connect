@@ -2,6 +2,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -18,6 +19,7 @@ class AtmDetailsWidget extends StatefulWidget {
     required this.totalModel,
     required this.bankType,
     required this.totalatm,
+    required this.binImage,
   }) : super(key: key);
 
   final String? bankId;
@@ -25,6 +27,7 @@ class AtmDetailsWidget extends StatefulWidget {
   final String? totalModel;
   final String? bankType;
   final String? totalatm;
+  final String? binImage;
 
   @override
   _AtmDetailsWidgetState createState() => _AtmDetailsWidgetState();
@@ -196,14 +199,14 @@ class _AtmDetailsWidgetState extends State<AtmDetailsWidget> {
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            child: Image.network(
-                                              'https://picsum.photos/seed/522/600',
+                                          Container(
+                                            width: 45.0,
+                                            height: 45.0,
+                                            child:
+                                                custom_widgets.NewCustomWidget(
                                               width: 45.0,
                                               height: 45.0,
-                                              fit: BoxFit.cover,
+                                              bin: widget.binImage,
                                             ),
                                           ),
                                           Padding(
@@ -404,6 +407,13 @@ class _AtmDetailsWidgetState extends State<AtmDetailsWidget> {
                                                   ),
                                                   'location': serializeParam(
                                                     'location',
+                                                    ParamType.String,
+                                                  ),
+                                                  'binImage': serializeParam(
+                                                    getJsonField(
+                                                      datasItem,
+                                                      r'''$..logo''',
+                                                    ).toString(),
                                                     ParamType.String,
                                                   ),
                                                 }.withoutNulls,

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/terminal_log/atm_upgraded_details/atm_upgraded_details_widget.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'upload_logs_a_t_m_details_widget.dart' show UploadLogsATMDetailsWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

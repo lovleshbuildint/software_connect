@@ -99,6 +99,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             totalModel: params.getParam('totalModel', ParamType.String),
             bankType: params.getParam('bankType', ParamType.String),
             totalatm: params.getParam('totalatm', ParamType.String),
+            binImage: params.getParam('binImage', ParamType.String),
           ),
         ),
         FFRoute(
@@ -111,6 +112,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             version: params.getParam('version', ParamType.String),
             bankName: params.getParam('bankName', ParamType.String),
             location: params.getParam('location', ParamType.String),
+            binImage: params.getParam('binImage', ParamType.String),
           ),
         ),
         FFRoute(

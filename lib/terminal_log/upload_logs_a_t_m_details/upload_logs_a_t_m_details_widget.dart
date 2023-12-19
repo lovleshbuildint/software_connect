@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/terminal_log/atm_upgraded_details/atm_upgraded_details_widget.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,6 +20,7 @@ class UploadLogsATMDetailsWidget extends StatefulWidget {
     required this.version,
     required this.bankName,
     required this.location,
+    required this.binImage,
   }) : super(key: key);
 
   final String? modelId;
@@ -27,6 +29,7 @@ class UploadLogsATMDetailsWidget extends StatefulWidget {
   final String? version;
   final String? bankName;
   final String? location;
+  final String? binImage;
 
   @override
   _UploadLogsATMDetailsWidgetState createState() =>
@@ -186,14 +189,13 @@ class _UploadLogsATMDetailsWidgetState
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           90.0, 0.0, 90.0, 0.0),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        child: Image.asset(
-                                          'assets/images/image_18.png',
+                                      child: Container(
+                                        width: 300.0,
+                                        height: 200.0,
+                                        child: custom_widgets.NewCustomWidget(
                                           width: 300.0,
                                           height: 200.0,
-                                          fit: BoxFit.cover,
+                                          bin: widget.binImage,
                                         ),
                                       ),
                                     ),
