@@ -424,8 +424,8 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   ),
                             ),
                           ),
-                          if (_model.uploadedLocalFile != null &&
-                              (_model.uploadedLocalFile.bytes?.isNotEmpty ??
+                          if (_model.uploadedLocalFile1 != null &&
+                              (_model.uploadedLocalFile1.bytes?.isNotEmpty ??
                                   false))
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -433,15 +433,16 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.memory(
-                                  _model.uploadedLocalFile.bytes ??
+                                  _model.uploadedLocalFile1.bytes ??
                                       Uint8List.fromList([]),
                                   width: MediaQuery.sizeOf(context).width * 1.0,
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             ),
-                          if (_model.uploadedLocalFile == null ||
-                              (_model.uploadedLocalFile.bytes?.isEmpty ?? true))
+                          if (_model.uploadedLocalFile1 == null ||
+                              (_model.uploadedLocalFile1.bytes?.isEmpty ??
+                                  true))
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 0.0),
@@ -462,7 +463,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                           validateFileFormat(
                                               m.storagePath, context))) {
                                     setState(
-                                        () => _model.isDataUploading = true);
+                                        () => _model.isDataUploading1 = true);
                                     var selectedUploadedFiles =
                                         <FFUploadedFile>[];
 
@@ -479,12 +480,12 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                               ))
                                           .toList();
                                     } finally {
-                                      _model.isDataUploading = false;
+                                      _model.isDataUploading1 = false;
                                     }
                                     if (selectedUploadedFiles.length ==
                                         selectedMedia.length) {
                                       setState(() {
-                                        _model.uploadedLocalFile =
+                                        _model.uploadedLocalFile1 =
                                             selectedUploadedFiles.first;
                                       });
                                     } else {
@@ -793,6 +794,103 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                           ),
                         ),
                       ),
+                      if (_model.uploadedLocalFile2 == null ||
+                          (_model.uploadedLocalFile2.bytes?.isEmpty ?? true))
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 10.0, 0.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              final selectedFiles = await selectFiles(
+                                multiFile: false,
+                              );
+                              if (selectedFiles != null) {
+                                setState(() => _model.isDataUploading2 = true);
+                                var selectedUploadedFiles = <FFUploadedFile>[];
+
+                                try {
+                                  selectedUploadedFiles = selectedFiles
+                                      .map((m) => FFUploadedFile(
+                                            name: m.storagePath.split('/').last,
+                                            bytes: m.bytes,
+                                          ))
+                                      .toList();
+                                } finally {
+                                  _model.isDataUploading2 = false;
+                                }
+                                if (selectedUploadedFiles.length ==
+                                    selectedFiles.length) {
+                                  setState(() {
+                                    _model.uploadedLocalFile2 =
+                                        selectedUploadedFiles.first;
+                                  });
+                                } else {
+                                  setState(() {});
+                                  return;
+                                }
+                              }
+                            },
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              height: 100.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                borderRadius: BorderRadius.circular(4.0),
+                                border: Border.all(
+                                  color: Color(0xFF999999),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.add_photo_alternate_outlined,
+                                    color: Color(0xFF8E8E8E),
+                                    size: 24.0,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Upload Log File',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0xFF8E8E8E),
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      if (_model.uploadedLocalFile2 != null &&
+                          (_model.uploadedLocalFile2.bytes?.isNotEmpty ??
+                              false))
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 20.0, 0.0, 0.0),
+                          child: Text(
+                            valueOrDefault<String>(
+                              _model.uploadedLocalFile2.blurHash,
+                              'Test',
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w600,
+                                ),
+                          ),
+                        ),
                     ],
                   ),
                 Padding(
@@ -821,7 +919,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               FFAppState().loginResponse,
                               r'''$.token''',
                             ).toString(),
-                            logUploadFile: _model.uploadedLocalFile,
+                            logUploadFile: _model.uploadedLocalFile1,
                             bankId: widget.bankId,
                             modelId: widget.modelId,
                             atmId: _model.radioButtonValue == 'Log Upload'
@@ -893,7 +991,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               FFAppState().loginResponse,
                               r'''$.token''',
                             ).toString(),
-                            logUploadFile: _model.uploadedLocalFile,
+                            logUploadFile: _model.uploadedLocalFile1,
                             bankId: widget.bankId,
                             modelId: widget.modelId,
                             atmId: _model.radioButtonValue == 'Log Upload'

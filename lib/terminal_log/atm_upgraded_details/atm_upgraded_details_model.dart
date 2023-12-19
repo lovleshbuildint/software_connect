@@ -34,14 +34,18 @@ class AtmUpgradedDetailsModel
   FocusNode? textFieldFocusNode;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading1 = false;
+  FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
   // State field(s) for atmid2 widget.
   FocusNode? atmid2FocusNode;
   TextEditingController? atmid2Controller;
   String? Function(BuildContext, String?)? atmid2ControllerValidator;
+  bool isDataUploading2 = false;
+  FFUploadedFile uploadedLocalFile2 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+
   // Stores action output result for [Backend Call - API (Create Terminal Log)] action in Button widget.
   ApiCallResponse? terminalLog;
   // Stores action output result for [Backend Call - API (Create Terminal Log)] action in Button widget.
