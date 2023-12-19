@@ -500,6 +500,10 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(4.0),
+                                    border: Border.all(
+                                      color: Color(0xFF999999),
+                                    ),
                                   ),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -879,10 +883,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
                           child: Text(
-                            valueOrDefault<String>(
-                              _model.uploadedLocalFile2.blurHash,
-                              'Test',
-                            ),
+                            'Log File Uploaded',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -991,7 +992,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               FFAppState().loginResponse,
                               r'''$.token''',
                             ).toString(),
-                            logUploadFile: _model.uploadedLocalFile1,
+                            logUploadFile: _model.uploadedLocalFile2,
                             bankId: widget.bankId,
                             modelId: widget.modelId,
                             atmId: _model.radioButtonValue == 'Log Upload'
