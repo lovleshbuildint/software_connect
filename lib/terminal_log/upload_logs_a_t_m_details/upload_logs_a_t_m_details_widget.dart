@@ -158,11 +158,6 @@ class _UploadLogsATMDetailsWidgetState
                                   ),
                                 ],
                               ),
-                              Icon(
-                                Icons.search,
-                                color: Colors.black,
-                                size: 18.0,
-                              ),
                             ],
                           ),
                         ),

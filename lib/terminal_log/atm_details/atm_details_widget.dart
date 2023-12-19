@@ -163,11 +163,6 @@ class _AtmDetailsWidgetState extends State<AtmDetailsWidget> {
                                   ),
                                 ],
                               ),
-                              Icon(
-                                Icons.search,
-                                color: Colors.black,
-                                size: 18.0,
-                              ),
                             ],
                           ),
                         ),
