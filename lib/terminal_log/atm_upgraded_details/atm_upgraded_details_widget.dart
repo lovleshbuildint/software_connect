@@ -125,30 +125,35 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: FlutterFlowRadioButton(
-                            options: ['Software Update', 'Log Upload'].toList(),
-                            onChanged: (val) => setState(() {}),
-                            controller: _model.radioButtonValueController ??=
-                                FormFieldController<String>('Software Update'),
-                            optionHeight: 32.0,
-                            textStyle: FlutterFlowTheme.of(context).labelMedium,
-                            selectedTextStyle:
-                                FlutterFlowTheme.of(context).bodyMedium,
-                            buttonPosition: RadioButtonPosition.left,
-                            direction: Axis.horizontal,
-                            radioButtonColor: Color(0xFFFF0026),
-                            inactiveRadioButtonColor:
-                                FlutterFlowTheme.of(context).secondaryText,
-                            toggleable: false,
-                            horizontalAlignment: WrapAlignment.spaceBetween,
-                            verticalAlignment: WrapCrossAlignment.start,
+                        Expanded(
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: 100.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: FlutterFlowRadioButton(
+                              options:
+                                  ['Software Update', 'Log Upload'].toList(),
+                              onChanged: (val) => setState(() {}),
+                              controller: _model.radioButtonValueController ??=
+                                  FormFieldController<String>(
+                                      'Software Update'),
+                              optionHeight: 32.0,
+                              textStyle:
+                                  FlutterFlowTheme.of(context).labelMedium,
+                              selectedTextStyle:
+                                  FlutterFlowTheme.of(context).bodyMedium,
+                              buttonPosition: RadioButtonPosition.left,
+                              direction: Axis.horizontal,
+                              radioButtonColor: Color(0xFFFF0026),
+                              inactiveRadioButtonColor:
+                                  FlutterFlowTheme.of(context).secondaryText,
+                              toggleable: false,
+                              horizontalAlignment: WrapAlignment.spaceBetween,
+                              verticalAlignment: WrapCrossAlignment.start,
+                            ),
                           ),
                         ),
                       ],
