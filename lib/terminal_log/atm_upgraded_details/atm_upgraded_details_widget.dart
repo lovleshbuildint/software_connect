@@ -920,7 +920,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               FFAppState().loginResponse,
                               r'''$.token''',
                             ).toString(),
-                            logUploadFile: _model.uploadedLocalFile1,
+                            logUploadFile: _model.uploadedLocalFile2,
                             bankId: widget.bankId,
                             modelId: widget.modelId,
                             atmId: _model.radioButtonValue == 'Log Upload'
@@ -930,10 +930,8 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               FFAppState().loginResponse,
                               r'''$.firstName''',
                             ).toString(),
-                            createdDate:
-                                dateTimeFormat('d/M/y', getCurrentTimestamp),
-                            modifiedDate:
-                                dateTimeFormat('d/M/y', getCurrentTimestamp),
+                            createdDate: getCurrentTimestamp.toString(),
+                            modifiedDate: getCurrentTimestamp.toString(),
                             comments: _model.textController2.text,
                             siteLocation: widget.location,
                             ticketNo:
@@ -992,7 +990,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               FFAppState().loginResponse,
                               r'''$.token''',
                             ).toString(),
-                            logUploadFile: _model.uploadedLocalFile2,
+                            logUploadFile: _model.uploadedLocalFile1,
                             bankId: widget.bankId,
                             modelId: widget.modelId,
                             atmId: _model.radioButtonValue == 'Log Upload'
