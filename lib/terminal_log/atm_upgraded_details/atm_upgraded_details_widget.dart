@@ -904,7 +904,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               r'''$.firstName''',
                             ).toString(),
                             createdDate:
-                                dateTimeFormat('d/M/y', getCurrentTimestamp),
+                                '${dateTimeFormat('d/M/y', getCurrentTimestamp)}',
                             modifiedDate:
                                 dateTimeFormat('d/M/y', getCurrentTimestamp),
                             comments: _model.textController2.text,
