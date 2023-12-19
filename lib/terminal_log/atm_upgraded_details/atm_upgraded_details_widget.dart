@@ -797,7 +797,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                   ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(115.0, 20.0, 115.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(115.0, 20.0, 115.0, 20.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       if (_model.radioButtonValue == 'Log Upload') {
@@ -904,8 +904,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               r'''$.firstName''',
                             ).toString(),
                             createdDate: '${getCurrentTimestamp.toString()}',
-                            modifiedDate:
-                                dateTimeFormat('d/M/y', getCurrentTimestamp),
+                            modifiedDate: getCurrentTimestamp.toString(),
                             comments: _model.textController2.text,
                             siteLocation: widget.location,
                             ticketNo:
