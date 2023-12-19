@@ -907,10 +907,9 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               builder: (alertDialogContext) {
                                 return AlertDialog(
                                   title: Text('Alert'),
-                                  content: Text(getJsonField(
-                                    (_model.terminalLog1?.jsonBody ?? ''),
-                                    r'''$.errorCode''',
-                                  ).toString()),
+                                  content: Text(
+                                      (_model.terminalLog1?.statusCode ?? 200)
+                                          .toString()),
                                   actions: [
                                     TextButton(
                                       onPressed: () =>
