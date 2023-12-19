@@ -100,10 +100,19 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               fontWeight: FontWeight.w600,
                             ),
                       ),
-                      Icon(
-                        Icons.close_sharp,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 18.0,
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(
+                          Icons.close_sharp,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 18.0,
+                        ),
                       ),
                     ],
                   ),
@@ -116,7 +125,13 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
+                        Container(
+                          width: MediaQuery.sizeOf(context).width * 1.0,
+                          height: 100.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
                           child: FlutterFlowRadioButton(
                             options: ['Software Update', 'Log Upload'].toList(),
                             onChanged: (val) => setState(() {}),
@@ -434,7 +449,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   final selectedMedia =
                                       await selectMediaWithSourceBottomSheet(
                                     context: context,
-                                    imageQuality: 50,
+                                    imageQuality: 49,
                                     allowPhoto: true,
                                   );
                                   if (selectedMedia != null &&
@@ -908,7 +923,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 return AlertDialog(
                                   title: Text('Alert'),
                                   content: Text(
-                                      (_model.terminalLog1?.statusCode ?? 200)
+                                      (_model.terminalLog1?.jsonBody ?? '')
                                           .toString()),
                                   actions: [
                                     TextButton(
