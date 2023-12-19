@@ -1,0 +1,70 @@
+import '/backend/api_requests/api_calls.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/random_data_util.dart' as random_data;
+import 'atm_upgraded_details_widget.dart' show AtmUpgradedDetailsWidget;
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+class AtmUpgradedDetailsModel
+    extends FlutterFlowModel<AtmUpgradedDetailsWidget> {
+  ///  Local state fields for this component.
+
+  bool visibility = false;
+
+  ///  State fields for stateful widgets in this component.
+
+  // State field(s) for RadioButton widget.
+  FormFieldController<String>? radioButtonValueController;
+  // State field(s) for DropDown widget.
+  String? dropDownValue;
+  FormFieldController<String>? dropDownValueController;
+  // State field(s) for atmid1 widget.
+  FocusNode? atmid1FocusNode;
+  TextEditingController? atmid1Controller;
+  String? Function(BuildContext, String?)? atmid1ControllerValidator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController2;
+  String? Function(BuildContext, String?)? textController2Validator;
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+
+  // State field(s) for atmid2 widget.
+  FocusNode? atmid2FocusNode;
+  TextEditingController? atmid2Controller;
+  String? Function(BuildContext, String?)? atmid2ControllerValidator;
+  // Stores action output result for [Backend Call - API (Create Terminal Log)] action in Button widget.
+  ApiCallResponse? terminalLog;
+  // Stores action output result for [Backend Call - API (Create Terminal Log)] action in Button widget.
+  ApiCallResponse? terminalLog1;
+
+  /// Initialization and disposal methods.
+
+  void initState(BuildContext context) {}
+
+  void dispose() {
+    atmid1FocusNode?.dispose();
+    atmid1Controller?.dispose();
+
+    textFieldFocusNode?.dispose();
+    textController2?.dispose();
+
+    atmid2FocusNode?.dispose();
+    atmid2Controller?.dispose();
+  }
+
+  /// Action blocks are added here.
+
+  /// Additional helper methods are added here.
+
+  String? get radioButtonValue => radioButtonValueController?.value;
+}
