@@ -903,8 +903,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               FFAppState().loginResponse,
                               r'''$.firstName''',
                             ).toString(),
-                            createdDate:
-                                '${dateTimeFormat('d/M/y', getCurrentTimestamp)}',
+                            createdDate: '${getCurrentTimestamp.toString()}',
                             modifiedDate:
                                 dateTimeFormat('d/M/y', getCurrentTimestamp),
                             comments: _model.textController2.text,
