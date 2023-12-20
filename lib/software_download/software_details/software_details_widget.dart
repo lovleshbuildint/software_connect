@@ -1139,6 +1139,11 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                                 .toString(),
                                                       );
                                                     }
+                                                    setState(() {
+                                                      _model.currentIndex =
+                                                          _model.currentIndex! +
+                                                              1;
+                                                    });
                                                   }
                                                 }
                                               } else {
