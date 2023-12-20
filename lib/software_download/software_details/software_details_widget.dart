@@ -1020,10 +1020,9 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                               title:
                                                                   Text('Alert'),
                                                               content: Text((_model
-                                                                          .softwareSyncResponse123
-                                                                          ?.statusCode ??
-                                                                      200)
-                                                                  .toString()),
+                                                                      .softwareSyncResponse123
+                                                                      ?.bodyText ??
+                                                                  '')),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -1045,10 +1044,9 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                               title:
                                                                   Text('Alert'),
                                                               content: Text((_model
-                                                                          .softwareSyncResponse123
-                                                                          ?.statusCode ??
-                                                                      200)
-                                                                  .toString()),
+                                                                      .softwareSyncResponse123
+                                                                      ?.bodyText ??
+                                                                  '')),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
