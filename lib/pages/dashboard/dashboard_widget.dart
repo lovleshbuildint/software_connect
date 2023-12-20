@@ -875,10 +875,14 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                                                     0.0,
                                                                     15.0),
                                                         child: Text(
-                                                          getJsonField(
+                                                          (String var1) {
+                                                            return var1
+                                                                .split('T')
+                                                                .first;
+                                                          }(getJsonField(
                                                             recentDownloadsItem,
                                                             r'''$..expiryDate''',
-                                                          ).toString(),
+                                                          ).toString()),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
