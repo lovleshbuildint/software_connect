@@ -772,23 +772,22 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                   ),
                             ),
                           ),
-                          Container(
-                            width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: MediaQuery.sizeOf(context).height * 1.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 10.0, 20.0, 75.0),
-                              child: Builder(
-                                builder: (context) {
-                                  final recentDownloads = getJsonField(
-                                    dashboardDasboardResponse.jsonBody,
-                                    r'''$.recentDownloadeds''',
-                                  ).toList();
-                                  return ListView.builder(
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                20.0, 10.0, 20.0, 75.0),
+                            child: Builder(
+                              builder: (context) {
+                                final recentDownloads = getJsonField(
+                                  dashboardDasboardResponse.jsonBody,
+                                  r'''$.recentDownloadeds''',
+                                ).toList();
+                                return InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {},
+                                  child: ListView.builder(
                                     padding: EdgeInsets.zero,
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
@@ -925,9 +924,9 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                         ),
                                       );
                                     },
-                                  );
-                                },
-                              ),
+                                  ),
+                                );
+                              },
                             ),
                           ),
                         ],
