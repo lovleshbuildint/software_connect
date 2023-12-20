@@ -28,6 +28,10 @@ class SoftwareDetailsModel extends FlutterFlowModel<SoftwareDetailsWidget> {
 
   bool downloadedManualStatus = false;
 
+  int? maxIndex;
+
+  int? currentIndex;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -49,6 +53,10 @@ class SoftwareDetailsModel extends FlutterFlowModel<SoftwareDetailsWidget> {
   String? softwareDownloadResponse1;
   // Stores action output result for [Backend Call - API (Software Sync)] action in Button widget.
   ApiCallResponse? softwareSyncResponse;
+  // Stores action output result for [Custom Action - pathCheck] action in Button widget.
+  dynamic? downloadSoftwarePathCheckResponse123;
+  // Stores action output result for [Backend Call - API (Bank Model Multiple Software Download)] action in Button widget.
+  ApiCallResponse? downloadSoftwareResponse123;
 
   /// Initialization and disposal methods.
 

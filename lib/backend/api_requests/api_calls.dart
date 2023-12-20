@@ -190,6 +190,39 @@ class BankModelSoftwareDownloadCall {
   }
 }
 
+class BankModelMultipleSoftwareDownloadCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? softwareVersionId = '',
+  }) async {
+    final ffApiRequestBody = '''
+{"softwareVersionId": "${softwareVersionId}"}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Bank Model Multiple Software Download',
+      apiUrl:
+          'https://workbenchuat.hitachi-payments.com:82/api/Mobile/DownloadSoftwareListByUrl',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': '${token}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? urlList(dynamic response) => getJsonField(
+        response,
+        r'''$.urlList''',
+        true,
+      ) as List?;
+}
+
 class BankModelManualDownloadCall {
   static Future<ApiCallResponse> call({
     String? token = '',

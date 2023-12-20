@@ -1040,6 +1040,116 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                 BorderRadius.circular(4.0),
                                           ),
                                         ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 13.0, 0.0, 0.0),
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              _model.downloadSoftwarePathCheckResponse123 =
+                                                  await actions.pathCheck(
+                                                getJsonField(
+                                                  FFAppState().loginResponse,
+                                                  r'''$.deviceId''',
+                                                ).toString(),
+                                              );
+                                              if (getJsonField(
+                                                _model
+                                                    .downloadSoftwarePathCheckResponse123,
+                                                r'''$.Status''',
+                                              )) {
+                                                setState(() {
+                                                  _model.downloadingSoftwareStatus =
+                                                      true;
+                                                });
+                                                _model.downloadSoftwareResponse123 =
+                                                    await BankModelMultipleSoftwareDownloadCall
+                                                        .call(
+                                                  token: getJsonField(
+                                                    FFAppState().loginResponse,
+                                                    r'''$.token''',
+                                                  ).toString(),
+                                                  softwareVersionId:
+                                                      widget.softwareVersionId,
+                                                );
+                                                if ((_model
+                                                        .downloadSoftwareResponse123
+                                                        ?.succeeded ??
+                                                    true)) {
+                                                  setState(() {
+                                                    _model.maxIndex =
+                                                        BankModelMultipleSoftwareDownloadCall
+                                                            .urlList(
+                                                      (_model.downloadSoftwareResponse123
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    )?.length;
+                                                  });
+                                                }
+                                              } else {
+                                                setState(() {
+                                                  _model.notConnectStatus =
+                                                      true;
+                                                  _model.connectedStatus =
+                                                      false;
+                                                  _model.downloadingSoftwareStatus =
+                                                      false;
+                                                  _model.downloadedSoftwareStatus =
+                                                      false;
+                                                  _model.downloadingManualStatus =
+                                                      false;
+                                                });
+                                              }
+
+                                              setState(() {});
+                                            },
+                                            text: () {
+                                              if (_model
+                                                  .downloadingSoftwareStatus) {
+                                                return 'Downloading Software...';
+                                              } else if (_model
+                                                  .downloadedSoftwareStatus) {
+                                                return 'Software Downloaded';
+                                              } else {
+                                                return 'Download Software';
+                                              }
+                                            }(),
+                                            options: FFButtonOptions(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  1.0,
+                                              height: 37.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      24.0, 0.0, 24.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color: Color(0xFFFF0026),
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.white,
+                                                      ),
+                                              elevation: 3.0,
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(4.0),
+                                            ),
+                                          ),
+                                        ),
+                                        Text(
+                                          valueOrDefault<String>(
+                                            _model.maxIndex?.toString(),
+                                            '100',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
                                       ],
                                     ),
                                   ),
