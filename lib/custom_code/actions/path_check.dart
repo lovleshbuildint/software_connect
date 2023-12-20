@@ -13,7 +13,6 @@ Future<dynamic> pathCheck(String? deviceId) async {
   // Add your function code here!
   String directoryPath1 = '/mnt/media_rw/$deviceId/Images/';
   String directoryPath2 = '/storage/$deviceId/Images/';
-  print(directoryPath1);
 
   try {
     // Create a File instance with the specified path
