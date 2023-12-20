@@ -26,8 +26,12 @@ Future<String?> downloadFile(
   print(directory?.path);
   // Generate a unique filename using a timestamp
   String filePath = '$path/$deviceId/Images/$extention';
-  print(filePath);
-
+  print({
+    "URL": url,
+    "extentions": extention,
+    "Path": path,
+    "FilePath": filePath
+  });
   // Create an HttpClient instance
   final client = http.Client();
 

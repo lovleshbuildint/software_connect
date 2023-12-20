@@ -939,14 +939,14 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                               );
                                               _model.softwareDownloadResponse1 =
                                                   await actions.downloadFile(
-                                                'https://workbenchuat.hitachi-payments.com:82/${getJsonField(
+                                                'https://workbenchuat.hitachi-payments.com:82${getJsonField(
                                                   (_model.softwareResponse1
                                                           ?.jsonBody ??
                                                       ''),
                                                   r'''$.url''',
                                                 ).toString()}',
                                                 functions.splitUrl(
-                                                    'https://workbenchuat.hitachi-payments.com:82/${getJsonField(
+                                                    'https://workbenchuat.hitachi-payments.com:82${getJsonField(
                                                   (_model.softwareResponse1
                                                           ?.jsonBody ??
                                                       ''),
@@ -1099,7 +1099,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                     _model.softwareDownloadResponse123 =
                                                         await actions
                                                             .downloadFile(
-                                                      'https://workbenchuat.hitachi-payments.com:82/${((BankModelMultipleSoftwareDownloadCall.urlList(
+                                                      'https://workbenchuat.hitachi-payments.com:82${((BankModelMultipleSoftwareDownloadCall.urlList(
                                                         (_model.downloadSoftwareResponse123
                                                                 ?.jsonBody ??
                                                             ''),
