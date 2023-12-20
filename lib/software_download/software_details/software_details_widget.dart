@@ -703,7 +703,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                 20.0, 0.0, 20.0, 0.0),
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 700.0,
+                              height: 235.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -819,14 +819,14 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                 );
                                                 _model.manualDownloadResponse1 =
                                                     await actions.downloadFile(
-                                                  'https://workbenchuat.hitachi-payments.com:82/${getJsonField(
+                                                  'https://workbenchuat.hitachi-payments.com:82${getJsonField(
                                                     (_model.manualResponse1
                                                             ?.jsonBody ??
                                                         ''),
                                                     r'''$.url''',
                                                   ).toString()}',
                                                   functions.splitUrl(
-                                                      'https://workbenchuat.hitachi-payments.com:82/${getJsonField(
+                                                      'https://workbenchuat.hitachi-payments.com:82${getJsonField(
                                                     (_model.manualResponse1
                                                             ?.jsonBody ??
                                                         ''),
@@ -909,145 +909,6 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                             ),
                                           ),
                                         ),
-                                        FFButtonWidget(
-                                          onPressed: () async {
-                                            _model.downloadSoftwarePathCheckResponse =
-                                                await actions.pathCheck(
-                                              getJsonField(
-                                                FFAppState().loginResponse,
-                                                r'''$.deviceId''',
-                                              ).toString(),
-                                            );
-                                            if (getJsonField(
-                                              _model
-                                                  .downloadSoftwarePathCheckResponse,
-                                              r'''$.Status''',
-                                            )) {
-                                              setState(() {
-                                                _model.downloadingSoftwareStatus =
-                                                    true;
-                                              });
-                                              _model.softwareResponse1 =
-                                                  await BankModelSoftwareDownloadCall
-                                                      .call(
-                                                token: getJsonField(
-                                                  FFAppState().loginResponse,
-                                                  r'''$.token''',
-                                                ).toString(),
-                                                softwareVersionId:
-                                                    widget.softwareVersionId,
-                                              );
-                                              _model.softwareDownloadResponse1 =
-                                                  await actions.downloadFile(
-                                                'https://workbenchuat.hitachi-payments.com:82${getJsonField(
-                                                  (_model.softwareResponse1
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                  r'''$.url''',
-                                                ).toString()}',
-                                                functions.splitUrl(
-                                                    'https://workbenchuat.hitachi-payments.com:82${getJsonField(
-                                                  (_model.softwareResponse1
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                  r'''$.url''',
-                                                ).toString()}'),
-                                                getJsonField(
-                                                  FFAppState().loginResponse,
-                                                  r'''$.deviceId''',
-                                                ).toString(),
-                                                getJsonField(
-                                                  _model
-                                                      .downloadSoftwarePathCheckResponse,
-                                                  r'''$.Path''',
-                                                ).toString(),
-                                              );
-                                              setState(() {
-                                                _model.test =
-                                                    'https://workbenchuat.hitachi-payments.com:82/${getJsonField(
-                                                  (_model.softwareResponse1
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                  r'''$.url''',
-                                                ).toString()}';
-                                              });
-                                              if (_model.softwareDownloadResponse1 !=
-                                                      null &&
-                                                  _model.softwareDownloadResponse1 !=
-                                                      '') {
-                                                setState(() {
-                                                  _model.downloadingSoftwareStatus =
-                                                      false;
-                                                  _model.downloadedSoftwareStatus =
-                                                      true;
-                                                });
-                                                _model.softwareSyncResponse =
-                                                    await SoftwareSyncCall.call(
-                                                  token: getJsonField(
-                                                    FFAppState().loginResponse,
-                                                    r'''$.token''',
-                                                  ).toString(),
-                                                  softwareVersionId:
-                                                      widget.softwareVersionId,
-                                                  syncBy: FFAppState().userId,
-                                                  syncDate: getCurrentTimestamp
-                                                      .toString(),
-                                                );
-                                              }
-                                            } else {
-                                              setState(() {
-                                                _model.notConnectStatus = true;
-                                                _model.connectedStatus = false;
-                                                _model.downloadingSoftwareStatus =
-                                                    false;
-                                                _model.downloadedSoftwareStatus =
-                                                    false;
-                                                _model.downloadingManualStatus =
-                                                    false;
-                                              });
-                                            }
-
-                                            setState(() {});
-                                          },
-                                          text: () {
-                                            if (_model
-                                                .downloadingSoftwareStatus) {
-                                              return 'Downloading Software...';
-                                            } else if (_model
-                                                .downloadedSoftwareStatus) {
-                                              return 'Software Downloaded';
-                                            } else {
-                                              return 'Download Software';
-                                            }
-                                          }(),
-                                          options: FFButtonOptions(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                1.0,
-                                            height: 37.0,
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    24.0, 0.0, 24.0, 0.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: Color(0xFFFF0026),
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Poppins',
-                                                      color: Colors.white,
-                                                    ),
-                                            elevation: 3.0,
-                                            borderSide: BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(4.0),
-                                          ),
-                                        ),
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -1099,17 +960,17 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                     _model.softwareDownloadResponse123 =
                                                         await actions
                                                             .downloadFile(
-                                                      'https://workbenchuat.hitachi-payments.com:82${((BankModelMultipleSoftwareDownloadCall.urlList(
+                                                      'https://workbenchuat.hitachi-payments.com:82${functions.geturl(BankModelMultipleSoftwareDownloadCall.urlList(
                                                         (_model.downloadSoftwareResponse123
                                                                 ?.jsonBody ??
                                                             ''),
-                                                      ) as List).map<String>((s) => s.toString()).toList()?[_model.currentIndex!])?.toString()}',
+                                                      )?[_model.currentIndex!])}',
                                                       functions.splitUrl(
-                                                          'https://workbenchuat.hitachi-payments.com:82/${((BankModelMultipleSoftwareDownloadCall.urlList(
+                                                          'https://workbenchuat.hitachi-payments.com:82${functions.geturl(BankModelMultipleSoftwareDownloadCall.urlList(
                                                         (_model.downloadSoftwareResponse123
                                                                 ?.jsonBody ??
                                                             ''),
-                                                      ) as List).map<String>((s) => s.toString()).toList()?[_model.currentIndex!])?.toString()}'),
+                                                      )?[_model.currentIndex!])}'),
                                                       getJsonField(
                                                         FFAppState()
                                                             .loginResponse,
@@ -1121,14 +982,6 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                         r'''$.Path''',
                                                       ).toString(),
                                                     );
-                                                    setState(() {
-                                                      _model.test =
-                                                          'https://workbenchuat.hitachi-payments.com:82/${((BankModelMultipleSoftwareDownloadCall.urlList(
-                                                        (_model.downloadSoftwareResponse123
-                                                                ?.jsonBody ??
-                                                            ''),
-                                                      ) as List).map<String>((s) => s.toString()).toList()?[_model.currentIndex!])?.toString()}';
-                                                    });
                                                     if (_model.softwareDownloadResponse123 !=
                                                             null &&
                                                         _model.softwareDownloadResponse123 !=
@@ -1219,12 +1072,6 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                             ),
                                           ),
                                         ),
-                                        SelectionArea(
-                                            child: Text(
-                                          _model.test,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                        )),
                                       ],
                                     ),
                                   ),

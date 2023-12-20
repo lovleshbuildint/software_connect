@@ -54,3 +54,7 @@ dynamic filter(
 
   return filteredData;
 }
+
+String? geturl(dynamic jsonObject) {
+  return jsonObject["url"];
+}
