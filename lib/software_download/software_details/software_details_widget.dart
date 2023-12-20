@@ -1087,7 +1087,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                   });
                                                   while (_model.currentIndex! <
                                                       _model.maxIndex!) {
-                                                    _model.softwareDownloadResponse1234 =
+                                                    _model.softwareDownloadResponse123 =
                                                         await actions
                                                             .downloadFile(
                                                       'https://workbenchuat.hitachi-payments.com:82/${((BankModelMultipleSoftwareDownloadCall.urlList(
@@ -1112,9 +1112,9 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                         r'''$.Path''',
                                                       ).toString(),
                                                     );
-                                                    if (_model.softwareDownloadResponse1234 !=
+                                                    if (_model.softwareDownloadResponse123 !=
                                                             null &&
-                                                        _model.softwareDownloadResponse1234 !=
+                                                        _model.softwareDownloadResponse123 !=
                                                             '') {
                                                       setState(() {
                                                         _model.downloadingSoftwareStatus =
@@ -1122,7 +1122,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                         _model.downloadedSoftwareStatus =
                                                             true;
                                                       });
-                                                      _model.softwareSyncResponse =
+                                                      _model.softwareSyncResponse123 =
                                                           await SoftwareSyncCall
                                                               .call(
                                                         token: getJsonField(
@@ -1196,14 +1196,6 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                   BorderRadius.circular(4.0),
                                             ),
                                           ),
-                                        ),
-                                        Text(
-                                          valueOrDefault<String>(
-                                            _model.maxIndex?.toString(),
-                                            '100',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
                                         ),
                                       ],
                                     ),
