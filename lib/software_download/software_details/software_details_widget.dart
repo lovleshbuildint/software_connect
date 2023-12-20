@@ -1112,6 +1112,14 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                         r'''$.Path''',
                                                       ).toString(),
                                                     );
+                                                    setState(() {
+                                                      _model.test =
+                                                          'https://workbenchuat.hitachi-payments.com:82/${((BankModelMultipleSoftwareDownloadCall.urlList(
+                                                        (_model.downloadSoftwareResponse123
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ) as List).map<String>((s) => s.toString()).toList()?[_model.currentIndex!])?.toString()}';
+                                                    });
                                                     if (_model.softwareDownloadResponse123 !=
                                                             null &&
                                                         _model.softwareDownloadResponse123 !=
@@ -1201,6 +1209,11 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                   BorderRadius.circular(4.0),
                                             ),
                                           ),
+                                        ),
+                                        Text(
+                                          _model.test,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
                                         ),
                                       ],
                                     ),

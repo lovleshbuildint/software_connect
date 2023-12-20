@@ -32,6 +32,8 @@ class SoftwareDetailsModel extends FlutterFlowModel<SoftwareDetailsWidget> {
 
   int? currentIndex;
 
+  String test = '';
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
