@@ -1043,10 +1043,8 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                             return AlertDialog(
                                                               title:
                                                                   Text('Alert'),
-                                                              content: Text((_model
-                                                                      .softwareSyncResponse123
-                                                                      ?.bodyText ??
-                                                                  '')),
+                                                              content: Text(
+                                                                  '${(_model.softwareSyncResponse123?.bodyText ?? '')}_____${getCurrentTimestamp.toString()}'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
