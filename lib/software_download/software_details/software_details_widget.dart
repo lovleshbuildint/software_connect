@@ -703,7 +703,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                 20.0, 0.0, 20.0, 0.0),
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 235.0,
+                              height: 700.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -1210,11 +1210,12 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                             ),
                                           ),
                                         ),
-                                        Text(
+                                        SelectionArea(
+                                            child: Text(
                                           _model.test,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
-                                        ),
+                                        )),
                                       ],
                                     ),
                                   ),
