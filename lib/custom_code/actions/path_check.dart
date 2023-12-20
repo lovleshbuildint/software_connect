@@ -22,15 +22,15 @@ Future<dynamic> pathCheck(String? deviceId) async {
 
     // Check if the first directory exists
     bool directoryExists1 = await directory1.exists();
-    print(directoryExists1);
 
     if (directoryExists1) {
+      print({"Status": true, "Path": '/mnt/media_rw'});
       return {"Status": true, "Path": '/mnt/media_rw'};
     } else {
       // Check if the second directory exists
       bool directoryExists2 = await directory2.exists();
-      print(directoryExists2);
 
+      print({"Status": directoryExists2, "Path": '/storage'});
       return {"Status": directoryExists2, "Path": '/storage'};
     }
   } catch (e) {
