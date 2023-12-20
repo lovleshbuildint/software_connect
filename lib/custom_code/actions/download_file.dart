@@ -54,7 +54,7 @@ Future<String?> downloadFile(
       downloadedBytes += chunk.length;
       // Calculate and print the percentage
       double percentage = (downloadedBytes / totalBytes) * 100;
-      print('Downloading: ${percentage.toStringAsFixed(2)}%');
+      // print('Downloading: ${percentage.toStringAsFixed(2)}%');
     },
     onDone: () {
       // Close the file when the download is complete
