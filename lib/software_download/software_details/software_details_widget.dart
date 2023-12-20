@@ -1004,8 +1004,9 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                             .softwareVersionId,
                                                         syncBy:
                                                             FFAppState().userId,
-                                                        syncDate:
-                                                            '\"${dateTimeFormat('y-M-d', getCurrentTimestamp)}\"',
+                                                        syncDate: dateTimeFormat(
+                                                            'y-M-d',
+                                                            getCurrentTimestamp),
                                                       );
                                                       if ((_model
                                                               .softwareSyncResponse123
