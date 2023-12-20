@@ -1044,6 +1044,11 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                             return AlertDialog(
                                                               title:
                                                                   Text('Alert'),
+                                                              content: Text((_model
+                                                                          .softwareSyncResponse123
+                                                                          ?.statusCode ??
+                                                                      200)
+                                                                  .toString()),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
