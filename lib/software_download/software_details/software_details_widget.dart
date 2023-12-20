@@ -1008,6 +1008,55 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                             getCurrentTimestamp
                                                                 .toString(),
                                                       );
+                                                      if ((_model
+                                                              .softwareSyncResponse123
+                                                              ?.succeeded ??
+                                                          true)) {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title:
+                                                                  Text('Alert'),
+                                                              content: Text((_model
+                                                                          .softwareSyncResponse123
+                                                                          ?.jsonBody ??
+                                                                      '')
+                                                                  .toString()),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
+                                                      } else {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title:
+                                                                  Text('Alert'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
+                                                      }
                                                     }
                                                     setState(() {
                                                       _model.currentIndex =
