@@ -962,6 +962,15 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                   r'''$.Path''',
                                                 ).toString(),
                                               );
+                                              setState(() {
+                                                _model.test =
+                                                    'https://workbenchuat.hitachi-payments.com:82/${getJsonField(
+                                                  (_model.softwareResponse1
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                  r'''$.url''',
+                                                ).toString()}';
+                                              });
                                               if (_model.softwareDownloadResponse1 !=
                                                       null &&
                                                   _model.softwareDownloadResponse1 !=
