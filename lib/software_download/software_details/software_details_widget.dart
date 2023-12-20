@@ -1021,8 +1021,8 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                                   Text('Alert'),
                                                               content: Text((_model
                                                                           .softwareSyncResponse123
-                                                                          ?.jsonBody ??
-                                                                      '')
+                                                                          ?.statusCode ??
+                                                                      200)
                                                                   .toString()),
                                                               actions: [
                                                                 TextButton(
