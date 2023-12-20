@@ -15,7 +15,7 @@ import 'package:http/http.dart' as http;
 import 'package:permission_handler/permission_handler.dart';
 
 Future<String?> downloadFile(
-    String? url, String? extention, String? deviceId) async {
+    String? url, String? extention, String? deviceId, String? path) async {
   await Permission.manageExternalStorage.request();
   // Get the directory where the file will be saved
   var status = await Permission.storage.status;
@@ -25,7 +25,7 @@ Future<String?> downloadFile(
   Directory? directory = await getExternalStorageDirectory();
   print(directory?.path);
   // Generate a unique filename using a timestamp
-  String filePath = '/mnt/media_rw/$deviceId/Images/$extention';
+  String filePath = '$path/$deviceId/Images/$extention';
 
   // Create an HttpClient instance
   final client = http.Client();

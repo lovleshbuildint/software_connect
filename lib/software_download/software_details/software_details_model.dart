@@ -32,17 +32,17 @@ class SoftwareDetailsModel extends FlutterFlowModel<SoftwareDetailsWidget> {
 
   final unfocusNode = FocusNode();
   // Stores action output result for [Custom Action - pathCheck] action in Button widget.
-  bool? pathcheckResponses;
+  dynamic? pathcheckResponses;
   // Stores action output result for [Custom Action - pathCheck] action in Button widget.
-  bool? pathCheckResponse2;
+  dynamic? pathCheckResponse2;
   // Stores action output result for [Custom Action - pathCheck] action in Button widget.
-  bool? downloadManualPathCheckResponse;
+  dynamic? downloadManualPathCheckResponse;
   // Stores action output result for [Backend Call - API (Bank Model Manual Download)] action in Button widget.
   ApiCallResponse? manualResponse1;
   // Stores action output result for [Custom Action - downloadFile] action in Button widget.
   String? manualDownloadResponse1;
   // Stores action output result for [Custom Action - pathCheck] action in Button widget.
-  bool? downloadSoftwarePathCheckResponse;
+  dynamic? downloadSoftwarePathCheckResponse;
   // Stores action output result for [Backend Call - API (Bank Model Software Download)] action in Button widget.
   ApiCallResponse? softwareResponse1;
   // Stores action output result for [Custom Action - downloadFile] action in Button widget.

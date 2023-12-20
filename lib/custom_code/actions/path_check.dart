@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 
 import 'dart:io';
 
-Future<bool?> pathCheck(String? deviceId) async {
+Future<dynamic> pathCheck(String? deviceId) async {
   // Add your function code here!
   String directoryPath1 = '/mnt/media_rw/$deviceId/Images/';
   String directoryPath2 = '/storage/$deviceId/Images/';
@@ -25,13 +25,13 @@ Future<bool?> pathCheck(String? deviceId) async {
     print(directoryExists1);
 
     if (directoryExists1) {
-      return true;
+      return {"Status": true, "Path": '/mnt/media_rw'};
     } else {
       // Check if the second directory exists
       bool directoryExists2 = await directory2.exists();
       print(directoryExists2);
 
-      return directoryExists2;
+      return {"Status": directoryExists2, "Path": '/storage'};
     }
   } catch (e) {
     // Handle any potential errors, such as permission issues, etc.

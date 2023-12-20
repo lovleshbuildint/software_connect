@@ -362,7 +362,10 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                               r'''$.deviceId''',
                             ).toString(),
                           );
-                          if (_model.pathcheckResponses!) {
+                          if (getJsonField(
+                            _model.pathcheckResponses,
+                            r'''$.Status''',
+                          )) {
                             setState(() {
                               _model.connectedStatus = true;
                             });
@@ -646,7 +649,10 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                             r'''$.deviceId''',
                                           ).toString(),
                                         );
-                                        if (_model.pathCheckResponse2!) {
+                                        if (getJsonField(
+                                          _model.pathCheckResponse2,
+                                          r'''$.Status''',
+                                        )) {
                                           setState(() {
                                             _model.notConnectStatus = false;
                                             _model.connectedStatus = true;
@@ -827,6 +833,11 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                     FFAppState().loginResponse,
                                                     r'''$.deviceId''',
                                                   ).toString(),
+                                                  getJsonField(
+                                                    _model
+                                                        .downloadManualPathCheckResponse,
+                                                    r'''$.Path''',
+                                                  ).toString(),
                                                 );
                                                 if (_model.manualDownloadResponse1 !=
                                                         null &&
@@ -904,8 +915,11 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                 r'''$.deviceId''',
                                               ).toString(),
                                             );
-                                            if (_model
-                                                .downloadSoftwarePathCheckResponse!) {
+                                            if (getJsonField(
+                                              _model
+                                                  .downloadSoftwarePathCheckResponse,
+                                              r'''$.Status''',
+                                            )) {
                                               setState(() {
                                                 _model.downloadingSoftwareStatus =
                                                     true;
@@ -938,6 +952,11 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                 getJsonField(
                                                   FFAppState().loginResponse,
                                                   r'''$.deviceId''',
+                                                ).toString(),
+                                                getJsonField(
+                                                  _model
+                                                      .downloadSoftwarePathCheckResponse,
+                                                  r'''$.Path''',
                                                 ).toString(),
                                               );
                                               if (_model.softwareDownloadResponse1 !=
