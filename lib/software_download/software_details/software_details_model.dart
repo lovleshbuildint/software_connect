@@ -57,6 +57,10 @@ class SoftwareDetailsModel extends FlutterFlowModel<SoftwareDetailsWidget> {
   dynamic? downloadSoftwarePathCheckResponse123;
   // Stores action output result for [Backend Call - API (Bank Model Multiple Software Download)] action in Button widget.
   ApiCallResponse? downloadSoftwareResponse123;
+  // Stores action output result for [Custom Action - downloadFile] action in Button widget.
+  String? softwareDownloadResponse1234;
+  // Stores action output result for [Backend Call - API (Software Sync)] action in Button widget.
+  ApiCallResponse? softwareSyncResponse;
 
   /// Initialization and disposal methods.
 

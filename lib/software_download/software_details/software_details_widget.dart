@@ -981,9 +981,8 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                   softwareVersionId:
                                                       widget.softwareVersionId,
                                                   syncBy: FFAppState().userId,
-                                                  syncDate: dateTimeFormat(
-                                                      'yMd',
-                                                      getCurrentTimestamp),
+                                                  syncDate: getCurrentTimestamp
+                                                      .toString(),
                                                 );
                                               }
                                             } else {
@@ -1084,7 +1083,63 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                               ?.jsonBody ??
                                                           ''),
                                                     )?.length;
+                                                    _model.currentIndex = 0;
                                                   });
+                                                  while (_model.currentIndex! <
+                                                      _model.maxIndex!) {
+                                                    _model.softwareDownloadResponse1234 =
+                                                        await actions
+                                                            .downloadFile(
+                                                      'https://workbenchuat.hitachi-payments.com:82/${((BankModelMultipleSoftwareDownloadCall.urlList(
+                                                        (_model.downloadSoftwareResponse123
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ) as List).map<String>((s) => s.toString()).toList()?[_model.currentIndex!])?.toString()}',
+                                                      functions.splitUrl(
+                                                          'https://workbenchuat.hitachi-payments.com:82/${((BankModelMultipleSoftwareDownloadCall.urlList(
+                                                        (_model.downloadSoftwareResponse123
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ) as List).map<String>((s) => s.toString()).toList()?[_model.currentIndex!])?.toString()}'),
+                                                      getJsonField(
+                                                        FFAppState()
+                                                            .loginResponse,
+                                                        r'''$.deviceId''',
+                                                      ).toString(),
+                                                      getJsonField(
+                                                        _model
+                                                            .downloadSoftwarePathCheckResponse123,
+                                                        r'''$.Path''',
+                                                      ).toString(),
+                                                    );
+                                                    if (_model.softwareDownloadResponse1234 !=
+                                                            null &&
+                                                        _model.softwareDownloadResponse1234 !=
+                                                            '') {
+                                                      setState(() {
+                                                        _model.downloadingSoftwareStatus =
+                                                            false;
+                                                        _model.downloadedSoftwareStatus =
+                                                            true;
+                                                      });
+                                                      _model.softwareSyncResponse =
+                                                          await SoftwareSyncCall
+                                                              .call(
+                                                        token: getJsonField(
+                                                          FFAppState()
+                                                              .loginResponse,
+                                                          r'''$.token''',
+                                                        ).toString(),
+                                                        softwareVersionId: widget
+                                                            .softwareVersionId,
+                                                        syncBy:
+                                                            FFAppState().userId,
+                                                        syncDate:
+                                                            getCurrentTimestamp
+                                                                .toString(),
+                                                      );
+                                                    }
+                                                  }
                                                 }
                                               } else {
                                                 setState(() {
