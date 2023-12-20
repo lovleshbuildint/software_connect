@@ -798,8 +798,11 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                   r'''$.deviceId''',
                                                 ).toString(),
                                               );
-                                              if (_model
-                                                  .downloadManualPathCheckResponse!) {
+                                              if (getJsonField(
+                                                _model
+                                                    .downloadManualPathCheckResponse,
+                                                r'''$.Status''',
+                                              )) {
                                                 setState(() {
                                                   _model.downloadingManualStatus =
                                                       true;
