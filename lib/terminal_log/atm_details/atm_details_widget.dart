@@ -295,43 +295,15 @@ class _AtmDetailsWidgetState extends State<AtmDetailsWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 20.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              FFButtonWidget(
-                                onPressed: () async {
-                                  setState(() {
-                                    _model.visibility = false;
-                                  });
-                                },
-                                text: 'Model',
-                                options: FFButtonOptions(
-                                  width: 70.0,
-                                  height: 28.0,
-                                  padding: EdgeInsets.all(0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: !_model.visibility
-                                      ? Color(0xFF2D2D2D)
-                                      : Color(0xFFFAFAFA),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: _model.visibility
-                                            ? Color(0xFF555555)
-                                            : Colors.white,
-                                        fontSize: 12.0,
-                                      ),
-                                  elevation: 3.0,
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(5.0),
+                          child: Text(
+                            'Models',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w500,
                                 ),
-                              ),
-                            ],
                           ),
                         ),
                         Expanded(
@@ -674,30 +646,39 @@ class _AtmDetailsWidgetState extends State<AtmDetailsWidget> {
                                   ),
                                 ],
                               ),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(0.0),
-                                    child: Image.asset(
-                                      'assets/images/user.png',
-                                      width: 16.0,
-                                      height: 16.0,
-                                      fit: BoxFit.cover,
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('profile');
+                                },
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(0.0),
+                                      child: Image.asset(
+                                        'assets/images/user.png',
+                                        width: 16.0,
+                                        height: 16.0,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    'User',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Color(0xFF838383),
-                                          fontSize: 10.0,
-                                        ),
-                                  ),
-                                ],
+                                    Text(
+                                      'User',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0xFF838383),
+                                            fontSize: 10.0,
+                                          ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),

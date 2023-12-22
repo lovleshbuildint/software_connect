@@ -510,30 +510,39 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                               ],
                             ),
                           ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(0.0),
-                                child: Image.asset(
-                                  'assets/images/user.png',
-                                  width: 16.0,
-                                  height: 16.0,
-                                  fit: BoxFit.cover,
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed('profile');
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(0.0),
+                                  child: Image.asset(
+                                    'assets/images/user.png',
+                                    width: 16.0,
+                                    height: 16.0,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                'User',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Color(0xFF838383),
-                                      fontSize: 10.0,
-                                    ),
-                              ),
-                            ],
+                                Text(
+                                  'User',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF838383),
+                                        fontSize: 10.0,
+                                      ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
