@@ -679,7 +679,7 @@ class _SoftwareListWidgetState extends State<SoftwareListWidget> {
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(0.0),
                                       child: Image.asset(
-                                        'assets/images/user.png',
+                                        'assets/images/user(1).png',
                                         width: 16.0,
                                         height: 16.0,
                                         fit: BoxFit.cover,
