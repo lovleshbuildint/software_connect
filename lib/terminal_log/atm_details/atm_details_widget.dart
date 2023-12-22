@@ -390,7 +390,7 @@ class _AtmDetailsWidgetState extends State<AtmDetailsWidget> {
                                               width: MediaQuery.sizeOf(context)
                                                       .width *
                                                   1.0,
-                                              height: 103.0,
+                                              height: 115.0,
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)

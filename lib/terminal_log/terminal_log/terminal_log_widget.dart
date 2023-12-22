@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,6 +28,9 @@ class _TerminalLogWidgetState extends State<TerminalLogWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TerminalLogModel());
+
+    _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -95,32 +100,134 @@ class _TerminalLogWidgetState extends State<TerminalLogWidget> {
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              22.0, 10.0, 22.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Terminal Log',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w600,
+                        if (_model.searchVisibility)
+                          Container(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: 50.0,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFFAFAFA),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  22.0, 0.0, 22.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Align(
+                                      alignment:
+                                          AlignmentDirectional(0.0, -1.0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8.0, 0.0, 8.0, 0.0),
+                                        child: TextFormField(
+                                          controller: _model.textController,
+                                          focusNode: _model.textFieldFocusNode,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            '_model.textController',
+                                            Duration(milliseconds: 2000),
+                                            () async {
+                                              setState(() {
+                                                FFAppState().searchValue =
+                                                    _model.textController.text;
+                                              });
+                                            },
+                                          ),
+                                          onFieldSubmitted: (_) async {
+                                            setState(() {
+                                              FFAppState().searchValue =
+                                                  _model.textController.text;
+                                            });
+                                          },
+                                          autofocus: true,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText: 'Search Bank ',
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
+                                            enabledBorder: InputBorder.none,
+                                            focusedBorder: InputBorder.none,
+                                            errorBorder: InputBorder.none,
+                                            focusedErrorBorder:
+                                                InputBorder.none,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                          validator: _model
+                                              .textControllerValidator
+                                              .asValidator(context),
+                                        ),
+                                      ),
                                     ),
+                                  ),
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      setState(() {
+                                        _model.searchVisibility = false;
+                                      });
+                                      setState(() {
+                                        FFAppState().searchValue = '';
+                                      });
+                                    },
+                                    child: Icon(
+                                      Icons.close_sharp,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Icon(
-                                Icons.search,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 18.0,
-                              ),
-                            ],
+                            ),
                           ),
-                        ),
+                        if (!_model.searchVisibility)
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                22.0, 10.0, 22.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Terminal Log',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    setState(() {
+                                      _model.searchVisibility = true;
+                                    });
+                                  },
+                                  child: Icon(
+                                    Icons.search,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 18.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 75.0),
@@ -135,10 +242,13 @@ class _TerminalLogWidgetState extends State<TerminalLogWidget> {
                                   20.0, 10.0, 20.0, 0.0),
                               child: Builder(
                                 builder: (context) {
-                                  final data = getJsonField(
-                                    terminalLogBankListResponse.jsonBody,
-                                    r'''$.bankLists''',
-                                  ).toList();
+                                  final data = functions
+                                          .filter(
+                                              terminalLogBankListResponse
+                                                  .jsonBody,
+                                              FFAppState().searchValue)
+                                          ?.toList() ??
+                                      [];
                                   return ListView.builder(
                                     padding: EdgeInsets.zero,
                                     scrollDirection: Axis.vertical,

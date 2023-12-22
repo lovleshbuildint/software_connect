@@ -333,6 +333,29 @@ class CreateTerminalLogCall {
   }
 }
 
+class GetUserInfoCall {
+  static Future<ApiCallResponse> call({
+    String? userName = '',
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get User Info',
+      apiUrl:
+          'https://workbenchuat.hitachi-payments.com:82/api/user/GETUSER/${userName}',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': '${token}',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

@@ -82,7 +82,34 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(20.0, 35.0, 20.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Device ID',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Poppins',
+                              color: Color(0xE02D2D2D),
+                              fontSize: 18.0,
+                            ),
+                      ),
+                      Text(
+                        '',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Poppins',
+                              color: Color(0xE02D2D2D),
+                              fontSize: 18.0,
+                            ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(20.0, 35.0, 20.0, 0.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
