@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -27,6 +28,49 @@ class _DashboardWidgetState extends State<DashboardWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DashboardModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.dashboardResponse = await DasboardCall.call(
+        token: getJsonField(
+          FFAppState().loginResponse,
+          r'''$.token''',
+        ).toString().toString(),
+      );
+      if ((_model.dashboardResponse?.succeeded ?? true)) {
+        return;
+      }
+
+      setState(() {
+        FFAppState().loginResponse = null;
+      });
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return AlertDialog(
+            title: Text('Alert'),
+            content: Text('Session expired please login again !'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(alertDialogContext),
+                child: Text('Ok'),
+              ),
+            ],
+          );
+        },
+      );
+
+      context.goNamed(
+        'Login',
+        extra: <String, dynamic>{
+          kTransitionInfoKey: TransitionInfo(
+            hasTransition: true,
+            transitionType: PageTransitionType.fade,
+            duration: Duration(milliseconds: 0),
+          ),
+        },
+      );
+    });
   }
 
   @override
@@ -720,6 +764,10 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                               ),
                                               axisBounds: AxisBounds(),
                                               xAxisLabelInfo: AxisLabelInfo(
+                                                title: 'Bank Name',
+                                                titleTextStyle: TextStyle(
+                                                  fontSize: 10.0,
+                                                ),
                                                 showLabels: true,
                                                 labelTextStyle:
                                                     GoogleFonts.getFont(

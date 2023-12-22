@@ -47,7 +47,9 @@ dynamic filter(
   List<dynamic> filteredData = [];
 
   for (dynamic data in mainData['bankLists']) {
-    if (data['bankName'].contains(searchValue)) {
+    String searchValueLowerCase = searchValue.toLowerCase();
+
+    if (data['bankName'].toLowerCase().contains(searchValueLowerCase)) {
       filteredData.add(data);
     }
   }
