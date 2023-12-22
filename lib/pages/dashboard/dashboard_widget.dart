@@ -709,77 +709,94 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                             r'''$.weeklyUpdates..bankName''',
                                           ) !=
                                           null) {
-                                        return Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 17.0, 0.0, 0.0),
-                                          child: Container(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                1.0,
-                                            height: 135.0,
-                                            child: FlutterFlowBarChart(
-                                              barData: [
-                                                FFBarChartData(
-                                                  yData: getJsonField(
+                                        return Wrap(
+                                          spacing: 0.0,
+                                          runSpacing: 0.0,
+                                          alignment: WrapAlignment.start,
+                                          crossAxisAlignment:
+                                              WrapCrossAlignment.start,
+                                          direction: Axis.horizontal,
+                                          runAlignment: WrapAlignment.start,
+                                          verticalDirection:
+                                              VerticalDirection.down,
+                                          clipBehavior: Clip.none,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 17.0, 0.0, 0.0),
+                                              child: Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height: 135.0,
+                                                child: FlutterFlowBarChart(
+                                                  barData: [
+                                                    FFBarChartData(
+                                                      yData: getJsonField(
+                                                        dashboardDasboardResponse
+                                                            .jsonBody,
+                                                        r'''$.weeklyUpdates..totalUpgraded''',
+                                                      ),
+                                                      color: Color(0xFF9747FF),
+                                                    ),
+                                                    FFBarChartData(
+                                                      yData: getJsonField(
+                                                        dashboardDasboardResponse
+                                                            .jsonBody,
+                                                        r'''$.weeklyUpdates..total''',
+                                                      ),
+                                                      color: Color(0x1E9747FF),
+                                                    )
+                                                  ],
+                                                  xLabels: (getJsonField(
                                                     dashboardDasboardResponse
                                                         .jsonBody,
-                                                    r'''$.weeklyUpdates..totalUpgraded''',
+                                                    r'''$.weeklyUpdates..bankName''',
+                                                    true,
+                                                  ) as List)
+                                                      .map<String>(
+                                                          (s) => s.toString())
+                                                      .toList()!,
+                                                  barWidth: 7.0,
+                                                  barBorderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  barSpace: 2.0,
+                                                  groupSpace: 28.0,
+                                                  alignment: BarChartAlignment
+                                                      .spaceAround,
+                                                  chartStylingInfo:
+                                                      ChartStylingInfo(
+                                                    enableTooltip: true,
+                                                    tooltipBackgroundColor:
+                                                        Colors.white,
+                                                    backgroundColor:
+                                                        Color(0x00FFFFFF),
+                                                    showBorder: false,
                                                   ),
-                                                  color: Color(0xFF9747FF),
-                                                ),
-                                                FFBarChartData(
-                                                  yData: getJsonField(
-                                                    dashboardDasboardResponse
-                                                        .jsonBody,
-                                                    r'''$.weeklyUpdates..total''',
+                                                  axisBounds: AxisBounds(),
+                                                  xAxisLabelInfo: AxisLabelInfo(
+                                                    title: 'Bank Name',
+                                                    titleTextStyle: TextStyle(
+                                                      fontSize: 10.0,
+                                                    ),
+                                                    showLabels: true,
+                                                    labelTextStyle:
+                                                        GoogleFonts.getFont(
+                                                      'Poppins',
+                                                      color: Color(0xFF828282),
+                                                      fontSize: 10.0,
+                                                    ),
+                                                    labelInterval: 10.0,
                                                   ),
-                                                  color: Color(0x1E9747FF),
-                                                )
-                                              ],
-                                              xLabels: (getJsonField(
-                                                dashboardDasboardResponse
-                                                    .jsonBody,
-                                                r'''$.weeklyUpdates..bankName''',
-                                                true,
-                                              ) as List)
-                                                  .map<String>(
-                                                      (s) => s.toString())
-                                                  .toList()!,
-                                              barWidth: 7.0,
-                                              barBorderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              barSpace: 2.0,
-                                              groupSpace: 28.0,
-                                              alignment:
-                                                  BarChartAlignment.spaceAround,
-                                              chartStylingInfo:
-                                                  ChartStylingInfo(
-                                                enableTooltip: true,
-                                                tooltipBackgroundColor:
-                                                    Colors.white,
-                                                backgroundColor:
-                                                    Color(0x00FFFFFF),
-                                                showBorder: false,
-                                              ),
-                                              axisBounds: AxisBounds(),
-                                              xAxisLabelInfo: AxisLabelInfo(
-                                                title: 'Bank Name',
-                                                titleTextStyle: TextStyle(
-                                                  fontSize: 10.0,
+                                                  yAxisLabelInfo:
+                                                      AxisLabelInfo(),
                                                 ),
-                                                showLabels: true,
-                                                labelTextStyle:
-                                                    GoogleFonts.getFont(
-                                                  'Poppins',
-                                                  color: Color(0xFF828282),
-                                                  fontSize: 10.0,
-                                                ),
-                                                labelInterval: 10.0,
                                               ),
-                                              yAxisLabelInfo: AxisLabelInfo(),
                                             ),
-                                          ),
+                                          ],
                                         );
                                       } else {
                                         return Padding(
