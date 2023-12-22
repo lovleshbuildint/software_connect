@@ -171,7 +171,7 @@ class _AtmDetailsWidgetState extends State<AtmDetailsWidget> {
                               20.0, 5.0, 20.0, 5.0),
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: 103.0,
+                            height: 115.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
@@ -415,6 +415,19 @@ class _AtmDetailsWidgetState extends State<AtmDetailsWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
+                                                        Container(
+                                                          width: 45.0,
+                                                          height: 45.0,
+                                                          child: custom_widgets
+                                                              .NewCustomWidget(
+                                                            width: 45.0,
+                                                            height: 45.0,
+                                                            bin: getJsonField(
+                                                              datasItem,
+                                                              r'''$..logo''',
+                                                            ).toString(),
+                                                          ),
+                                                        ),
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -455,7 +468,7 @@ class _AtmDetailsWidgetState extends State<AtmDetailsWidget> {
                                                               Text(
                                                                 'Model: ${getJsonField(
                                                                   datasItem,
-                                                                  r'''$..modelName''',
+                                                                  r'''$..modelNumber''',
                                                                 ).toString()}',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -505,7 +518,7 @@ class _AtmDetailsWidgetState extends State<AtmDetailsWidget> {
                                                                   0.0,
                                                                   16.0),
                                                       child: Text(
-                                                        'OS Version: ${getJsonField(
+                                                        'Software Version: ${getJsonField(
                                                           datasItem,
                                                           r'''$..version''',
                                                         ).toString()}',

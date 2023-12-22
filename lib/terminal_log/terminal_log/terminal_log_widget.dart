@@ -181,7 +181,7 @@ class _TerminalLogWidgetState extends State<TerminalLogWidget> {
                                                 'bankType': serializeParam(
                                                   getJsonField(
                                                     dataItem,
-                                                    r'''$..bankType''',
+                                                    r'''$..bankTypeName''',
                                                   ).toString(),
                                                   ParamType.String,
                                                 ),
@@ -206,7 +206,7 @@ class _TerminalLogWidgetState extends State<TerminalLogWidget> {
                                             width: MediaQuery.sizeOf(context)
                                                     .width *
                                                 1.0,
-                                            height: 103.0,
+                                            height: 115.0,
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
