@@ -228,294 +228,306 @@ class _TerminalLogWidgetState extends State<TerminalLogWidget> {
                               ],
                             ),
                           ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 75.0),
-                          child: Container(
-                            width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: MediaQuery.sizeOf(context).height * 1.0,
-                            decoration: BoxDecoration(
-                              color: Color(0x00FFFFFF),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 10.0, 20.0, 0.0),
-                              child: Builder(
-                                builder: (context) {
-                                  final data = functions
-                                          .filter(
-                                              terminalLogBankListResponse
-                                                  .jsonBody,
-                                              FFAppState().searchValue)
-                                          ?.toList() ??
-                                      [];
-                                  return ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: data.length,
-                                    itemBuilder: (context, dataIndex) {
-                                      final dataItem = data[dataIndex];
-                                      return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 5.0, 0.0, 5.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            context.pushNamed(
-                                              'atmDetails',
-                                              queryParameters: {
-                                                'bankId': serializeParam(
-                                                  getJsonField(
-                                                    dataItem,
-                                                    r'''$..bankId''',
-                                                  ).toString(),
-                                                  ParamType.String,
-                                                ),
-                                                'bankName': serializeParam(
-                                                  getJsonField(
-                                                    dataItem,
-                                                    r'''$..bankName''',
-                                                  ).toString(),
-                                                  ParamType.String,
-                                                ),
-                                                'totalModel': serializeParam(
-                                                  getJsonField(
-                                                    dataItem,
-                                                    r'''$..totalModel''',
-                                                  ).toString(),
-                                                  ParamType.String,
-                                                ),
-                                                'bankType': serializeParam(
-                                                  getJsonField(
-                                                    dataItem,
-                                                    r'''$..bankTypeName''',
-                                                  ).toString(),
-                                                  ParamType.String,
-                                                ),
-                                                'totalatm': serializeParam(
-                                                  getJsonField(
-                                                    dataItem,
-                                                    r'''$..totalAtm''',
-                                                  ).toString(),
-                                                  ParamType.String,
-                                                ),
-                                                'binImage': serializeParam(
-                                                  getJsonField(
-                                                    dataItem,
-                                                    r'''$..logo''',
-                                                  ).toString(),
-                                                  ParamType.String,
-                                                ),
-                                              }.withoutNulls,
-                                            );
-                                          },
-                                          child: Container(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                1.0,
-                                            height: 115.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 15.0, 10.0, 0.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Container(
-                                                        width: 45.0,
-                                                        height: 45.0,
-                                                        child: custom_widgets
-                                                            .NewCustomWidget(
+                        Flexible(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 75.0),
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              height: MediaQuery.sizeOf(context).height * 1.0,
+                              decoration: BoxDecoration(
+                                color: Color(0x00FFFFFF),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 10.0, 20.0, 0.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final data = functions
+                                            .filter(
+                                                terminalLogBankListResponse
+                                                    .jsonBody,
+                                                FFAppState().searchValue)
+                                            ?.toList() ??
+                                        [];
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: data.length,
+                                      itemBuilder: (context, dataIndex) {
+                                        final dataItem = data[dataIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 5.0, 0.0, 5.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                'atmDetails',
+                                                queryParameters: {
+                                                  'bankId': serializeParam(
+                                                    getJsonField(
+                                                      dataItem,
+                                                      r'''$..bankId''',
+                                                    ).toString(),
+                                                    ParamType.String,
+                                                  ),
+                                                  'bankName': serializeParam(
+                                                    getJsonField(
+                                                      dataItem,
+                                                      r'''$..bankName''',
+                                                    ).toString(),
+                                                    ParamType.String,
+                                                  ),
+                                                  'totalModel': serializeParam(
+                                                    getJsonField(
+                                                      dataItem,
+                                                      r'''$..totalModel''',
+                                                    ).toString(),
+                                                    ParamType.String,
+                                                  ),
+                                                  'bankType': serializeParam(
+                                                    getJsonField(
+                                                      dataItem,
+                                                      r'''$..bankTypeName''',
+                                                    ).toString(),
+                                                    ParamType.String,
+                                                  ),
+                                                  'totalatm': serializeParam(
+                                                    getJsonField(
+                                                      dataItem,
+                                                      r'''$..totalAtm''',
+                                                    ).toString(),
+                                                    ParamType.String,
+                                                  ),
+                                                  'binImage': serializeParam(
+                                                    getJsonField(
+                                                      dataItem,
+                                                      r'''$..logo''',
+                                                    ).toString(),
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            },
+                                            child: Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  1.0,
+                                              height: 115.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 15.0, 10.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Container(
                                                           width: 45.0,
                                                           height: 45.0,
-                                                          bin: getJsonField(
-                                                            dataItem,
-                                                            r'''$..logo''',
-                                                          ).toString(),
+                                                          child: custom_widgets
+                                                              .NewCustomWidget(
+                                                            width: 45.0,
+                                                            height: 45.0,
+                                                            bin: getJsonField(
+                                                              dataItem,
+                                                              r'''$..logo''',
+                                                            ).toString(),
+                                                          ),
                                                         ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    15.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              getJsonField(
-                                                                dataItem,
-                                                                r'''$..bankName''',
-                                                              ).toString(),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Poppins',
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                  ),
-                                                            ),
-                                                            Text(
-                                                              'Model: ${getJsonField(
-                                                                dataItem,
-                                                                r'''$..totalModel''',
-                                                              ).toString()}',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Poppins',
-                                                                    color: Color(
-                                                                        0xFF707070),
-                                                                    fontSize:
-                                                                        10.0,
-                                                                  ),
-                                                            ),
-                                                          ],
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      15.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                getJsonField(
+                                                                  dataItem,
+                                                                  r'''$..bankName''',
+                                                                ).toString(),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Poppins',
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                              ),
+                                                              Text(
+                                                                'Model: ${getJsonField(
+                                                                  dataItem,
+                                                                  r'''$..totalModel''',
+                                                                ).toString()}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Poppins',
+                                                                      color: Color(
+                                                                          0xFF707070),
+                                                                      fontSize:
+                                                                          10.0,
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                      Expanded(
-                                                        child: Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  1.0, 0.0),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        7.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                        Expanded(
+                                                          child: Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    1.0, 0.0),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
+                                                                          7.0,
                                                                           0.0,
-                                                                          0.0,
-                                                                          15.0),
-                                                                  child: Text(
-                                                                    '${getJsonField(
-                                                                      dataItem,
-                                                                      r'''$..totalAtm''',
-                                                                    ).toString()} ATM',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Poppins',
-                                                                          color:
-                                                                              Color(0xFF2D2D2D),
-                                                                          fontSize:
-                                                                              14.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w500,
-                                                                        ),
+                                                                          0.0),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            15.0),
+                                                                    child: Text(
+                                                                      '${getJsonField(
+                                                                        dataItem,
+                                                                        r'''$..totalAtm''',
+                                                                      ).toString()} ATM',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            color:
+                                                                                Color(0xFF2D2D2D),
+                                                                            fontSize:
+                                                                                14.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                          ),
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                              ],
+                                                                ],
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 10.0,
-                                                                0.0, 0.0),
-                                                    child: Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          1.0,
-                                                      height: 1.0,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0xFFD9D9D9),
+                                                      ],
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                1.0,
+                                                        height: 1.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0xFFD9D9D9),
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 8.0,
-                                                                0.0, 16.0),
-                                                    child: Text(
-                                                      'Bank Type: ${getJsonField(
-                                                        dataItem,
-                                                        r'''$..bankTypeName''',
-                                                      ).toString()}',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: Color(
-                                                                    0xFF707070),
-                                                                fontSize: 10.0,
-                                                              ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  8.0,
+                                                                  0.0,
+                                                                  16.0),
+                                                      child: Text(
+                                                        'Bank Type: ${getJsonField(
+                                                          dataItem,
+                                                          r'''$..bankTypeName''',
+                                                        ).toString()}',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              color: Color(
+                                                                  0xFF707070),
+                                                              fontSize: 10.0,
+                                                            ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
                               ),
                             ),
                           ),
