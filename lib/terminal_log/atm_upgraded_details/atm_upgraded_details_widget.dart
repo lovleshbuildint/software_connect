@@ -52,7 +52,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
     super.initState();
     _model = createModel(context, () => AtmUpgradedDetailsModel());
 
-    _model.atmOther1Controller ??= TextEditingController();
+    _model.atmOther1Controller ??= TextEditingController(text: _model.atmId1);
     _model.atmOther1FocusNode ??= FocusNode();
 
     _model.lcation1Controller ??= TextEditingController(text: _model.location);
@@ -322,54 +322,50 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   isMultiSelect: false,
                                 ),
                               ),
-                              if (_model.atmId1 == 'Others')
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
-                                  child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 1.0,
-                                    height: 45.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(4.0),
-                                      border: Border.all(
-                                        color: Color(0xFF999999),
-                                      ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 0.0),
+                                child: Container(
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
+                                  height: 45.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(4.0),
+                                    border: Border.all(
+                                      color: Color(0xFF999999),
                                     ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 0.0, 8.0, 0.0),
-                                      child: TextFormField(
-                                        controller: _model.atmOther1Controller,
-                                        focusNode: _model.atmOther1FocusNode,
-                                        textCapitalization:
-                                            TextCapitalization.words,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium,
-                                          hintText: 'Enter ATM ID',
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium,
-                                          enabledBorder: InputBorder.none,
-                                          focusedBorder: InputBorder.none,
-                                          errorBorder: InputBorder.none,
-                                          focusedErrorBorder: InputBorder.none,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                        cursorColor: Color(0xFFFF0026),
-                                        validator: _model
-                                            .atmOther1ControllerValidator
-                                            .asValidator(context),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8.0, 0.0, 8.0, 0.0),
+                                    child: TextFormField(
+                                      controller: _model.atmOther1Controller,
+                                      focusNode: _model.atmOther1FocusNode,
+                                      textCapitalization:
+                                          TextCapitalization.words,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium,
+                                        hintText: 'Enter ATM ID',
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium,
+                                        enabledBorder: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        focusedErrorBorder: InputBorder.none,
                                       ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                      cursorColor: Color(0xFFFF0026),
+                                      validator: _model
+                                          .atmOther1ControllerValidator
+                                          .asValidator(context),
                                     ),
                                   ),
                                 ),
+                              ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
