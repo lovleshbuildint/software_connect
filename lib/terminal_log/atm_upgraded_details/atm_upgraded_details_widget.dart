@@ -330,7 +330,6 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                       child: TextFormField(
                                         controller: _model.atmOther1Controller,
                                         focusNode: _model.atmOther1FocusNode,
-                                        autofocus: true,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelStyle:
@@ -387,7 +386,6 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                     child: TextFormField(
                                       controller: _model.versionController,
                                       focusNode: _model.versionFocusNode,
-                                      autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelStyle: FlutterFlowTheme.of(context)
