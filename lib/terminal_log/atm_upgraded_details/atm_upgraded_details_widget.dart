@@ -268,17 +268,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 child: FlutterFlowDropDown<String>(
                                   controller: _model.atmIdDD1ValueController ??=
                                       FormFieldController<String>(null),
-                                  options: (getJsonField(
-                                    (BankATMListCall.atmList(
-                                      columnBankATMListResponse.jsonBody,
-                                    ) as List)
-                                        .map<String>((s) => s.toString())
-                                        .toList(),
-                                    r'''$..atmId''',
-                                    true,
-                                  ) as List)
-                                      .map<String>((s) => s.toString())
-                                      .toList()!,
+                                  options: ['Option 1', 'Option 2'],
                                   onChanged: (val) => setState(
                                       () => _model.atmIdDD1Value = val),
                                   width: MediaQuery.sizeOf(context).width * 1.0,
@@ -413,7 +403,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Text(
-                                  'Comment',
+                                  columnBankATMListResponse.jsonBody.toString(),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
