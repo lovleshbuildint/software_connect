@@ -361,6 +361,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
+                                        cursorColor: Color(0xFFFF0026),
                                         validator: _model
                                             .atmOther1ControllerValidator
                                             .asValidator(context),
@@ -417,6 +418,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
+                                      cursorColor: Color(0xFFFF0026),
                                       validator: _model
                                           .lcation1ControllerValidator
                                           .asValidator(context),
