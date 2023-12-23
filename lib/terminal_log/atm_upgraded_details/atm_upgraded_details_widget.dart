@@ -241,7 +241,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                       .secondaryBackground,
                                   elevation: 2.0,
                                   borderColor: Color(0xFF999999),
-                                  borderWidth: 2.0,
+                                  borderWidth: 0.0,
                                   borderRadius: 4.0,
                                   margin: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 4.0, 16.0, 4.0),
@@ -299,7 +299,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                       .secondaryBackground,
                                   elevation: 2.0,
                                   borderColor: Color(0xFF999999),
-                                  borderWidth: 2.0,
+                                  borderWidth: 0.0,
                                   borderRadius: 4.0,
                                   margin: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 4.0, 16.0, 4.0),
