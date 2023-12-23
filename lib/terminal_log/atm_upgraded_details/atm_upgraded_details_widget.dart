@@ -403,7 +403,8 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Text(
-                                  columnBankATMListResponse.jsonBody.toString(),
+                                  columnBankATMListResponse.succeeded
+                                      .toString(),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
