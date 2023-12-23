@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -268,7 +269,16 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 child: FlutterFlowDropDown<String>(
                                   controller: _model.atmIdDD1ValueController ??=
                                       FormFieldController<String>(null),
-                                  options: ['Option 1', 'Option 2'],
+                                  options: (getJsonField(
+                                    functions
+                                        .addDataList(BankATMListCall.atmList(
+                                      columnBankATMListResponse.jsonBody,
+                                    )),
+                                    r'''$..atmId''',
+                                    true,
+                                  ) as List)
+                                      .map<String>((s) => s.toString())
+                                      .toList()!,
                                   onChanged: (val) => setState(
                                       () => _model.atmIdDD1Value = val),
                                   width: MediaQuery.sizeOf(context).width * 1.0,
@@ -403,8 +413,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Text(
-                                  columnBankATMListResponse.succeeded
-                                      .toString(),
+                                  'Comment',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
