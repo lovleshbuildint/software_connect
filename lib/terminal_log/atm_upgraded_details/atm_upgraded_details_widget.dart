@@ -1133,9 +1133,9 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 logUploadFile: _model.uploadedLocalFile1,
                                 bankId: widget.bankId,
                                 modelId: widget.modelId,
-                                atmId: _model.atmIdDD1Value == 'Others'
+                                atmId: _model.atmId1 == 'Others'
                                     ? _model.atmOther1Controller.text
-                                    : _model.atmIdDD1Value,
+                                    : _model.atmId1,
                                 createdBy: getJsonField(
                                   FFAppState().loginResponse,
                                   r'''$.firstName''',
