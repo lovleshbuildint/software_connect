@@ -60,10 +60,3 @@ dynamic filter(
 String? geturl(dynamic jsonObject) {
   return jsonObject["url"];
 }
-
-dynamic addDataList(dynamic dataList) {
-  if (dataList != null) {
-    dataList.add({"atmId": "Others", "location": "Other"});
-  }
-  return dataList;
-}
