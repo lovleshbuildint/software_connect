@@ -22,6 +22,8 @@ class AtmUpgradedDetailsModel
 
   String location = '';
 
+  String atmId1 = '';
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for RadioButton widget.

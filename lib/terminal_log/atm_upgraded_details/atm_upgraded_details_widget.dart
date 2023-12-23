@@ -292,6 +292,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                         )),
                                         r'''$..location''',
                                       ).toString();
+                                      _model.atmId1 = _model.atmIdDD1Value!;
                                     });
                                   },
                                   width: MediaQuery.sizeOf(context).width * 1.0,
@@ -321,7 +322,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   isMultiSelect: false,
                                 ),
                               ),
-                              if (_model.atmIdDD1Value == 'Others')
+                              if (_model.atmId1 == 'Others')
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
