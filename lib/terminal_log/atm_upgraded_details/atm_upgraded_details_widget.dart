@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -270,12 +269,11 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   controller: _model.atmIdDD1ValueController ??=
                                       FormFieldController<String>(null),
                                   options: (getJsonField(
-                                    functions.addDataList(getJsonField(
-                                      BankATMListCall.atmList(
-                                        columnBankATMListResponse.jsonBody,
-                                      ),
-                                      r'''$..atmId''',
-                                    )),
+                                    (BankATMListCall.atmList(
+                                      columnBankATMListResponse.jsonBody,
+                                    ) as List)
+                                        .map<String>((s) => s.toString())
+                                        .toList(),
                                     r'''$..atmId''',
                                     true,
                                   ) as List)
