@@ -281,12 +281,8 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                     ).toString(),
                                   ),
                                   options: (getJsonField(
-                                    (BankATMListCall.atmList(
-                                      columnBankATMListResponse.jsonBody,
-                                    ) as List)
-                                        .map<String>((s) => s.toString())
-                                        .toList(),
-                                    r'''$..atmId''',
+                                    columnBankATMListResponse.jsonBody,
+                                    r'''$.atmLists..atmId''',
                                     true,
                                   ) as List)
                                       .map<String>((s) => s.toString())
