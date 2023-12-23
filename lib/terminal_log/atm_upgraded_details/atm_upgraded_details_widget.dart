@@ -271,7 +271,15 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                     0.0, 10.0, 0.0, 0.0),
                                 child: FlutterFlowDropDown<String>(
                                   controller: _model.atmIdDD1ValueController ??=
-                                      FormFieldController<String>(null),
+                                      FormFieldController<String>(
+                                    _model.atmIdDD1Value ??= getJsonField(
+                                      functions
+                                          .addDataList(BankATMListCall.atmList(
+                                        columnBankATMListResponse.jsonBody,
+                                      )),
+                                      r'''$[0].atmId''',
+                                    ).toString(),
+                                  ),
                                   options: (getJsonField(
                                     functions
                                         .addDataList(BankATMListCall.atmList(
@@ -1107,10 +1115,8 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               }
                             }
                           } else {
-                            if ((_model.atmIdDD1Value == null ||
-                                    _model.atmIdDD1Value == '') &&
-                                (_model.version1Controller.text == null ||
-                                    _model.version1Controller.text == '')) {
+                            if (_model.version1Controller.text == null ||
+                                _model.version1Controller.text == '') {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
