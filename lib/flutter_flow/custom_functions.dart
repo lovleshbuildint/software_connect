@@ -63,7 +63,7 @@ String? geturl(dynamic jsonObject) {
 
 dynamic addDataList(dynamic dataList) {
   if (dataList != null) {
-    dataList.add({"atmId": "Others"});
+    dataList.add({"atmId": "Others", "location": "Other"});
   }
   return dataList;
 }
