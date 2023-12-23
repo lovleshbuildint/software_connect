@@ -290,13 +290,6 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   onChanged: (val) async {
                                     setState(() => _model.atmIdDD1Value = val);
                                     setState(() {
-                                      _model.location = getJsonField(
-                                        functions.addDataList(
-                                            BankATMListCall.atmList(
-                                          columnBankATMListResponse.jsonBody,
-                                        )),
-                                        r'''$..location''',
-                                      ).toString();
                                       _model.atmId1 = _model.atmIdDD1Value!;
                                     });
                                   },
