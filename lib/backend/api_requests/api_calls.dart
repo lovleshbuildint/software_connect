@@ -132,6 +132,11 @@ class BankATMListCall {
       alwaysAllowBody: false,
     );
   }
+
+  static dynamic atmList(dynamic response) => getJsonField(
+        response,
+        r'''$.atmLists''',
+      );
 }
 
 class BankModelSoftwareListCall {

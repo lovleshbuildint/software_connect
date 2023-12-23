@@ -188,7 +188,8 @@ class _DowloadSoftwareWidgetState extends State<DowloadSoftwareWidget> {
                                                   _model.textController.text;
                                             });
                                           },
-                                          autofocus: true,
+                                          textCapitalization:
+                                              TextCapitalization.words,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelText: 'Search Bank ',

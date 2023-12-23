@@ -848,6 +848,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                 ).toList();
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
+                                  primary: false,
                                   shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
                                   itemCount: recentDownloads.length,

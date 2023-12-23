@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'atm_upgraded_details_widget.dart' show AtmUpgradedDetailsWidget;
 import 'package:flutter/material.dart';
@@ -26,14 +27,21 @@ class AtmUpgradedDetailsModel
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
-  // State field(s) for atmid1 widget.
-  FocusNode? atmid1FocusNode;
-  TextEditingController? atmid1Controller;
-  String? Function(BuildContext, String?)? atmid1ControllerValidator;
+  // State field(s) for atmIdDD1 widget.
+  String? atmIdDD1Value;
+  FormFieldController<String>? atmIdDD1ValueController;
+  // State field(s) for atmOther1 widget.
+  FocusNode? atmOther1FocusNode;
+  TextEditingController? atmOther1Controller;
+  String? Function(BuildContext, String?)? atmOther1ControllerValidator;
+  // State field(s) for Version widget.
+  FocusNode? versionFocusNode;
+  TextEditingController? versionController;
+  String? Function(BuildContext, String?)? versionControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
+  TextEditingController? textController3;
+  String? Function(BuildContext, String?)? textController3Validator;
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -56,11 +64,14 @@ class AtmUpgradedDetailsModel
   void initState(BuildContext context) {}
 
   void dispose() {
-    atmid1FocusNode?.dispose();
-    atmid1Controller?.dispose();
+    atmOther1FocusNode?.dispose();
+    atmOther1Controller?.dispose();
+
+    versionFocusNode?.dispose();
+    versionController?.dispose();
 
     textFieldFocusNode?.dispose();
-    textController2?.dispose();
+    textController3?.dispose();
 
     atmid2FocusNode?.dispose();
     atmid2Controller?.dispose();
