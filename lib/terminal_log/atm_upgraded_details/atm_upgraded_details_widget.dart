@@ -55,8 +55,8 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
     _model.atmOther1Controller ??= TextEditingController();
     _model.atmOther1FocusNode ??= FocusNode();
 
-    _model.versionController ??= TextEditingController();
-    _model.versionFocusNode ??= FocusNode();
+    _model.version1Controller ??= TextEditingController();
+    _model.version1FocusNode ??= FocusNode();
 
     _model.textController3 ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -244,7 +244,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   borderWidth: 2.0,
                                   borderRadius: 4.0,
                                   margin: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 4.0, 16.0, 4.0),
+                                      8.0, 4.0, 16.0, 4.0),
                                   hidesUnderline: true,
                                   isSearchable: false,
                                   isMultiSelect: false,
@@ -330,6 +330,8 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                       child: TextFormField(
                                         controller: _model.atmOther1Controller,
                                         focusNode: _model.atmOther1FocusNode,
+                                        textCapitalization:
+                                            TextCapitalization.words,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelStyle:
@@ -384,8 +386,10 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 8.0, 0.0),
                                     child: TextFormField(
-                                      controller: _model.versionController,
-                                      focusNode: _model.versionFocusNode,
+                                      controller: _model.version1Controller,
+                                      focusNode: _model.version1FocusNode,
+                                      textCapitalization:
+                                          TextCapitalization.words,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelStyle: FlutterFlowTheme.of(context)
@@ -401,7 +405,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                       validator: _model
-                                          .versionControllerValidator
+                                          .version1ControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -434,6 +438,8 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   child: TextFormField(
                                     controller: _model.textController3,
                                     focusNode: _model.textFieldFocusNode,
+                                    textCapitalization:
+                                        TextCapitalization.words,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelStyle: FlutterFlowTheme.of(context)
@@ -1033,12 +1039,14 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               }
                             }
                           } else {
-                            if (_model.atmIdDD1Value == null ||
-                                _model.atmIdDD1Value == '') {
+                            if ((_model.atmIdDD1Value == null ||
+                                    _model.atmIdDD1Value == '') &&
+                                (_model.version1Controller.text == null ||
+                                    _model.version1Controller.text == '')) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
-                                    'Please Enter ATM ID',
+                                    'Please Enter ATM ID & Version',
                                     style: TextStyle(
                                       color: Color(0xFFFF0000),
                                     ),

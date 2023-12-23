@@ -34,10 +34,10 @@ class AtmUpgradedDetailsModel
   FocusNode? atmOther1FocusNode;
   TextEditingController? atmOther1Controller;
   String? Function(BuildContext, String?)? atmOther1ControllerValidator;
-  // State field(s) for Version widget.
-  FocusNode? versionFocusNode;
-  TextEditingController? versionController;
-  String? Function(BuildContext, String?)? versionControllerValidator;
+  // State field(s) for Version1 widget.
+  FocusNode? version1FocusNode;
+  TextEditingController? version1Controller;
+  String? Function(BuildContext, String?)? version1ControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController3;
@@ -67,8 +67,8 @@ class AtmUpgradedDetailsModel
     atmOther1FocusNode?.dispose();
     atmOther1Controller?.dispose();
 
-    versionFocusNode?.dispose();
-    versionController?.dispose();
+    version1FocusNode?.dispose();
+    version1Controller?.dispose();
 
     textFieldFocusNode?.dispose();
     textController3?.dispose();
