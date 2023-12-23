@@ -113,7 +113,9 @@ class BankATMListCall {
     String? bankId = '',
   }) async {
     final ffApiRequestBody = '''
-{"modelId":""}''';
+{
+  "modelId": "${bankId}"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Bank ATM List',
       apiUrl:
