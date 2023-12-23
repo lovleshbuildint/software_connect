@@ -257,7 +257,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Text(
-                                  'ATM ID',
+                                  _model.atmId1,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
