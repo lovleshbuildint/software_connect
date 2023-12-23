@@ -20,6 +20,8 @@ class AtmUpgradedDetailsModel
 
   bool visibility = false;
 
+  String location = '';
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for RadioButton widget.
@@ -34,14 +36,18 @@ class AtmUpgradedDetailsModel
   FocusNode? atmOther1FocusNode;
   TextEditingController? atmOther1Controller;
   String? Function(BuildContext, String?)? atmOther1ControllerValidator;
+  // State field(s) for Lcation1 widget.
+  FocusNode? lcation1FocusNode;
+  TextEditingController? lcation1Controller;
+  String? Function(BuildContext, String?)? lcation1ControllerValidator;
   // State field(s) for Version1 widget.
   FocusNode? version1FocusNode;
   TextEditingController? version1Controller;
   String? Function(BuildContext, String?)? version1ControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
-  TextEditingController? textController3;
-  String? Function(BuildContext, String?)? textController3Validator;
+  TextEditingController? textController4;
+  String? Function(BuildContext, String?)? textController4Validator;
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -67,11 +73,14 @@ class AtmUpgradedDetailsModel
     atmOther1FocusNode?.dispose();
     atmOther1Controller?.dispose();
 
+    lcation1FocusNode?.dispose();
+    lcation1Controller?.dispose();
+
     version1FocusNode?.dispose();
     version1Controller?.dispose();
 
     textFieldFocusNode?.dispose();
-    textController3?.dispose();
+    textController4?.dispose();
 
     atmid2FocusNode?.dispose();
     atmid2Controller?.dispose();

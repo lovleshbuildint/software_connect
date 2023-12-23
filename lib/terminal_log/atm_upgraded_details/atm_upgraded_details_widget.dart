@@ -55,10 +55,13 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
     _model.atmOther1Controller ??= TextEditingController();
     _model.atmOther1FocusNode ??= FocusNode();
 
+    _model.lcation1Controller ??= TextEditingController(text: _model.location);
+    _model.lcation1FocusNode ??= FocusNode();
+
     _model.version1Controller ??= TextEditingController();
     _model.version1FocusNode ??= FocusNode();
 
-    _model.textController3 ??= TextEditingController();
+    _model.textController4 ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
     _model.atmid2Controller ??= TextEditingController();
@@ -279,8 +282,18 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   ) as List)
                                       .map<String>((s) => s.toString())
                                       .toList()!,
-                                  onChanged: (val) => setState(
-                                      () => _model.atmIdDD1Value = val),
+                                  onChanged: (val) async {
+                                    setState(() => _model.atmIdDD1Value = val);
+                                    setState(() {
+                                      _model.location = getJsonField(
+                                        functions.addDataList(
+                                            BankATMListCall.atmList(
+                                          columnBankATMListResponse.jsonBody,
+                                        )),
+                                        r'''$..location''',
+                                      ).toString();
+                                    });
+                                  },
                                   width: MediaQuery.sizeOf(context).width * 1.0,
                                   height: 50.0,
                                   searchHintTextStyle:
@@ -355,6 +368,62 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                     ),
                                   ),
                                 ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 20.0, 0.0, 0.0),
+                                child: Text(
+                                  'Location',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 0.0),
+                                child: Container(
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
+                                  height: 45.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(4.0),
+                                    border: Border.all(
+                                      color: Color(0xFF999999),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8.0, 0.0, 8.0, 0.0),
+                                    child: TextFormField(
+                                      controller: _model.lcation1Controller,
+                                      focusNode: _model.lcation1FocusNode,
+                                      textCapitalization:
+                                          TextCapitalization.words,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium,
+                                        hintText: 'Enter Location',
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium,
+                                        enabledBorder: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        focusedErrorBorder: InputBorder.none,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                      validator: _model
+                                          .lcation1ControllerValidator
+                                          .asValidator(context),
+                                    ),
+                                  ),
+                                ),
+                              ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
@@ -436,7 +505,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                     ),
                                   ),
                                   child: TextFormField(
-                                    controller: _model.textController3,
+                                    controller: _model.textController4,
                                     focusNode: _model.textFieldFocusNode,
                                     textCapitalization:
                                         TextCapitalization.words,
@@ -454,7 +523,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
                                     maxLines: null,
-                                    validator: _model.textController3Validator
+                                    validator: _model.textController4Validator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1002,7 +1071,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 ).toString(),
                                 createdDate: getCurrentTimestamp.toString(),
                                 modifiedDate: getCurrentTimestamp.toString(),
-                                comments: _model.textController3.text,
+                                comments: _model.textController4.text,
                                 siteLocation: widget.location,
                                 ticketNo:
                                     random_data.randomInteger(0, 10).toString(),
@@ -1075,7 +1144,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 createdDate:
                                     '${getCurrentTimestamp.toString()}',
                                 modifiedDate: getCurrentTimestamp.toString(),
-                                comments: _model.textController3.text,
+                                comments: _model.textController4.text,
                                 siteLocation: widget.location,
                                 ticketNo:
                                     random_data.randomInteger(0, 10).toString(),
