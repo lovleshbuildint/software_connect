@@ -63,7 +63,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
       );
       if ((_model.atmIdResponse?.succeeded ?? true)) {
         setState(() {
-          FFAppState().atmIdList = (getJsonField(
+          _model.atmIdList = (getJsonField(
             (_model.atmIdResponse?.jsonBody ?? ''),
             r'''$.atmLists..atmId''',
             true,
@@ -74,7 +74,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
               .cast<String>();
         });
         setState(() {
-          FFAppState().addToAtmIdList('Others');
+          _model.addToAtmIdList('Others');
         });
       }
     });
@@ -300,9 +300,9 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   controller: _model.atmIdDD1ValueController ??=
                                       FormFieldController<String>(
                                     _model.atmIdDD1Value ??=
-                                        FFAppState().atmIdList.first,
+                                        _model.atmIdList.first,
                                   ),
-                                  options: FFAppState().atmIdList,
+                                  options: _model.atmIdList,
                                   onChanged: (val) async {
                                     setState(() => _model.atmIdDD1Value = val);
                                     setState(() {

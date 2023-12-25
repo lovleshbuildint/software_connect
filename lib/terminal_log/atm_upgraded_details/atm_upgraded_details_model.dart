@@ -24,6 +24,15 @@ class AtmUpgradedDetailsModel
 
   String atmId1 = '';
 
+  List<String> atmIdList = [];
+  void addToAtmIdList(String item) => atmIdList.add(item);
+  void removeFromAtmIdList(String item) => atmIdList.remove(item);
+  void removeAtIndexFromAtmIdList(int index) => atmIdList.removeAt(index);
+  void insertAtIndexInAtmIdList(int index, String item) =>
+      atmIdList.insert(index, item);
+  void updateAtmIdListAtIndex(int index, Function(String) updateFn) =>
+      atmIdList[index] = updateFn(atmIdList[index]);
+
   ///  State fields for stateful widgets in this component.
 
   // Stores action output result for [Backend Call - API (Bank ATM List)] action in atmUpgradedDetails widget.
