@@ -24,7 +24,14 @@ class AtmUpgradedDetailsModel
 
   String atmId1 = '';
 
-  dynamic atmIdList;
+  List<dynamic> atmIdList = [];
+  void addToAtmIdList(dynamic item) => atmIdList.add(item);
+  void removeFromAtmIdList(dynamic item) => atmIdList.remove(item);
+  void removeAtIndexFromAtmIdList(int index) => atmIdList.removeAt(index);
+  void insertAtIndexInAtmIdList(int index, dynamic item) =>
+      atmIdList.insert(index, item);
+  void updateAtmIdListAtIndex(int index, Function(dynamic) updateFn) =>
+      atmIdList[index] = updateFn(atmIdList[index]);
 
   ///  State fields for stateful widgets in this component.
 

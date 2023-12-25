@@ -73,7 +73,10 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
           _model.atmIdList = getJsonField(
             (_model.atmIdResponse?.jsonBody ?? ''),
             r'''$.atmLists''',
-          );
+            true,
+          )!
+              .toList()
+              .cast<dynamic>();
         });
         setState(() {
           _model.addToAtmIdList(<String, dynamic>{
@@ -311,17 +314,13 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   controller: _model.atmIdDD1ValueController ??=
                                       FormFieldController<String>(
                                     _model.atmIdDD1Value ??= getJsonField(
-                                      _model.atmIdList,
-                                      r'''$[0].atmId''',
+                                      _model.atmIdList.first,
+                                      r'''$.atmId''',
                                     ).toString(),
                                   ),
-                                  options: (getJsonField(
-                                    _model.atmIdList,
-                                    r'''$..atmId''',
-                                    true,
-                                  ) as List)
-                                      .map<String>((s) => s.toString())
-                                      .toList()!,
+                                  options: _model.atmIdList
+                                      .map((e) => e.toString())
+                                      .toList(),
                                   onChanged: (val) async {
                                     setState(() => _model.atmIdDD1Value = val);
                                     setState(() {
