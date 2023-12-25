@@ -8,6 +8,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -50,6 +51,33 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AtmUpgradedDetailsModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.atmIdResponse = await BankATMListCall.call(
+        token: getJsonField(
+          FFAppState().loginResponse,
+          r'''$.token''',
+        ).toString().toString(),
+        bankId: widget.bankId,
+      );
+      if ((_model.atmIdResponse?.succeeded ?? true)) {
+        setState(() {
+          FFAppState().atmIdList = (getJsonField(
+            (_model.atmIdResponse?.jsonBody ?? ''),
+            r'''$.atmLists..atmId''',
+            true,
+          ) as List)
+              .map<String>((s) => s.toString())
+              .toList()!
+              .toList()
+              .cast<String>();
+        });
+        setState(() {
+          FFAppState().addToAtmIdList('Others');
+        });
+      }
+    });
 
     _model.atmOther1Controller ??= TextEditingController(text: _model.atmId1);
     _model.atmOther1FocusNode ??= FocusNode();
@@ -271,18 +299,10 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 child: FlutterFlowDropDown<String>(
                                   controller: _model.atmIdDD1ValueController ??=
                                       FormFieldController<String>(
-                                    _model.atmIdDD1Value ??= getJsonField(
-                                      columnBankATMListResponse.jsonBody,
-                                      r'''$.atmLists[0].atmId''',
-                                    ).toString(),
+                                    _model.atmIdDD1Value ??=
+                                        FFAppState().atmIdList.first,
                                   ),
-                                  options: (getJsonField(
-                                    columnBankATMListResponse.jsonBody,
-                                    r'''$.atmLists..atmId''',
-                                    true,
-                                  ) as List)
-                                      .map<String>((s) => s.toString())
-                                      .toList()!,
+                                  options: FFAppState().atmIdList,
                                   onChanged: (val) async {
                                     setState(() => _model.atmIdDD1Value = val);
                                     setState(() {

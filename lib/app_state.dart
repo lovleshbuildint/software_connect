@@ -30,16 +30,13 @@ class FFAppState extends ChangeNotifier {
       }
     });
     _safeInit(() {
-      _test = prefs.getString('ff_test') ?? _test;
-    });
-    _safeInit(() {
       _userId = prefs.getString('ff_userId') ?? _userId;
     });
     _safeInit(() {
       _searchValue = prefs.getString('ff_searchValue') ?? _searchValue;
     });
     _safeInit(() {
-      _test2 = prefs.getString('ff_test2') ?? _test2;
+      _atmIdList = prefs.getStringList('ff_atmIdList') ?? _atmIdList;
     });
   }
 
@@ -55,13 +52,6 @@ class FFAppState extends ChangeNotifier {
   set loginResponse(dynamic _value) {
     _loginResponse = _value;
     prefs.setString('ff_loginResponse', jsonEncode(_value));
-  }
-
-  String _test = '';
-  String get test => _test;
-  set test(String _value) {
-    _test = _value;
-    prefs.setString('ff_test', _value);
   }
 
   List<String> _EmptyList = [];
@@ -107,11 +97,39 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_searchValue', _value);
   }
 
-  String _test2 = '';
-  String get test2 => _test2;
-  set test2(String _value) {
-    _test2 = _value;
-    prefs.setString('ff_test2', _value);
+  List<String> _atmIdList = [];
+  List<String> get atmIdList => _atmIdList;
+  set atmIdList(List<String> _value) {
+    _atmIdList = _value;
+    prefs.setStringList('ff_atmIdList', _value);
+  }
+
+  void addToAtmIdList(String _value) {
+    _atmIdList.add(_value);
+    prefs.setStringList('ff_atmIdList', _atmIdList);
+  }
+
+  void removeFromAtmIdList(String _value) {
+    _atmIdList.remove(_value);
+    prefs.setStringList('ff_atmIdList', _atmIdList);
+  }
+
+  void removeAtIndexFromAtmIdList(int _index) {
+    _atmIdList.removeAt(_index);
+    prefs.setStringList('ff_atmIdList', _atmIdList);
+  }
+
+  void updateAtmIdListAtIndex(
+    int _index,
+    String Function(String) updateFn,
+  ) {
+    _atmIdList[_index] = updateFn(_atmIdList[_index]);
+    prefs.setStringList('ff_atmIdList', _atmIdList);
+  }
+
+  void insertAtIndexInAtmIdList(int _index, String _value) {
+    _atmIdList.insert(_index, _value);
+    prefs.setStringList('ff_atmIdList', _atmIdList);
   }
 }
 
