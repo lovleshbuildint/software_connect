@@ -54,9 +54,6 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.addToAtmIdList('Others');
-      });
       _model.atmIdResponse = await BankATMListCall.call(
         token: getJsonField(
           FFAppState().loginResponse,
@@ -64,14 +61,15 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
         ).toString().toString(),
         bankId: widget.bankId,
       );
+      setState(() {
+        _model.addToAtmIdList('Others');
+      });
       if ((_model.atmIdResponse?.succeeded ?? true)) {
         setState(() {
-          _model.insertAtIndexInAtmIdList(
-              0,
-              getJsonField(
-                (_model.atmIdResponse?.jsonBody ?? ''),
-                r'''$.atmLists..atmId''',
-              ).toString().toString());
+          _model.addToAtmIdList(getJsonField(
+            (_model.atmIdResponse?.jsonBody ?? ''),
+            r'''$.atmLists..atmId''',
+          ).toString().toString());
         });
       }
     });
