@@ -73,10 +73,10 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
               .toList()
               .cast<String>();
         });
-        setState(() {
-          _model.addToAtmIdList('Others');
-        });
       }
+      setState(() {
+        _model.addToAtmIdList('Others');
+      });
     });
 
     _model.atmOther1Controller ??= TextEditingController(text: _model.atmId1);
