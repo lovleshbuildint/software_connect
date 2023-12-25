@@ -62,8 +62,11 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
         bankId: widget.bankId,
       );
       if ((_model.atmIdResponse?.succeeded ?? true) &&
-          (BankATMListCall.atmList(
-                (_model.atmIdResponse?.jsonBody ?? ''),
+          (getJsonField(
+                BankATMListCall.atmList(
+                  (_model.atmIdResponse?.jsonBody ?? ''),
+                ),
+                r'''$..atmId''',
               ) !=
               null)) {
         setState(() {
