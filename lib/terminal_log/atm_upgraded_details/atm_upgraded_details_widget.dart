@@ -66,10 +66,15 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
       });
       if ((_model.atmIdResponse?.succeeded ?? true)) {
         setState(() {
-          _model.addToAtmIdList(getJsonField(
+          _model.atmIdList = (getJsonField(
             (_model.atmIdResponse?.jsonBody ?? ''),
             r'''$.atmLists..atmId''',
-          ).toString().toString());
+            true,
+          ) as List)
+              .map<String>((s) => s.toString())
+              .toList()!
+              .toList()
+              .cast<String>();
         });
       }
     });
