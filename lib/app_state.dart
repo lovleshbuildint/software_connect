@@ -35,9 +35,6 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _searchValue = prefs.getString('ff_searchValue') ?? _searchValue;
     });
-    _safeInit(() {
-      _atmIdList = prefs.getStringList('ff_atmIdList') ?? _atmIdList;
-    });
   }
 
   void update(VoidCallback callback) {
@@ -95,41 +92,6 @@ class FFAppState extends ChangeNotifier {
   set searchValue(String _value) {
     _searchValue = _value;
     prefs.setString('ff_searchValue', _value);
-  }
-
-  List<String> _atmIdList = [];
-  List<String> get atmIdList => _atmIdList;
-  set atmIdList(List<String> _value) {
-    _atmIdList = _value;
-    prefs.setStringList('ff_atmIdList', _value);
-  }
-
-  void addToAtmIdList(String _value) {
-    _atmIdList.add(_value);
-    prefs.setStringList('ff_atmIdList', _atmIdList);
-  }
-
-  void removeFromAtmIdList(String _value) {
-    _atmIdList.remove(_value);
-    prefs.setStringList('ff_atmIdList', _atmIdList);
-  }
-
-  void removeAtIndexFromAtmIdList(int _index) {
-    _atmIdList.removeAt(_index);
-    prefs.setStringList('ff_atmIdList', _atmIdList);
-  }
-
-  void updateAtmIdListAtIndex(
-    int _index,
-    String Function(String) updateFn,
-  ) {
-    _atmIdList[_index] = updateFn(_atmIdList[_index]);
-    prefs.setStringList('ff_atmIdList', _atmIdList);
-  }
-
-  void insertAtIndexInAtmIdList(int _index, String _value) {
-    _atmIdList.insert(_index, _value);
-    prefs.setStringList('ff_atmIdList', _atmIdList);
   }
 }
 
