@@ -61,10 +61,11 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
         ).toString().toString(),
         bankId: widget.bankId,
       );
-      setState(() {
-        _model.addToAtmIdList('Others');
-      });
-      if ((_model.atmIdResponse?.succeeded ?? true)) {
+      if ((_model.atmIdResponse?.succeeded ?? true) &&
+          (BankATMListCall.atmList(
+                (_model.atmIdResponse?.jsonBody ?? ''),
+              ) !=
+              null)) {
         setState(() {
           _model.atmIdList = (getJsonField(
             (_model.atmIdResponse?.jsonBody ?? ''),
@@ -75,6 +76,13 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
               .toList()!
               .toList()
               .cast<String>();
+        });
+        setState(() {
+          _model.addToAtmIdList('Others');
+        });
+      } else {
+        setState(() {
+          _model.addToAtmIdList('Others');
         });
       }
     });
