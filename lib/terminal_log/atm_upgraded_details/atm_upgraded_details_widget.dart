@@ -70,22 +70,21 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
               ) !=
               null)) {
         setState(() {
-          _model.atmIdList = (getJsonField(
+          _model.atmIdList = getJsonField(
             (_model.atmIdResponse?.jsonBody ?? ''),
-            r'''$.atmLists..atmId''',
-            true,
-          ) as List)
-              .map<String>((s) => s.toString())
-              .toList()!
-              .toList()
-              .cast<String>();
+            r'''$.atmLists''',
+          );
         });
         setState(() {
-          _model.addToAtmIdList('Others');
+          _model.addToAtmIdList(<String, dynamic>{
+            'atmId': 'Others',
+          });
         });
       } else {
         setState(() {
-          _model.addToAtmIdList('Others');
+          _model.addToAtmIdList(<String, dynamic>{
+            'atmId': 'Others',
+          });
         });
       }
     });
@@ -93,7 +92,8 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
     _model.atmOther1Controller ??= TextEditingController(text: _model.atmId1);
     _model.atmOther1FocusNode ??= FocusNode();
 
-    _model.lcation1Controller ??= TextEditingController(text: _model.location);
+    _model.lcation1Controller ??=
+        TextEditingController(text: _model.location?.toString());
     _model.lcation1FocusNode ??= FocusNode();
 
     _model.version1Controller ??= TextEditingController();
@@ -310,10 +310,18 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 child: FlutterFlowDropDown<String>(
                                   controller: _model.atmIdDD1ValueController ??=
                                       FormFieldController<String>(
-                                    _model.atmIdDD1Value ??=
-                                        _model.atmIdList.first,
+                                    _model.atmIdDD1Value ??= getJsonField(
+                                      _model.atmIdList,
+                                      r'''$[0].atmId''',
+                                    ).toString(),
                                   ),
-                                  options: _model.atmIdList,
+                                  options: (getJsonField(
+                                    _model.atmIdList,
+                                    r'''$..atmId''',
+                                    true,
+                                  ) as List)
+                                      .map<String>((s) => s.toString())
+                                      .toList()!,
                                   onChanged: (val) async {
                                     setState(() => _model.atmIdDD1Value = val);
                                     setState(() {

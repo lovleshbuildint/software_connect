@@ -60,3 +60,14 @@ dynamic filter(
 String? geturl(dynamic jsonObject) {
   return jsonObject["url"];
 }
+
+int? checkIndex(
+  dynamic list,
+  String? value,
+) {
+  for (int i = 0; i < list.length; i++) {
+    if (list[i]["atmId"] == value) {
+      return i;
+    }
+  }
+}
