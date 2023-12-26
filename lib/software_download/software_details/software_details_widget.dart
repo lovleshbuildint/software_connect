@@ -345,6 +345,14 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                     ),
                                   ),
                                 ),
+                                Text(
+                                  valueOrDefault<String>(
+                                    _model.path,
+                                    'Null',
+                                  ),
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
                               ],
                             ),
                           ),
@@ -374,6 +382,13 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                               _model.notConnectStatus = true;
                             });
                           }
+
+                          setState(() {
+                            _model.path = getJsonField(
+                              _model.pathcheckResponses,
+                              r'''$.Path''',
+                            ).toString();
+                          });
 
                           setState(() {});
                         },
