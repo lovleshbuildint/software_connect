@@ -313,13 +313,23 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   controller: _model.atmIdDD1ValueController ??=
                                       FormFieldController<String>(
                                     _model.atmIdDD1Value ??= getJsonField(
-                                      _model.atmIdList.first,
-                                      r'''$.atmId''',
+                                      BankATMListCall.atmList(
+                                        columnBankATMListResponse.jsonBody,
+                                      ).toString(),
+                                      r'''$[0]..atmId''',
                                     ).toString(),
                                   ),
-                                  options: _model.atmIdList
-                                      .map((e) => e.toString())
-                                      .toList(),
+                                  options: (getJsonField(
+                                    (BankATMListCall.atmList(
+                                      columnBankATMListResponse.jsonBody,
+                                    ) as List)
+                                        .map<String>((s) => s.toString())
+                                        .toList(),
+                                    r'''$..atmId''',
+                                    true,
+                                  ) as List)
+                                      .map<String>((s) => s.toString())
+                                      .toList()!,
                                   onChanged: (val) async {
                                     setState(() => _model.atmIdDD1Value = val);
                                     setState(() {
