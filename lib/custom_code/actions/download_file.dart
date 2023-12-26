@@ -78,5 +78,5 @@ Future<String?> downloadFile(
     cancelOnError: true,
   );
   print(downloadstatus);
-  return 'File Downloaded';
+  return filePath;
 }
