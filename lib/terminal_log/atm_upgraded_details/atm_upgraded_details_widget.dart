@@ -1146,7 +1146,8 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 builder: (alertDialogContext) {
                                   return AlertDialog(
                                     title: Text('Alert'),
-                                    content: Text('Please Enter Location'),
+                                    content:
+                                        Text('Please Enter Location & AMT ID'),
                                     actions: [
                                       TextButton(
                                         onPressed: () =>
