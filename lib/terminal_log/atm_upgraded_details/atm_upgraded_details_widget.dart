@@ -310,10 +310,8 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 child: FlutterFlowDropDown<String>(
                                   controller: _model.atmIdDD1ValueController ??=
                                       FormFieldController<String>(
-                                    _model.atmIdDD1Value ??= getJsonField(
-                                      columnBankATMListResponse.jsonBody,
-                                      r'''$.atmLists[0].atmId''',
-                                    ).toString(),
+                                    _model.atmIdDD1Value ??=
+                                        _model.atmIdList.first,
                                   ),
                                   options: _model.atmIdList,
                                   onChanged: (val) async {
