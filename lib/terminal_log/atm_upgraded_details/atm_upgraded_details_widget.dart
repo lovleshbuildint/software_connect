@@ -1138,17 +1138,21 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                           } else {
                             if (_model.lcation1Controller.text == null ||
                                 _model.lcation1Controller.text == '') {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Please Enter Location',
-                                    style: TextStyle(
-                                      color: Color(0xFFFF0000),
-                                    ),
-                                  ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor: Colors.black,
-                                ),
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('Alert'),
+                                    content: Text('Please Enter Location'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
                               );
                             } else {
                               _model.terminalLog1 =
