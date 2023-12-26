@@ -316,7 +316,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                       BankATMListCall.atmList(
                                         columnBankATMListResponse.jsonBody,
                                       ).toString(),
-                                      r'''$[0]..atmId''',
+                                      r'''$[0].atmId''',
                                     ).toString(),
                                   ),
                                   options: (getJsonField(
@@ -325,7 +325,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                     ) as List)
                                         .map<String>((s) => s.toString())
                                         .toList(),
-                                    r'''$..atmId''',
+                                    r'''$.atmId''',
                                     true,
                                   ) as List)
                                       .map<String>((s) => s.toString())
