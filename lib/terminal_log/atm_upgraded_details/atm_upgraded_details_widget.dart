@@ -95,8 +95,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
     _model.atmOther1Controller ??= TextEditingController(text: _model.atmId1);
     _model.atmOther1FocusNode ??= FocusNode();
 
-    _model.lcation1Controller ??=
-        TextEditingController(text: _model.location?.toString());
+    _model.lcation1Controller ??= TextEditingController();
     _model.lcation1FocusNode ??= FocusNode();
 
     _model.version1Controller ??= TextEditingController();
