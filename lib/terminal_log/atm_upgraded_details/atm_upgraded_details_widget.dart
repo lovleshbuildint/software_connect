@@ -1136,8 +1136,11 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               }
                             }
                           } else {
-                            if (_model.lcation1Controller.text == null ||
-                                _model.lcation1Controller.text == '') {
+                            if ((_model.lcation1Controller.text == null ||
+                                    _model.lcation1Controller.text == '') &&
+                                (_model.atmIdDD1Value == 'Others') &&
+                                (_model.atmOther1Controller.text == null ||
+                                    _model.atmOther1Controller.text == '')) {
                               await showDialog(
                                 context: context,
                                 builder: (alertDialogContext) {
@@ -1164,9 +1167,9 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 logUploadFile: _model.uploadedLocalFile1,
                                 bankId: widget.bankId,
                                 modelId: widget.modelId,
-                                atmId: _model.atmId1 == 'Others'
+                                atmId: _model.atmIdDD1Value == 'Others'
                                     ? _model.atmOther1Controller.text
-                                    : _model.atmId1,
+                                    : _model.atmIdDD1Value,
                                 createdBy: getJsonField(
                                   FFAppState().loginResponse,
                                   r'''$.firstName''',
