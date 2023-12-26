@@ -35,6 +35,6 @@ Future<dynamic> pathCheck(String? deviceId) async {
   } catch (e) {
     // Handle any potential errors, such as permission issues, etc.
     print('Error checking file existence: $e');
-    return false;
+    return {"Status": false, "Path": '$e'};
   }
 }
