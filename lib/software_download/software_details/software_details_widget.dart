@@ -805,6 +805,20 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 13.0),
+                                    child: Text(
+                                      _model.fullPath,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            fontSize: 12.0,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         45.0, 0.0, 45.0, 15.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -1006,6 +1020,10 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                         r'''$.Path''',
                                                       ).toString(),
                                                     );
+                                                    setState(() {
+                                                      _model.fullPath = _model
+                                                          .softwareDownloadResponse123!;
+                                                    });
                                                     if (_model.softwareDownloadResponse123 !=
                                                             null &&
                                                         _model.softwareDownloadResponse123 !=

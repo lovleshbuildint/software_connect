@@ -34,6 +34,8 @@ class SoftwareDetailsModel extends FlutterFlowModel<SoftwareDetailsWidget> {
 
   String? path = '';
 
+  String fullPath = '';
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
