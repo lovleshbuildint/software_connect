@@ -347,7 +347,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   isMultiSelect: false,
                                 ),
                               ),
-                              if (_model.atmId1 == 'Others')
+                              if (_model.atmIdDD1Value == 'Others')
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
