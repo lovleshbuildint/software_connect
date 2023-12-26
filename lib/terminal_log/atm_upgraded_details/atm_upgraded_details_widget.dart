@@ -70,24 +70,26 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
               ) !=
               null)) {
         setState(() {
-          _model.atmIdList = getJsonField(
+          _model.atmIdList = (getJsonField(
             (_model.atmIdResponse?.jsonBody ?? ''),
-            r'''$.atmLists''',
+            r'''$.atmLists..atmId''',
             true,
-          )!
+          ) as List)
+              .map<String>((s) => s.toString())
+              .toList()!
               .toList()
-              .cast<dynamic>();
+              .cast<String>();
         });
         setState(() {
           _model.addToAtmIdList(<String, dynamic>{
             'atmId': 'Others',
-          });
+          }.toString());
         });
       } else {
         setState(() {
           _model.addToAtmIdList(<String, dynamic>{
             'atmId': 'Others',
-          });
+          }.toString());
         });
       }
     });
