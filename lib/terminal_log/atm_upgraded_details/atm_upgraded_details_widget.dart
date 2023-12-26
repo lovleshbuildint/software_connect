@@ -81,15 +81,11 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
               .cast<String>();
         });
         setState(() {
-          _model.addToAtmIdList(<String, dynamic>{
-            'atmId': 'Others',
-          }.toString());
+          _model.addToAtmIdList('Others');
         });
       } else {
         setState(() {
-          _model.addToAtmIdList(<String, dynamic>{
-            'atmId': 'Others',
-          }.toString());
+          _model.addToAtmIdList('Others');
         });
       }
     });
