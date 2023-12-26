@@ -11,26 +11,23 @@ import 'dart:io';
 
 Future<dynamic> pathCheck(String? deviceId) async {
   // Add your function code here!
-  String directoryPath1 = '/mnt/media_rw/$deviceId/Images/';
+  // String directoryPath1 = '/mnt/media_rw/$deviceId/Images/';
   String directoryPath2 = '/storage/$deviceId/Images/';
 
   try {
     // Create a File instance with the specified path
-    Directory directory1 = Directory(directoryPath1);
+    // Directory directory1 = Directory(directoryPath1);
     Directory directory2 = Directory(directoryPath2);
 
     // Check if the first directory exists
-    bool directoryExists1 = await directory1.exists();
+    // bool directoryExists1 = await directory1.exists();
+    bool directoryExists2 = await directory2.exists();
 
-    if (directoryExists1) {
-      print({"Status": true, "Path": '/mnt/media_rw'});
-      return {"Status": true, "Path": '/mnt/media_rw'};
+    if (directoryExists2) {
+      print({"Status": true, "Path": '/storage'});
+      return {"Status": true, "Path": '/storage'};
     } else {
-      // Check if the second directory exists
-      bool directoryExists2 = await directory2.exists();
-
-      print({"Status": directoryExists2, "Path": '/storage'});
-      return {"Status": directoryExists2, "Path": '/storage'};
+      return {"Status": false, "Path": '/storage'};
     }
   } catch (e) {
     // Handle any potential errors, such as permission issues, etc.
