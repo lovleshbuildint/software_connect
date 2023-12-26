@@ -315,13 +315,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                       r'''$.atmLists[0].atmId''',
                                     ).toString(),
                                   ),
-                                  options: (getJsonField(
-                                    columnBankATMListResponse.jsonBody,
-                                    r'''$.atmLists..atmId''',
-                                    true,
-                                  ) as List)
-                                      .map<String>((s) => s.toString())
-                                      .toList()!,
+                                  options: _model.atmIdList,
                                   onChanged: (val) async {
                                     setState(() => _model.atmIdDD1Value = val);
                                     setState(() {
