@@ -65,10 +65,17 @@ class AtmUpgradedDetailsModel
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
-  // State field(s) for atmid2 widget.
-  FocusNode? atmid2FocusNode;
-  TextEditingController? atmid2Controller;
-  String? Function(BuildContext, String?)? atmid2ControllerValidator;
+  // State field(s) for atmIdDD2 widget.
+  String? atmIdDD2Value;
+  FormFieldController<String>? atmIdDD2ValueController;
+  // State field(s) for atmOther2 widget.
+  FocusNode? atmOther2FocusNode;
+  TextEditingController? atmOther2Controller;
+  String? Function(BuildContext, String?)? atmOther2ControllerValidator;
+  // State field(s) for Lcation2 widget.
+  FocusNode? lcation2FocusNode;
+  TextEditingController? lcation2Controller;
+  String? Function(BuildContext, String?)? lcation2ControllerValidator;
   bool isDataUploading2 = false;
   FFUploadedFile uploadedLocalFile2 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -95,8 +102,11 @@ class AtmUpgradedDetailsModel
     textFieldFocusNode?.dispose();
     textController4?.dispose();
 
-    atmid2FocusNode?.dispose();
-    atmid2Controller?.dispose();
+    atmOther2FocusNode?.dispose();
+    atmOther2Controller?.dispose();
+
+    lcation2FocusNode?.dispose();
+    lcation2Controller?.dispose();
   }
 
   /// Action blocks are added here.

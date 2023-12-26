@@ -102,8 +102,11 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
     _model.textController4 ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    _model.atmid2Controller ??= TextEditingController();
-    _model.atmid2FocusNode ??= FocusNode();
+    _model.atmOther2Controller ??= TextEditingController();
+    _model.atmOther2FocusNode ??= FocusNode();
+
+    _model.lcation2Controller ??= TextEditingController();
+    _model.lcation2FocusNode ??= FocusNode();
   }
 
   @override
@@ -711,6 +714,48 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
+                            child: FlutterFlowDropDown<String>(
+                              controller: _model.atmIdDD2ValueController ??=
+                                  FormFieldController<String>(
+                                _model.atmIdDD2Value ??= _model.atmIdList.first,
+                              ),
+                              options: _model.atmIdList,
+                              onChanged: (val) async {
+                                setState(() => _model.atmIdDD2Value = val);
+                                setState(() {
+                                  _model.atmId1 = _model.atmIdDD2Value!;
+                                });
+                              },
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              height: 50.0,
+                              searchHintTextStyle:
+                                  FlutterFlowTheme.of(context).labelMedium,
+                              textStyle:
+                                  FlutterFlowTheme.of(context).bodyMedium,
+                              hintText: 'Select or Enter ATM ID',
+                              searchHintText: 'Search for ATM ID',
+                              icon: Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24.0,
+                              ),
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 2.0,
+                              borderColor: Color(0xFF999999),
+                              borderWidth: 0.0,
+                              borderRadius: 4.0,
+                              margin: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 4.0, 16.0, 4.0),
+                              hidesUnderline: true,
+                              isSearchable: true,
+                              isMultiSelect: false,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 10.0, 0.0, 0.0),
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 1.0,
                               height: 45.0,
@@ -722,57 +767,65 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   color: Color(0xFF999999),
                                 ),
                               ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.atmid2Controller,
-                                  focusNode: _model.atmid2FocusNode,
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
-                                    hintText: 'Enter ATM ID...',
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
+                              child: Visibility(
+                                visible: _model.atmIdDD2Value == 'Others',
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 8.0, 0.0),
+                                  child: TextFormField(
+                                    controller: _model.atmOther2Controller,
+                                    focusNode: _model.atmOther2FocusNode,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      hintText: 'Enter ATM ID...',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                       ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                       ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                       ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                       ),
-                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    validator: _model
+                                        .atmOther2ControllerValidator
+                                        .asValidator(context),
                                   ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                  validator: _model.atmid2ControllerValidator
-                                      .asValidator(context),
                                 ),
                               ),
                             ),
@@ -850,21 +903,30 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   color: Color(0xFF999999),
                                 ),
                               ),
-                              child: Align(
-                                alignment: AlignmentDirectional(-1.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    widget.location!,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Color(0xFF999999),
-                                          fontWeight: FontWeight.w600,
-                                        ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    8.0, 0.0, 8.0, 0.0),
+                                child: TextFormField(
+                                  controller: _model.lcation2Controller,
+                                  focusNode: _model.lcation2FocusNode,
+                                  textCapitalization: TextCapitalization.words,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium,
+                                    hintText: 'Enter Location',
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium,
+                                    enabledBorder: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    focusedErrorBorder: InputBorder.none,
                                   ),
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  cursorColor: Color(0xFFFF0026),
+                                  validator: _model.lcation2ControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                             ),
@@ -1068,19 +1130,28 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                       child: FFButtonWidget(
                         onPressed: () async {
                           if (_model.radioButtonValue == 'Log Upload') {
-                            if (_model.atmid2Controller.text == null ||
-                                _model.atmid2Controller.text == '') {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Please Enter ATM ID',
-                                    style: TextStyle(
-                                      color: Color(0xFFFF0000),
-                                    ),
-                                  ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor: Colors.black,
-                                ),
+                            if ((_model.lcation2Controller.text == null ||
+                                    _model.lcation2Controller.text == '') &&
+                                (_model.atmIdDD2Value != null &&
+                                    _model.atmIdDD2Value != '') &&
+                                (_model.atmOther2Controller.text == null ||
+                                    _model.atmOther2Controller.text == '')) {
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('Alert'),
+                                    content:
+                                        Text('Please Enter Location & AMT ID'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
                               );
                             } else {
                               _model.terminalLog =
@@ -1092,7 +1163,9 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 logUploadFile: _model.uploadedLocalFile2,
                                 bankId: widget.bankId,
                                 modelId: widget.modelId,
-                                atmId: _model.atmid2Controller.text,
+                                atmId: _model.atmIdDD2Value == 'Others'
+                                    ? _model.atmOther1Controller.text
+                                    : _model.atmIdDD2Value,
                                 createdBy: getJsonField(
                                   FFAppState().loginResponse,
                                   r'''$.firstName''',
@@ -1100,7 +1173,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 createdDate: getCurrentTimestamp.toString(),
                                 modifiedDate: getCurrentTimestamp.toString(),
                                 comments: _model.textController4.text,
-                                siteLocation: widget.location,
+                                siteLocation: _model.lcation2Controller.text,
                                 ticketNo:
                                     random_data.randomInteger(0, 10).toString(),
                               );
