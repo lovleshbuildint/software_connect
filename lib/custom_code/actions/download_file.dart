@@ -25,12 +25,11 @@ Future<String?> downloadFile(
   Directory? directory = await getExternalStorageDirectory();
   // Generate a unique filename using a timestamp
   String directoryPath = '$path/$deviceId';
-  String imagesFolderPath = '$directoryPath/Images';
+  String imagesFolderPath = '$directoryPath/Images/test';
   String filePath = '$imagesFolderPath/$extention';
 
 // Create the directory if it doesn't exist
   Directory(imagesFolderPath).createSync(recursive: true);
-  // String filePath = '$path/$deviceId/Images/$extention';
 
   // Create an HttpClient instance
   final client = http.Client();
