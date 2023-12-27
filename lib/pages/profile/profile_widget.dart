@@ -254,7 +254,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             child: Align(
                               alignment: AlignmentDirectional(0.0, 1.0),
                               child: Text(
-                                'APP VERSION 1.4',
+                                'APP VERSION 1.7',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
