@@ -19,7 +19,7 @@ Future<dynamic> pathCheck(String? deviceId) async {
     try {
       Directory directory1 = Directory(directoryPath1);
 
-      bool directoryExists1 = await directory1.exsists();
+      bool directoryExists1 = await directory1.exists();
 
       if (directoryExists1) {
         pathStatus = true;
@@ -29,7 +29,7 @@ Future<dynamic> pathCheck(String? deviceId) async {
         return {"Status": false, "Path": '/mnt/media_rw'};
       }
     } catch (e) {
-      pathCheck = false;
+      pathStatus = false;
     }
   }
 
@@ -37,7 +37,7 @@ Future<dynamic> pathCheck(String? deviceId) async {
     try {
       Directory directory2 = Directory(directoryPath2);
 
-      bool directoryExists2 = await directory2.exsists();
+      bool directoryExists2 = await directory2.exists();
 
       if (directoryExists2) {
         pathStatus = true;
@@ -47,8 +47,8 @@ Future<dynamic> pathCheck(String? deviceId) async {
         return {"Status": false, "Path": '/storage'};
       }
     } catch (e) {
-      pathCheck = false;
-      return false;
+      pathStatus = false;
+      return {"Status": false, "Path": '/storage'};
     }
   }
 }
