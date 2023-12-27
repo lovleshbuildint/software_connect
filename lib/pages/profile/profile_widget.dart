@@ -91,143 +91,85 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 20.0, 0.0, 0.0),
-                              child: Text(
-                                'Profile',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 35.0, 20.0, 0.0),
-                          child: Column(
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 75.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
                             mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                '${getJsonField(
-                                  profileGetUserInfoResponse.jsonBody,
-                                  r'''$.users.firstName''',
-                                ).toString()} ${getJsonField(
-                                  profileGetUserInfoResponse.jsonBody,
-                                  r'''$.users.lastName''',
-                                ).toString()}',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 5.0, 0.0, 0.0),
+                                    20.0, 20.0, 0.0, 0.0),
                                 child: Text(
-                                  getJsonField(
-                                    profileGetUserInfoResponse.jsonBody,
-                                    r'''$.users.email''',
-                                  ).toString(),
+                                  'Profile',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Poppins',
-                                        fontSize: 12.0,
-                                        fontWeight: FontWeight.w500,
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                 ),
                               ),
                             ],
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 35.0, 20.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Device ID',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Color(0xE02D2D2D),
-                                      fontSize: 18.0,
-                                    ),
-                              ),
-                              Flexible(
-                                child: Padding(
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                20.0, 35.0, 20.0, 0.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '${getJsonField(
+                                    profileGetUserInfoResponse.jsonBody,
+                                    r'''$.users.firstName''',
+                                  ).toString()} ${getJsonField(
+                                    profileGetUserInfoResponse.jsonBody,
+                                    r'''$.users.lastName''',
+                                  ).toString()}',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                                Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 0.0, 0.0, 0.0),
+                                      0.0, 5.0, 0.0, 0.0),
                                   child: Text(
                                     getJsonField(
                                       profileGetUserInfoResponse.jsonBody,
-                                      r'''$.users.deviceId''',
+                                      r'''$.users.email''',
                                     ).toString(),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Poppins',
-                                          color: Color(0xE02D2D2D),
-                                          fontSize: 18.0,
+                                          fontSize: 12.0,
+                                          fontWeight: FontWeight.w500,
                                         ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 35.0, 20.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              setState(() {
-                                FFAppState().loginResponse = null;
-                                FFAppState().userId = '';
-                                FFAppState().searchValue = '';
-                              });
-
-                              context.goNamed(
-                                'Login',
-                                extra: <String, dynamic>{
-                                  kTransitionInfoKey: TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 0),
-                                  ),
-                                },
-                              );
-                            },
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                20.0, 35.0, 20.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Logout',
+                                  'Device ID',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -236,16 +178,95 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         fontSize: 18.0,
                                       ),
                                 ),
-                                Icon(
-                                  Icons.logout_sharp,
-                                  color: Color(0xE02D2D2D),
-                                  size: 24.0,
+                                Flexible(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        15.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      getJsonField(
+                                        profileGetUserInfoResponse.jsonBody,
+                                        r'''$.users.deviceId''',
+                                      ).toString(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0xE02D2D2D),
+                                            fontSize: 18.0,
+                                          ),
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                20.0, 35.0, 20.0, 0.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                setState(() {
+                                  FFAppState().loginResponse = null;
+                                  FFAppState().userId = '';
+                                  FFAppState().searchValue = '';
+                                });
+
+                                context.goNamed(
+                                  'Login',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 0),
+                                    ),
+                                  },
+                                );
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Logout',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xE02D2D2D),
+                                          fontSize: 18.0,
+                                        ),
+                                  ),
+                                  Icon(
+                                    Icons.logout_sharp,
+                                    color: Color(0xE02D2D2D),
+                                    size: 24.0,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Align(
+                              alignment: AlignmentDirectional(0.0, 1.0),
+                              child: Text(
+                                'APP VERSION 1.4',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: Color(0xE02D2D2D),
+                                      fontSize: 12.0,
+                                    ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Align(
