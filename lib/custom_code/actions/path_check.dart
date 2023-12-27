@@ -11,8 +11,8 @@ import 'dart:io';
 
 Future<dynamic> pathCheck(String? deviceId) async {
   // Add your function code here!
-  String directoryPath1 = '/mnt/media_rw/$deviceId/Images/';
-  String directoryPath2 = '/storage/$deviceId/Images/';
+  String directoryPath1 = '/mnt/media_rw/$deviceId/';
+  String directoryPath2 = '/storage/$deviceId/';
   bool pathStatus = false;
 
   if (!pathStatus) {
