@@ -11,27 +11,44 @@ import 'dart:io';
 
 Future<dynamic> pathCheck(String? deviceId) async {
   // Add your function code here!
-  // String directoryPath1 = '/mnt/media_rw/$deviceId/Images/';
+  String directoryPath1 = '/mnt/media_rw/$deviceId/Images/';
   String directoryPath2 = '/storage/$deviceId/Images/';
+  bool pathStatus = false;
 
-  try {
-    // Create a File instance with the specified path
-    // Directory directory1 = Directory(directoryPath1);
-    Directory directory2 = Directory(directoryPath2);
+  if (!pathStatus) {
+    try {
+      Directory directory1 = Directory(directoryPath1);
 
-    // Check if the first directory exists
-    // bool directoryExists1 = await directory1.exists();
-    bool directoryExists2 = await directory2.exists();
+      bool directoryExists1 = await directory1.exsists();
 
-    if (directoryExists2) {
-      print({"Status": true, "Path": '/storage'});
-      return {"Status": true, "Path": '/storage'};
-    } else {
-      return {"Status": false, "Path": '/storage'};
+      if (directoryExists1) {
+        pathStatus = true;
+        return {"Status": true, "Path": '/mnt/media_rw'};
+      } else {
+        pathStatus = false;
+        return {"Status": false, "Path": '/mnt/media_rw'};
+      }
+    } catch (e) {
+      pathCheck = false;
     }
-  } catch (e) {
-    // Handle any potential errors, such as permission issues, etc.
-    print('Error checking file existence: $e');
-    return {"Status": false, "Path": '$e'};
+  }
+
+  if (!pathStatus) {
+    try {
+      Directory directory2 = Directory(directoryPath2);
+
+      bool directoryExists2 = await directory2.exsists();
+
+      if (directoryExists2) {
+        pathStatus = true;
+        return {"Status": true, "Path": '/storage'};
+      } else {
+        pathStatus = false;
+        return {"Status": false, "Path": '/storage'};
+      }
+    } catch (e) {
+      pathCheck = false;
+      return false;
+    }
   }
 }
