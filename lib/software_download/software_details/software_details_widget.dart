@@ -22,6 +22,7 @@ class SoftwareDetailsWidget extends StatefulWidget {
     required this.fileSize,
     required this.description,
     required this.softwareVersionId,
+    required this.bankName,
   }) : super(key: key);
 
   final String? imageBin;
@@ -31,6 +32,7 @@ class SoftwareDetailsWidget extends StatefulWidget {
   final String? fileSize;
   final String? description;
   final String? softwareVersionId;
+  final String? bankName;
 
   @override
   _SoftwareDetailsWidgetState createState() => _SoftwareDetailsWidgetState();
@@ -850,6 +852,8 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                         .downloadManualPathCheckResponse,
                                                     r'''$.Path''',
                                                   ).toString(),
+                                                  widget.bankName,
+                                                  widget.modelName,
                                                 );
                                                 if (_model.manualDownloadResponse1 !=
                                                         null &&
@@ -990,6 +994,8 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                             .downloadSoftwarePathCheckResponse123,
                                                         r'''$.Path''',
                                                       ).toString(),
+                                                      widget.bankName,
+                                                      widget.modelName,
                                                     );
                                                     if (_model.softwareDownloadResponse123 !=
                                                             null &&

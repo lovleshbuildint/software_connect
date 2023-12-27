@@ -83,6 +83,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             description: params.getParam('description', ParamType.String),
             softwareVersionId:
                 params.getParam('softwareVersionId', ParamType.String),
+            bankName: params.getParam('bankName', ParamType.String),
           ),
         ),
         FFRoute(

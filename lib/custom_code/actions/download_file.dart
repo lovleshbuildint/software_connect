@@ -14,8 +14,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:permission_handler/permission_handler.dart';
 
-Future<String?> downloadFile(
-    String? url, String? extention, String? deviceId, String? path) async {
+Future<String?> downloadFile(String? url, String? extention, String? deviceId,
+    String? path, String? bankName, String? modelName) async {
   await Permission.manageExternalStorage.request();
   // Get the directory where the file will be saved
   var status = await Permission.storage.status;
@@ -25,7 +25,7 @@ Future<String?> downloadFile(
   Directory? directory = await getExternalStorageDirectory();
   // Generate a unique filename using a timestamp
   String directoryPath = '$path/$deviceId';
-  String imagesFolderPath = '$directoryPath/Images/test';
+  String imagesFolderPath = '$directoryPath/$modelName/$bankName';
   String filePath = '$imagesFolderPath/$extention';
 
 // Create the directory if it doesn't exist

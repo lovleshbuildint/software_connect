@@ -403,6 +403,10 @@ class _SoftwareListWidgetState extends State<SoftwareListWidget> {
                                                     ).toString(),
                                                     ParamType.String,
                                                   ),
+                                                  'bankName': serializeParam(
+                                                    widget.bankName,
+                                                    ParamType.String,
+                                                  ),
                                                 }.withoutNulls,
                                               );
                                             },
