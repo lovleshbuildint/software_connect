@@ -1078,6 +1078,28 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                               1;
                                                     });
                                                   }
+                                                } else {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text('Alert'),
+                                                        content: Text((_model
+                                                                .downloadSoftwareResponse123
+                                                                ?.bodyText ??
+                                                            '')),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
                                                 }
                                               } else {
                                                 setState(() {
