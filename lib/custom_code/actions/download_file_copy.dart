@@ -30,7 +30,7 @@ Future<String?> downloadFileCopy(String? url) async {
     Directory(directoryPath).createSync(recursive: true);
     return 'File Downloaded';
   } catch (e) {
-    return '$e';
+    return '$e - $directory';
   }
 
   // Create an HttpClient instance
