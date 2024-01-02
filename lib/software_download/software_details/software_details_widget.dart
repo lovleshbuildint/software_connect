@@ -940,10 +940,6 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                     .downloadSoftwarePathCheckResponse123,
                                                 r'''$.Status''',
                                               )) {
-                                                setState(() {
-                                                  _model.downloadingSoftwareStatus =
-                                                      true;
-                                                });
                                                 _model.downloadSoftwareResponse123 =
                                                     await BankModelMultipleSoftwareDownloadCall
                                                         .call(
@@ -967,6 +963,8 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                           ''),
                                                     )?.length;
                                                     _model.currentIndex = 0;
+                                                    _model.downloadingSoftwareStatus =
+                                                        true;
                                                   });
                                                   while (_model.currentIndex! <
                                                       _model.maxIndex!) {
@@ -1007,6 +1005,26 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                         _model.downloadedSoftwareStatus =
                                                             true;
                                                       });
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text('Info'),
+                                                            content: Text(_model
+                                                                .softwareDownloadResponse123!),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
                                                     }
                                                     setState(() {
                                                       _model.currentIndex =

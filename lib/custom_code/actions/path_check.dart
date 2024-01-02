@@ -41,14 +41,14 @@ Future<dynamic> pathCheck(String? deviceId) async {
 
       if (directoryExists2) {
         pathStatus = true;
-        return {"Status": true, "Path": '/storage'};
+        return {"Status": true, "Path": 'storage'};
       } else {
         pathStatus = false;
-        return {"Status": false, "Path": '/storage'};
+        return {"Status": false, "Path": 'storage'};
       }
     } catch (e) {
       pathStatus = false;
-      return {"Status": false, "Path": '/storage'};
+      return {"Status": false, "Path": 'storage'};
     }
   }
 }
