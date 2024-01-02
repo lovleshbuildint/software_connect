@@ -32,9 +32,7 @@ class SoftwareDetailsModel extends FlutterFlowModel<SoftwareDetailsWidget> {
 
   int? currentIndex;
 
-  String? path = '';
-
-  String fullPath = '';
+  String testPath = '';
 
   ///  State fields for stateful widgets in this page.
 

@@ -965,6 +965,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                     _model.currentIndex = 0;
                                                     _model.downloadingSoftwareStatus =
                                                         true;
+                                                    _model.testPath = '';
                                                   });
                                                   while (_model.currentIndex! <
                                                       _model.maxIndex!) {
