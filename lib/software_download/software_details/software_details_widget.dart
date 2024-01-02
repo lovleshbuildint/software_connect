@@ -780,7 +780,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 13.0),
                                     child: Text(
-                                      'HPY Drive Connected Successful',
+                                      _model.testPath,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
