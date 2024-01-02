@@ -53,8 +53,6 @@ class SoftwareDetailsModel extends FlutterFlowModel<SoftwareDetailsWidget> {
   ApiCallResponse? downloadSoftwareResponse123;
   // Stores action output result for [Custom Action - downloadFile] action in Button widget.
   String? softwareDownloadResponse123;
-  // Stores action output result for [Backend Call - API (Software Sync)] action in Button widget.
-  ApiCallResponse? softwareSyncResponse123;
 
   /// Initialization and disposal methods.
 
