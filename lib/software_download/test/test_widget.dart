@@ -109,9 +109,26 @@ class _TestWidgetState extends State<TestWidget> {
               ),
               FFButtonWidget(
                 onPressed: () async {
-                  await actions.downloadFileCopy(
+                  _model.test = await actions.downloadFileCopy(
                     _model.textController.text,
                   );
+                  await showDialog(
+                    context: context,
+                    builder: (alertDialogContext) {
+                      return AlertDialog(
+                        title: Text('Alert'),
+                        content: Text(_model.test!),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(alertDialogContext),
+                            child: Text('Ok'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+
+                  setState(() {});
                 },
                 text: 'Button',
                 options: FFButtonOptions(

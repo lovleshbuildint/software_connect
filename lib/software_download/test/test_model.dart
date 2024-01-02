@@ -16,6 +16,8 @@ class TestModel extends FlutterFlowModel<TestWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // Stores action output result for [Custom Action - downloadFileCopy] action in Button widget.
+  String? test;
 
   /// Initialization and disposal methods.
 
