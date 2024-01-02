@@ -965,7 +965,12 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                     _model.currentIndex = 0;
                                                     _model.downloadingSoftwareStatus =
                                                         true;
-                                                    _model.testPath = '';
+                                                    _model.testPath =
+                                                        getJsonField(
+                                                      _model
+                                                          .downloadSoftwarePathCheckResponse123,
+                                                      r'''$.Path''',
+                                                    ).toString();
                                                   });
                                                   while (_model.currentIndex! <
                                                       _model.maxIndex!) {
