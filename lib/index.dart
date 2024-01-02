@@ -15,4 +15,3 @@ export '/terminal_log/upload_logs_a_t_m_details/upload_logs_a_t_m_details_widget
 export '/software_download/software_list/software_list_widget.dart'
     show SoftwareListWidget;
 export '/pages/profile/profile_widget.dart' show ProfileWidget;
-export '/software_download/test/test_widget.dart' show TestWidget;
