@@ -25,7 +25,7 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
     }
     Directory? directory = await getExternalStorageDirectory();
     // Generate a unique filename using a timestamp
-    String directoryPath = '$path/$deviceId';
+    String directoryPath = 'storage/$deviceId';
     String imagesFolderPath = '$directoryPath/$modelName/$bankName';
     String filePath = '$imagesFolderPath/$extention';
 
