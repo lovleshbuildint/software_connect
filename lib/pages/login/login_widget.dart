@@ -291,8 +291,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       return AlertDialog(
                                         title: Text('Alert'),
                                         content: Text(
-                                            (_model.logInResponse?.bodyText ??
-                                                '')),
+                                            (_model.logInResponse?.statusCode ??
+                                                    200)
+                                                .toString()),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
