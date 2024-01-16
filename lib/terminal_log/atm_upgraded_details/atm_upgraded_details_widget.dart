@@ -327,6 +327,8 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                   height: 50.0,
                                   searchHintTextStyle:
                                       FlutterFlowTheme.of(context).labelMedium,
+                                  searchTextStyle:
+                                      FlutterFlowTheme.of(context).bodyMedium,
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                   hintText: 'Select or Enter ATM ID',
@@ -730,6 +732,8 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                               height: 50.0,
                               searchHintTextStyle:
                                   FlutterFlowTheme.of(context).labelMedium,
+                              searchTextStyle:
+                                  FlutterFlowTheme.of(context).bodyMedium,
                               textStyle:
                                   FlutterFlowTheme.of(context).bodyMedium,
                               hintText: 'Select or Enter ATM ID',

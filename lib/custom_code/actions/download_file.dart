@@ -56,7 +56,10 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
         // Update the downloaded bytes
         downloadedBytes += chunk.length;
         // Calculate and print the percentage
-        double percentage = (downloadedBytes / totalBytes) * 100;
+        double percentage = (downloadedBytes / totalBytes);
+        FFAppState().update(() {
+          FFAppState().percentage = percentage;
+        });
         // print('Downloading: ${percentage.toStringAsFixed(2)}%');
       },
       onDone: () {

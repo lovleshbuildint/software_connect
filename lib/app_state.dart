@@ -35,6 +35,9 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _searchValue = prefs.getString('ff_searchValue') ?? _searchValue;
     });
+    _safeInit(() {
+      _percentage = prefs.getDouble('ff_percentage') ?? _percentage;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -92,6 +95,13 @@ class FFAppState extends ChangeNotifier {
   set searchValue(String _value) {
     _searchValue = _value;
     prefs.setString('ff_searchValue', _value);
+  }
+
+  double _percentage = 0.0;
+  double get percentage => _percentage;
+  set percentage(double _value) {
+    _percentage = _value;
+    prefs.setDouble('ff_percentage', _value);
   }
 }
 
