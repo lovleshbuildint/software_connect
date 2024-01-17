@@ -49,6 +49,9 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
     IOSink sink = file.openWrite();
     String downloadstatus = "";
     // Listen for updates during the download
+    FFAppState().update(() {
+      FFAppState().progressBarVisibility = true;
+    });
     streamedResponse.stream.listen(
       (List<int> chunk) {
         // Write the chunk to the file
@@ -108,6 +111,9 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
       File file = File(filePath);
       IOSink sink = file.openWrite();
       String downloadstatus = "";
+      FFAppState().update(() {
+        FFAppState().progressBarVisibility = true;
+      });
       // Listen for updates during the download
       streamedResponse.stream.listen(
         (List<int> chunk) {

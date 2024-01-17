@@ -38,6 +38,10 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _percentage = prefs.getDouble('ff_percentage') ?? _percentage;
     });
+    _safeInit(() {
+      _progressBarVisibility =
+          prefs.getBool('ff_progressBarVisibility') ?? _progressBarVisibility;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -102,6 +106,13 @@ class FFAppState extends ChangeNotifier {
   set percentage(double _value) {
     _percentage = _value;
     prefs.setDouble('ff_percentage', _value);
+  }
+
+  bool _progressBarVisibility = false;
+  bool get progressBarVisibility => _progressBarVisibility;
+  set progressBarVisibility(bool _value) {
+    _progressBarVisibility = _value;
+    prefs.setBool('ff_progressBarVisibility', _value);
   }
 }
 
