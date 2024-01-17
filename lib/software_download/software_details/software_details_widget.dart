@@ -1141,10 +1141,9 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .accent4,
                                             center: Text(
-                                              FFAppState()
-                                                      .percentage
-                                                      .toString() *
-                                                  100,
+                                              (FFAppState().percentage * 100)
+                                                  .toString(),
+                                              textAlign: TextAlign.center,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .headlineSmall
