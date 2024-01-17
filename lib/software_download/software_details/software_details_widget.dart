@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'software_details_model.dart';
 export 'software_details_model.dart';
@@ -1123,6 +1124,37 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(4.0),
                                             ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 10.0, 0.0, 0.0),
+                                          child: LinearPercentIndicator(
+                                            percent: FFAppState().percentage,
+                                            width: 120.0,
+                                            lineHeight: 18.0,
+                                            animation: true,
+                                            animateFromLastPercent: true,
+                                            progressColor: Color(0xFF0C9D61),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .accent4,
+                                            center: Text(
+                                              FFAppState()
+                                                      .percentage
+                                                      .toString() *
+                                                  100,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineSmall
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        fontSize: 12.0,
+                                                      ),
+                                            ),
+                                            barRadius: Radius.circular(100.0),
+                                            padding: EdgeInsets.zero,
                                           ),
                                         ),
                                       ],
