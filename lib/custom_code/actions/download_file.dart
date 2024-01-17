@@ -80,7 +80,7 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
       cancelOnError: true,
     );
     print(downloadstatus);
-    return 'File Downloaded';
+    return downloadstatus;
   } catch (e) {
     try {
       // Generate a unique filename using a timestamp
@@ -140,7 +140,7 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
         cancelOnError: true,
       );
       print(downloadstatus);
-      return 'File Downloaded';
+      return downloadstatus;
     } catch (e) {
       return '$e';
     }

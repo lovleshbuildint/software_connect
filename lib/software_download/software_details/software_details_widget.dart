@@ -1117,11 +1117,6 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                             ),
                                           ),
                                         ),
-                                        Text(
-                                          FFAppState().percentage.toString(),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                        ),
                                       ],
                                     ),
                                   ),
