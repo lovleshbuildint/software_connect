@@ -367,6 +367,10 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                           EdgeInsetsDirectional.fromSTEB(80.0, 0.0, 80.0, 86.0),
                       child: FFButtonWidget(
                         onPressed: () async {
+                          setState(() {
+                            FFAppState().percentage = 0.00;
+                            FFAppState().progressBarVisibility = false;
+                          });
                           _model.pathcheckResponses = await actions.pathCheck(
                             getJsonField(
                               FFAppState().loginResponse,
@@ -723,7 +727,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                 20.0, 0.0, 20.0, 0.0),
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 235.0,
+                              height: 255.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
