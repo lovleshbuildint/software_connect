@@ -1053,30 +1053,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                           );
                                                         },
                                                       );
-                                                    } else {
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title:
-                                                                Text('Alert'),
-                                                            content: Text(_model
-                                                                .softwareDownloadResponse123!),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext),
-                                                                child:
-                                                                    Text('Ok'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      );
                                                     }
-
                                                     setState(() {
                                                       _model.currentIndex =
                                                           _model.currentIndex! +
