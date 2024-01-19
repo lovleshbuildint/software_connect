@@ -42,6 +42,10 @@ class FFAppState extends ChangeNotifier {
       _progressBarVisibility =
           prefs.getBool('ff_progressBarVisibility') ?? _progressBarVisibility;
     });
+    _safeInit(() {
+      _softwareDownloadStatus = prefs.getString('ff_softwareDownloadStatus') ??
+          _softwareDownloadStatus;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -113,6 +117,13 @@ class FFAppState extends ChangeNotifier {
   set progressBarVisibility(bool _value) {
     _progressBarVisibility = _value;
     prefs.setBool('ff_progressBarVisibility', _value);
+  }
+
+  String _softwareDownloadStatus = '';
+  String get softwareDownloadStatus => _softwareDownloadStatus;
+  set softwareDownloadStatus(String _value) {
+    _softwareDownloadStatus = _value;
+    prefs.setString('ff_softwareDownloadStatus', _value);
   }
 }
 

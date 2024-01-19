@@ -384,6 +384,10 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                             setState(() {
                               _model.connectedStatus = true;
                             });
+                            setState(() {
+                              FFAppState().softwareDownloadStatus =
+                                  'Download Software';
+                            });
                           } else {
                             setState(() {
                               _model.notConnectStatus = true;
@@ -680,6 +684,11 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                           setState(() {
                                             _model.notConnectStatus = false;
                                             _model.connectedStatus = true;
+                                          });
+                                          setState(() {
+                                            FFAppState()
+                                                    .softwareDownloadStatus =
+                                                'Download Software';
                                           });
                                         } else {
                                           setState(() {
@@ -1114,17 +1123,8 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
 
                                               setState(() {});
                                             },
-                                            text: () {
-                                              if (_model
-                                                  .downloadingSoftwareStatus) {
-                                                return 'Downloading Software...';
-                                              } else if (_model
-                                                  .downloadedSoftwareStatus) {
-                                                return 'Software Downloaded';
-                                              } else {
-                                                return 'Download Software';
-                                              }
-                                            }(),
+                                            text: FFAppState()
+                                                .softwareDownloadStatus,
                                             options: FFButtonOptions(
                                               width: MediaQuery.sizeOf(context)
                                                       .width *

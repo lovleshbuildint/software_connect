@@ -51,6 +51,7 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
     // Listen for updates during the download
     FFAppState().update(() {
       FFAppState().progressBarVisibility = true;
+      FFAppState().softwareDownloadStatus = "Software Downloading...";
     });
     streamedResponse.stream.listen(
       (List<int> chunk) {
@@ -72,6 +73,9 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
         // Show a message to the user that the file has been downloaded
         print('File downloaded successfully!');
         downloadstatus = 'File downloaded successfully!';
+        FFAppState().update(() {
+          FFAppState().softwareDownloadStatus = "Software Downloaded";
+        });
       },
       onError: (error) {
         // Handle errors during the download
@@ -79,6 +83,9 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
         sink.close();
         client.close(); // Close the HttpClient
         file.delete(); // Delete the file in case of an error
+        FFAppState().update(() {
+          FFAppState().softwareDownloadStatus = '$error';
+        });
       },
       cancelOnError: true,
     );
@@ -112,6 +119,7 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
       IOSink sink = file.openWrite();
       String downloadstatus = "";
       FFAppState().update(() {
+        FFAppState().softwareDownloadStatus = "Software Downloading...";
         FFAppState().progressBarVisibility = true;
       });
       // Listen for updates during the download
@@ -135,6 +143,9 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
           // Show a message to the user that the file has been downloaded
           print('File downloaded successfully!');
           downloadstatus = 'File downloaded successfully!';
+          FFAppState().update(() {
+            FFAppState().softwareDownloadStatus = "Software Downloaded";
+          });
         },
         onError: (error) {
           // Handle errors during the download
@@ -142,6 +153,9 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
           sink.close();
           client.close(); // Close the HttpClient
           file.delete(); // Delete the file in case of an error
+          FFAppState().update(() {
+            FFAppState().softwareDownloadStatus = '$error';
+          });
         },
         cancelOnError: true,
       );
