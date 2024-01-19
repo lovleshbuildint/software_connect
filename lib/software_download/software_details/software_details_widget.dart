@@ -1130,43 +1130,48 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                             ),
                                           ),
                                         ),
-                                        Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  1.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 0.0, 0.0),
-                                            child: LinearPercentIndicator(
-                                              percent: FFAppState().percentage,
-                                              lineHeight: 18.0,
-                                              animation: true,
-                                              animateFromLastPercent: true,
-                                              progressColor: Color(0xFF0C9D61),
-                                              backgroundColor:
+                                        if (FFAppState().progressBarVisibility)
+                                          Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            decoration: BoxDecoration(
+                                              color:
                                                   FlutterFlowTheme.of(context)
-                                                      .accent4,
-                                              center: Text(
-                                                '${((FFAppState().percentage * 100).toInt()).toString()} %',
-                                                textAlign: TextAlign.center,
-                                                style:
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 10.0, 0.0, 0.0),
+                                              child: LinearPercentIndicator(
+                                                percent:
+                                                    FFAppState().percentage,
+                                                lineHeight: 18.0,
+                                                animation: true,
+                                                animateFromLastPercent: true,
+                                                progressColor:
+                                                    Color(0xFF0C9D61),
+                                                backgroundColor:
                                                     FlutterFlowTheme.of(context)
-                                                        .headlineSmall
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          fontSize: 12.0,
-                                                        ),
+                                                        .accent4,
+                                                center: Text(
+                                                  '${((FFAppState().percentage * 100).toInt()).toString()} %',
+                                                  textAlign: TextAlign.center,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .headlineSmall
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        fontSize: 12.0,
+                                                      ),
+                                                ),
+                                                barRadius:
+                                                    Radius.circular(100.0),
+                                                padding: EdgeInsets.zero,
                                               ),
-                                              barRadius: Radius.circular(100.0),
-                                              padding: EdgeInsets.zero,
                                             ),
                                           ),
-                                        ),
                                       ],
                                     ),
                                   ),
