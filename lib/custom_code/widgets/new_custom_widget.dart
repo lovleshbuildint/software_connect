@@ -31,12 +31,18 @@ class _NewCustomWidgetState extends State<NewCustomWidget> {
   Widget build(BuildContext context) {
     String base64String = widget.bin ?? "";
 
-    // Convert the Base64 string to bytes
-    List<int> bytes = base64Decode(base64String);
+    try {
+      // Convert the Base64 string to bytes
+      List<int> bytes = base64Decode(base64String);
 
-    // Create an Image widget using the memory constructor
-    Image image = Image.memory(Uint8List.fromList(bytes));
+      // Create an Image widget using the memory constructor
+      Image image = Image.memory(Uint8List.fromList(bytes));
 
-    return Container(child: image);
+      return Container(child: image);
+    } catch (e) {
+      // Log the error for debugging
+      print('Error decoding image: $e');
+      return Container(); // or display a placeholder image/error message
+    }
   }
 }
