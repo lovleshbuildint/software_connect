@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -140,13 +141,13 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       90.0, 0.0, 90.0, 0.0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    child: Image.network(
-                                      'https://picsum.photos/seed/390/600',
+                                  child: Container(
+                                    width: 300.0,
+                                    height: 200.0,
+                                    child: custom_widgets.NewCustomWidget(
                                       width: 300.0,
                                       height: 200.0,
-                                      fit: BoxFit.cover,
+                                      bin: widget.imageBin,
                                     ),
                                   ),
                                 ),
@@ -1043,7 +1044,30 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                           );
                                                         },
                                                       );
+                                                    } else {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title:
+                                                                Text('Alert'),
+                                                            content: Text(_model
+                                                                .softwareDownloadResponse123!),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
                                                     }
+
                                                     setState(() {
                                                       _model.currentIndex =
                                                           _model.currentIndex! +
