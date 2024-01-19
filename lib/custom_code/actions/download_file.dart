@@ -141,11 +141,17 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
           sink.close();
           client.close(); // Close the HttpClient
           // Show a message to the user that the file has been downloaded
-          print('File downloaded successfully!');
           downloadstatus = 'File downloaded successfully!';
-          FFAppState().update(() {
-            FFAppState().softwareDownloadStatus = "Software Downloaded";
-          });
+          if (downloadedBytes == totalBytes) {
+            FFAppState().update(() {
+              FFAppState().softwareDownloadStatus = "Software Downloaded";
+            });
+          } else {
+            FFAppState().update(() {
+              FFAppState().softwareDownloadStatus =
+                  "File not Downloaded Properly!";
+            });
+          }
         },
         onError: (error) {
           // Handle errors during the download
