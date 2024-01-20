@@ -28,21 +28,22 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
     String imagesFolderPath = '$directoryPath/$modelName/$bankName';
     String filePath = '$imagesFolderPath/$extention';
 
+    Directory(imagesFolderPath).createSync(recursive: true);
+
     File file = File(filePath);
     bool fileExists = await file.exists();
     int existingFileSize = fileExists ? await file.length() : 0;
-    print(existingFileSize);
-    print(fileExists);
 
     // Create an HttpClient instance
     final client = http.Client();
 
     // Send the request
     final http.Request request = http.Request('GET', Uri.parse(url!));
+    if (existingFileSize > 0) {
+      request.headers['Range'] = 'bytes=$existingFileSize-';
+    }
     final http.StreamedResponse streamedResponse = await client.send(request);
     if (streamedResponse.statusCode == 200) {
-      Directory(imagesFolderPath).createSync(recursive: true);
-
       // Get the total size of the file
       int totalBytes = streamedResponse.contentLength ?? 0;
 
@@ -119,14 +120,15 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
       File file = File(filePath);
       bool fileExists = await file.exists();
       int existingFileSize = fileExists ? await file.length() : 0;
-      print(existingFileSize);
-      print(fileExists);
 
       // Create an HttpClient instance
       final client = http.Client();
 
       // Send the request
       final http.Request request = http.Request('GET', Uri.parse(url!));
+      if (existingFileSize > 0) {
+        request.headers['Range'] = 'bytes=$existingFileSize-';
+      }
       final http.StreamedResponse streamedResponse = await client.send(request);
       if (streamedResponse.statusCode == 200) {
         // Create the directory if it doesn't exist
