@@ -28,6 +28,12 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
     String imagesFolderPath = '$directoryPath/$modelName/$bankName';
     String filePath = '$imagesFolderPath/$extention';
 
+    File file = File(filePath);
+    bool fileExists = await file.exists();
+    int existingFileSize = fileExists ? await file.length() : 0;
+    print(existingFileSize);
+    print(fileExists);
+
     // Create an HttpClient instance
     final client = http.Client();
 
@@ -110,6 +116,12 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
       String directoryPath = '/mnt/media_rw/$deviceId';
       String imagesFolderPath = '$directoryPath/$modelName/$bankName';
       String filePath = '$imagesFolderPath/$extention';
+
+      File file = File(filePath);
+      bool fileExists = await file.exists();
+      int existingFileSize = fileExists ? await file.length() : 0;
+      print(existingFileSize);
+      print(fileExists);
 
       // Create an HttpClient instance
       final client = http.Client();
