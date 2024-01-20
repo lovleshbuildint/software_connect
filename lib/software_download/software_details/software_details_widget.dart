@@ -741,465 +741,452 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                               ),
                             ),
                           ),
-                        if (_model.connectedStatus)
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 20.0, 0.0),
-                            child: Container(
-                              width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 255.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                borderRadius: BorderRadius.circular(6.0),
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Align(
-                                    alignment: AlignmentDirectional(1.0, -1.0),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 20.0, 0.0),
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: 255.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderRadius: BorderRadius.circular(6.0),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(1.0, -1.0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 15.0, 15.0, 0.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        setState(() {
+                                          _model.connectedStatus = false;
+                                          _model.downloadingSoftwareStatus =
+                                              false;
+                                          _model.downloadedSoftwareStatus =
+                                              false;
+                                          _model.notConnectStatus = false;
+                                          _model.downloadingManualStatus =
+                                              false;
+                                          _model.downloadedManualStatus = false;
+                                        });
+                                      },
+                                      child: Icon(
+                                        Icons.close,
+                                        color: Colors.black,
+                                        size: 24.0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 15.0, 15.0, 0.0),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          setState(() {
-                                            _model.connectedStatus = false;
-                                            _model.downloadingSoftwareStatus =
-                                                false;
-                                            _model.downloadedSoftwareStatus =
-                                                false;
-                                            _model.notConnectStatus = false;
-                                            _model.downloadingManualStatus =
-                                                false;
-                                            _model.downloadedManualStatus =
-                                                false;
-                                          });
-                                        },
-                                        child: Icon(
-                                          Icons.close,
-                                          color: Colors.black,
-                                          size: 24.0,
+                                          0.0, 0.0, 0.0, 13.0),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        child: Image.asset(
+                                          'assets/images/Group_1000003102.png',
+                                          width: 45.0,
+                                          height: 45.0,
+                                          fit: BoxFit.contain,
                                         ),
                                       ),
                                     ),
                                   ),
-                                  Expanded(
-                                    child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Padding(
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 13.0),
+                                  child: Text(
+                                    'HPY Drive Connected Successful',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 12.0,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      45.0, 0.0, 45.0, 15.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 13.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.asset(
-                                            'assets/images/Group_1000003102.png',
-                                            width: 45.0,
-                                            height: 45.0,
-                                            fit: BoxFit.contain,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 13.0),
-                                    child: Text(
-                                      'HPY Drive Connected Successful',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 12.0,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        45.0, 0.0, 45.0, 15.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 13.0),
-                                          child: FFButtonWidget(
-                                            onPressed: () async {
-                                              _model.downloadManualPathCheckResponse =
-                                                  await actions.pathCheck(
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            _model.downloadManualPathCheckResponse =
+                                                await actions.pathCheck(
+                                              getJsonField(
+                                                FFAppState().loginResponse,
+                                                r'''$.deviceId''',
+                                              ).toString(),
+                                            );
+                                            if (getJsonField(
+                                              _model
+                                                  .downloadManualPathCheckResponse,
+                                              r'''$.Status''',
+                                            )) {
+                                              setState(() {
+                                                _model.downloadingManualStatus =
+                                                    true;
+                                              });
+                                              _model.manualResponse1 =
+                                                  await BankModelManualDownloadCall
+                                                      .call(
+                                                token: getJsonField(
+                                                  FFAppState().loginResponse,
+                                                  r'''$.token''',
+                                                ).toString(),
+                                                softwareVersionId:
+                                                    widget.softwareVersionId,
+                                              );
+                                              _model.manualDownloadResponse1 =
+                                                  await actions.downloadFile(
+                                                'https://workbenchuat.hitachi-payments.com:82${getJsonField(
+                                                  (_model.manualResponse1
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                  r'''$.url''',
+                                                ).toString()}',
+                                                functions.splitUrl(
+                                                    'https://workbenchuat.hitachi-payments.com:82${getJsonField(
+                                                  (_model.manualResponse1
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                  r'''$.url''',
+                                                ).toString()}'),
                                                 getJsonField(
                                                   FFAppState().loginResponse,
                                                   r'''$.deviceId''',
                                                 ).toString(),
-                                              );
-                                              if (getJsonField(
-                                                _model
-                                                    .downloadManualPathCheckResponse,
-                                                r'''$.Status''',
-                                              )) {
-                                                setState(() {
-                                                  _model.downloadingManualStatus =
-                                                      true;
-                                                });
-                                                _model.manualResponse1 =
-                                                    await BankModelManualDownloadCall
-                                                        .call(
-                                                  token: getJsonField(
-                                                    FFAppState().loginResponse,
-                                                    r'''$.token''',
-                                                  ).toString(),
-                                                  softwareVersionId:
-                                                      widget.softwareVersionId,
-                                                );
-                                                _model.manualDownloadResponse1 =
-                                                    await actions.downloadFile(
-                                                  'https://workbenchuat.hitachi-payments.com:82${getJsonField(
-                                                    (_model.manualResponse1
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                    r'''$.url''',
-                                                  ).toString()}',
-                                                  functions.splitUrl(
-                                                      'https://workbenchuat.hitachi-payments.com:82${getJsonField(
-                                                    (_model.manualResponse1
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                    r'''$.url''',
-                                                  ).toString()}'),
-                                                  getJsonField(
-                                                    FFAppState().loginResponse,
-                                                    r'''$.deviceId''',
-                                                  ).toString(),
-                                                  getJsonField(
-                                                    _model
-                                                        .downloadManualPathCheckResponse,
-                                                    r'''$.Path''',
-                                                  ).toString(),
-                                                  widget.bankName,
-                                                  widget.modelName,
-                                                );
-                                                if (_model.manualDownloadResponse1 !=
-                                                        null &&
-                                                    _model.manualDownloadResponse1 !=
-                                                        '') {
-                                                  setState(() {
-                                                    _model.downloadingManualStatus =
-                                                        false;
-                                                    _model.downloadedManualStatus =
-                                                        true;
-                                                  });
-                                                }
-                                              } else {
-                                                setState(() {
-                                                  _model.notConnectStatus =
-                                                      true;
-                                                  _model.connectedStatus =
-                                                      false;
-                                                  _model.downloadingSoftwareStatus =
-                                                      false;
-                                                  _model.downloadedSoftwareStatus =
-                                                      false;
-                                                  _model.downloadingManualStatus =
-                                                      false;
-                                                });
-                                                setState(() {
-                                                  FFAppState()
-                                                          .notConnectedStatus =
-                                                      true;
-                                                });
-                                              }
-
-                                              setState(() {});
-                                            },
-                                            text: () {
-                                              if (_model
-                                                  .downloadingManualStatus) {
-                                                return 'Downloading Manual...';
-                                              } else if (_model
-                                                  .downloadedManualStatus) {
-                                                return 'Manual Downloaded';
-                                              } else {
-                                                return 'Download Manual';
-                                              }
-                                            }(),
-                                            options: FFButtonOptions(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  1.0,
-                                              height: 37.0,
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Color(0xFFFF0026),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color: Colors.white,
-                                                      ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(4.0),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 13.0, 0.0, 0.0),
-                                          child: FFButtonWidget(
-                                            onPressed: () async {
-                                              _model.downloadSoftwarePathCheckResponse123 =
-                                                  await actions.pathCheck(
                                                 getJsonField(
-                                                  FFAppState().loginResponse,
-                                                  r'''$.deviceId''',
+                                                  _model
+                                                      .downloadManualPathCheckResponse,
+                                                  r'''$.Path''',
                                                 ).toString(),
+                                                widget.bankName,
+                                                widget.modelName,
                                               );
-                                              if (getJsonField(
-                                                _model
-                                                    .downloadSoftwarePathCheckResponse123,
-                                                r'''$.Status''',
-                                              )) {
-                                                _model.downloadSoftwareResponse123 =
-                                                    await BankModelMultipleSoftwareDownloadCall
-                                                        .call(
-                                                  token: getJsonField(
-                                                    FFAppState().loginResponse,
-                                                    r'''$.token''',
-                                                  ).toString(),
-                                                  softwareVersionId:
-                                                      widget.softwareVersionId,
-                                                );
-                                                if ((_model
-                                                        .downloadSoftwareResponse123
-                                                        ?.succeeded ??
-                                                    true)) {
-                                                  setState(() {
-                                                    _model.maxIndex =
-                                                        BankModelMultipleSoftwareDownloadCall
-                                                            .urlList(
-                                                      (_model.downloadSoftwareResponse123
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                    )?.length;
-                                                    _model.currentIndex = 0;
-                                                    _model.downloadingSoftwareStatus =
-                                                        true;
-                                                    _model.testPath =
-                                                        getJsonField(
-                                                      _model
-                                                          .downloadSoftwarePathCheckResponse123,
-                                                      r'''$.Path''',
-                                                    ).toString();
-                                                  });
-                                                  while (_model.currentIndex! <
-                                                      _model.maxIndex!) {
-                                                    _model.softwareDownloadResponse123 =
-                                                        await actions
-                                                            .downloadFile(
-                                                      'https://workbenchuat.hitachi-payments.com:82${functions.geturl(BankModelMultipleSoftwareDownloadCall.urlList(
-                                                        (_model.downloadSoftwareResponse123
-                                                                ?.jsonBody ??
-                                                            ''),
-                                                      )?[_model.currentIndex!])}',
-                                                      functions.splitUrl(
-                                                          'https://workbenchuat.hitachi-payments.com:82${functions.geturl(BankModelMultipleSoftwareDownloadCall.urlList(
-                                                        (_model.downloadSoftwareResponse123
-                                                                ?.jsonBody ??
-                                                            ''),
-                                                      )?[_model.currentIndex!])}'),
-                                                      getJsonField(
-                                                        FFAppState()
-                                                            .loginResponse,
-                                                        r'''$.deviceId''',
-                                                      ).toString(),
-                                                      getJsonField(
-                                                        _model
-                                                            .downloadSoftwarePathCheckResponse123,
-                                                        r'''$.Path''',
-                                                      ).toString(),
-                                                      widget.bankName,
-                                                      widget.modelName,
-                                                    );
-                                                    if (_model.softwareDownloadResponse123 !=
-                                                            null &&
-                                                        _model.softwareDownloadResponse123 !=
-                                                            '') {
-                                                      setState(() {
-                                                        _model.downloadingSoftwareStatus =
-                                                            false;
-                                                        _model.downloadedSoftwareStatus =
-                                                            true;
-                                                      });
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text('Info'),
-                                                            content: Text(_model
-                                                                .softwareDownloadResponse123!),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext),
-                                                                child:
-                                                                    Text('Ok'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      );
-                                                    }
-                                                    setState(() {
-                                                      _model.currentIndex =
-                                                          _model.currentIndex! +
-                                                              1;
-                                                    });
-                                                  }
-                                                } else {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text('Alert'),
-                                                        content: Text((_model
-                                                                .downloadSoftwareResponse123
-                                                                ?.bodyText ??
-                                                            '')),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
-                                                }
-                                              } else {
+                                              if (_model.manualDownloadResponse1 !=
+                                                      null &&
+                                                  _model.manualDownloadResponse1 !=
+                                                      '') {
                                                 setState(() {
-                                                  _model.notConnectStatus =
-                                                      true;
-                                                  _model.connectedStatus =
-                                                      false;
-                                                  _model.downloadingSoftwareStatus =
-                                                      false;
-                                                  _model.downloadedSoftwareStatus =
-                                                      false;
                                                   _model.downloadingManualStatus =
                                                       false;
-                                                });
-                                                setState(() {
-                                                  FFAppState()
-                                                          .notConnectedStatus =
+                                                  _model.downloadedManualStatus =
                                                       true;
                                                 });
                                               }
+                                            } else {
+                                              setState(() {
+                                                _model.notConnectStatus = true;
+                                                _model.connectedStatus = false;
+                                                _model.downloadingSoftwareStatus =
+                                                    false;
+                                                _model.downloadedSoftwareStatus =
+                                                    false;
+                                                _model.downloadingManualStatus =
+                                                    false;
+                                              });
+                                              setState(() {
+                                                FFAppState()
+                                                    .notConnectedStatus = true;
+                                              });
+                                            }
 
-                                              setState(() {});
-                                            },
-                                            text: FFAppState()
-                                                .softwareDownloadStatus,
-                                            options: FFButtonOptions(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  1.0,
-                                              height: 37.0,
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Color(0xFFFF0026),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color: Colors.white,
-                                                      ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(4.0),
-                                            ),
-                                          ),
-                                        ),
-                                        if (FFAppState().progressBarVisibility)
-                                          Container(
+                                            setState(() {});
+                                          },
+                                          text: () {
+                                            if (_model
+                                                .downloadingManualStatus) {
+                                              return 'Downloading Manual...';
+                                            } else if (_model
+                                                .downloadedManualStatus) {
+                                              return 'Manual Downloaded';
+                                            } else {
+                                              return 'Download Manual';
+                                            }
+                                          }(),
+                                          options: FFButtonOptions(
                                             width: MediaQuery.sizeOf(context)
                                                     .width *
                                                 1.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
+                                            height: 37.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: Color(0xFFFF0026),
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Poppins',
+                                                      color: Colors.white,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
                                             ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 10.0, 0.0, 0.0),
-                                              child: LinearPercentIndicator(
-                                                percent:
-                                                    FFAppState().percentage,
-                                                lineHeight: 18.0,
-                                                animation: true,
-                                                animateFromLastPercent: true,
-                                                progressColor:
-                                                    Color(0xFF0C9D61),
-                                                backgroundColor:
+                                            borderRadius:
+                                                BorderRadius.circular(4.0),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 13.0, 0.0, 0.0),
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            _model.downloadSoftwarePathCheckResponse123 =
+                                                await actions.pathCheck(
+                                              getJsonField(
+                                                FFAppState().loginResponse,
+                                                r'''$.deviceId''',
+                                              ).toString(),
+                                            );
+                                            if (getJsonField(
+                                              _model
+                                                  .downloadSoftwarePathCheckResponse123,
+                                              r'''$.Status''',
+                                            )) {
+                                              _model.downloadSoftwareResponse123 =
+                                                  await BankModelMultipleSoftwareDownloadCall
+                                                      .call(
+                                                token: getJsonField(
+                                                  FFAppState().loginResponse,
+                                                  r'''$.token''',
+                                                ).toString(),
+                                                softwareVersionId:
+                                                    widget.softwareVersionId,
+                                              );
+                                              if ((_model
+                                                      .downloadSoftwareResponse123
+                                                      ?.succeeded ??
+                                                  true)) {
+                                                setState(() {
+                                                  _model.maxIndex =
+                                                      BankModelMultipleSoftwareDownloadCall
+                                                          .urlList(
+                                                    (_model.downloadSoftwareResponse123
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )?.length;
+                                                  _model.currentIndex = 0;
+                                                  _model.downloadingSoftwareStatus =
+                                                      true;
+                                                  _model.testPath =
+                                                      getJsonField(
+                                                    _model
+                                                        .downloadSoftwarePathCheckResponse123,
+                                                    r'''$.Path''',
+                                                  ).toString();
+                                                });
+                                                while (_model.currentIndex! <
+                                                    _model.maxIndex!) {
+                                                  _model.softwareDownloadResponse123 =
+                                                      await actions
+                                                          .downloadFile(
+                                                    'https://workbenchuat.hitachi-payments.com:82${functions.geturl(BankModelMultipleSoftwareDownloadCall.urlList(
+                                                      (_model.downloadSoftwareResponse123
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    )?[_model.currentIndex!])}',
+                                                    functions.splitUrl(
+                                                        'https://workbenchuat.hitachi-payments.com:82${functions.geturl(BankModelMultipleSoftwareDownloadCall.urlList(
+                                                      (_model.downloadSoftwareResponse123
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    )?[_model.currentIndex!])}'),
+                                                    getJsonField(
+                                                      FFAppState()
+                                                          .loginResponse,
+                                                      r'''$.deviceId''',
+                                                    ).toString(),
+                                                    getJsonField(
+                                                      _model
+                                                          .downloadSoftwarePathCheckResponse123,
+                                                      r'''$.Path''',
+                                                    ).toString(),
+                                                    widget.bankName,
+                                                    widget.modelName,
+                                                  );
+                                                  if (_model.softwareDownloadResponse123 !=
+                                                          null &&
+                                                      _model.softwareDownloadResponse123 !=
+                                                          '') {
+                                                    setState(() {
+                                                      _model.downloadingSoftwareStatus =
+                                                          false;
+                                                      _model.downloadedSoftwareStatus =
+                                                          true;
+                                                    });
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text('Info'),
+                                                          content: Text(_model
+                                                              .softwareDownloadResponse123!),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    );
+                                                  }
+                                                  setState(() {
+                                                    _model.currentIndex =
+                                                        _model.currentIndex! +
+                                                            1;
+                                                  });
+                                                }
+                                              } else {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: Text('Alert'),
+                                                      content: Text((_model
+                                                              .downloadSoftwareResponse123
+                                                              ?.bodyText ??
+                                                          '')),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: Text('Ok'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+                                              }
+                                            } else {
+                                              setState(() {
+                                                _model.notConnectStatus = true;
+                                                _model.connectedStatus = false;
+                                                _model.downloadingSoftwareStatus =
+                                                    false;
+                                                _model.downloadedSoftwareStatus =
+                                                    false;
+                                                _model.downloadingManualStatus =
+                                                    false;
+                                              });
+                                              setState(() {
+                                                FFAppState()
+                                                    .notConnectedStatus = true;
+                                              });
+                                            }
+
+                                            setState(() {});
+                                          },
+                                          text: FFAppState()
+                                              .softwareDownloadStatus,
+                                          options: FFButtonOptions(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            height: 37.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: Color(0xFFFF0026),
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Poppins',
+                                                      color: Colors.white,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(4.0),
+                                          ),
+                                        ),
+                                      ),
+                                      if (FFAppState().progressBarVisibility)
+                                        Container(
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  1.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 10.0, 0.0, 0.0),
+                                            child: LinearPercentIndicator(
+                                              percent: FFAppState().percentage,
+                                              lineHeight: 18.0,
+                                              animation: true,
+                                              animateFromLastPercent: true,
+                                              progressColor: Color(0xFF0C9D61),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent4,
+                                              center: Text(
+                                                '${((FFAppState().percentage * 100).toInt()).toString()} %',
+                                                textAlign: TextAlign.center,
+                                                style:
                                                     FlutterFlowTheme.of(context)
-                                                        .accent4,
-                                                center: Text(
-                                                  '${((FFAppState().percentage * 100).toInt()).toString()} %',
-                                                  textAlign: TextAlign.center,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .headlineSmall
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        fontSize: 12.0,
-                                                      ),
-                                                ),
-                                                barRadius:
-                                                    Radius.circular(100.0),
-                                                padding: EdgeInsets.zero,
+                                                        .headlineSmall
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          fontSize: 12.0,
+                                                        ),
                                               ),
+                                              barRadius: Radius.circular(100.0),
+                                              padding: EdgeInsets.zero,
                                             ),
                                           ),
-                                      ],
-                                    ),
+                                        ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
+                        ),
                       ],
                     ),
                   ),
