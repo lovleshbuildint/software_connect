@@ -102,7 +102,6 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
         },
         cancelOnError: true,
       );
-      print(downloadstatus);
       return downloadstatus;
     } else {
       FFAppState().update(() {
@@ -197,7 +196,6 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
           },
           cancelOnError: true,
         );
-        print(downloadstatus);
         return downloadstatus;
       } else {
         FFAppState().update(() {
