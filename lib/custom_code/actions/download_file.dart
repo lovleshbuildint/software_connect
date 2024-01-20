@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
@@ -28,32 +30,24 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
     String imagesFolderPath = '$directoryPath/$modelName/$bankName';
     String filePath = '$imagesFolderPath/$extention';
 
-    Directory(imagesFolderPath).createSync(recursive: true);
-
-    File file = File(filePath);
-    bool fileExists = await file.exists();
-    int existingFileSize = fileExists ? await file.length() : 0;
-
     // Create an HttpClient instance
     final client = http.Client();
 
     // Send the request
     final http.Request request = http.Request('GET', Uri.parse(url!));
-    if (existingFileSize > 0) {
-      request.headers['Range'] = 'bytes=$existingFileSize-';
-    }
     final http.StreamedResponse streamedResponse = await client.send(request);
     if (streamedResponse.statusCode == 200) {
+      Directory(imagesFolderPath).createSync(recursive: true);
+
       // Get the total size of the file
-      int totalBytes = existingFileSize + (streamedResponse.contentLength ?? 0);
+      int totalBytes = streamedResponse.contentLength ?? 0;
 
       // Keep track of the downloaded bytes
-      int downloadedBytes = existingFileSize;
+      int downloadedBytes = 0;
 
       // Write the downloaded file to the local storage
       File file = File(filePath);
-      IOSink sink =
-          file.openWrite(mode: fileExists ? FileMode.append : FileMode.write);
+      IOSink sink = file.openWrite();
       String downloadstatus = "";
       // Listen for updates during the download
       FFAppState().update(() {
@@ -118,34 +112,25 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
       String imagesFolderPath = '$directoryPath/$modelName/$bankName';
       String filePath = '$imagesFolderPath/$extention';
 
-      File file = File(filePath);
-      bool fileExists = await file.exists();
-      int existingFileSize = fileExists ? await file.length() : 0;
-
       // Create an HttpClient instance
       final client = http.Client();
 
       // Send the request
       final http.Request request = http.Request('GET', Uri.parse(url!));
-      if (existingFileSize > 0) {
-        request.headers['Range'] = 'bytes=$existingFileSize-';
-      }
       final http.StreamedResponse streamedResponse = await client.send(request);
       if (streamedResponse.statusCode == 200) {
         // Create the directory if it doesn't exist
         Directory(imagesFolderPath).createSync(recursive: true);
 
         // Get the total size of the file
-        int totalBytes =
-            existingFileSize + (streamedResponse.contentLength ?? 0);
+        int totalBytes = streamedResponse.contentLength ?? 0;
 
         // Keep track of the downloaded bytes
-        int downloadedBytes = existingFileSize;
+        int downloadedBytes = 0;
 
         // Write the downloaded file to the local storage
         File file = File(filePath);
-        IOSink sink =
-            file.openWrite(mode: fileExists ? FileMode.append : FileMode.write);
+        IOSink sink = file.openWrite();
         String downloadstatus = "";
         FFAppState().update(() {
           FFAppState().softwareDownloadStatus = "Software Downloading...";
