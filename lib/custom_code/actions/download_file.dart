@@ -9,8 +9,6 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom actions
 
-import 'index.dart'; // Imports other custom actions
-
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
@@ -80,7 +78,6 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
           sink.close();
           client.close(); // Close the HttpClient
           // Show a message to the user that the file has been downloaded
-          print('File downloaded successfully!');
           downloadstatus = 'File downloaded successfully!';
           FFAppState().update(() {
             FFAppState().softwareDownloadStatus = "Software Downloaded";
