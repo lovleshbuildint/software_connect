@@ -45,14 +45,15 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
     final http.StreamedResponse streamedResponse = await client.send(request);
     if (streamedResponse.statusCode == 200) {
       // Get the total size of the file
-      int totalBytes = streamedResponse.contentLength ?? 0;
+      int totalBytes = existingFileSize + (streamedResponse.contentLength ?? 0);
 
       // Keep track of the downloaded bytes
-      int downloadedBytes = 0;
+      int downloadedBytes = existingFileSize;
 
       // Write the downloaded file to the local storage
       File file = File(filePath);
-      IOSink sink = file.openWrite();
+      IOSink sink =
+          file.openWrite(mode: fileExists ? FileMode.append : FileMode.write);
       String downloadstatus = "";
       // Listen for updates during the download
       FFAppState().update(() {
@@ -135,14 +136,16 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
         Directory(imagesFolderPath).createSync(recursive: true);
 
         // Get the total size of the file
-        int totalBytes = streamedResponse.contentLength ?? 0;
+        int totalBytes =
+            existingFileSize + (streamedResponse.contentLength ?? 0);
 
         // Keep track of the downloaded bytes
-        int downloadedBytes = 0;
+        int downloadedBytes = existingFileSize;
 
         // Write the downloaded file to the local storage
         File file = File(filePath);
-        IOSink sink = file.openWrite();
+        IOSink sink =
+            file.openWrite(mode: fileExists ? FileMode.append : FileMode.write);
         String downloadstatus = "";
         FFAppState().update(() {
           FFAppState().softwareDownloadStatus = "Software Downloading...";
