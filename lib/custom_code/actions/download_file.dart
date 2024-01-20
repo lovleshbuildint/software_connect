@@ -56,15 +56,22 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
       streamedResponse.stream.listen(
         (List<int> chunk) {
           // Write the chunk to the file
-          sink.add(chunk);
-          // Update the downloaded bytes
-          downloadedBytes += chunk.length;
-          // Calculate and print the percentage
-          double percentage = (downloadedBytes / totalBytes);
-          FFAppState().update(() {
-            FFAppState().percentage = percentage;
-          });
-          // print('Downloading: ${percentage.toStringAsFixed(2)}%');
+          if (Directory(imagesFolderPath).existsSync()) {
+            sink.add(chunk);
+            // Update the downloaded bytes
+            downloadedBytes += chunk.length;
+            // Calculate and print the percentage
+            double percentage = (downloadedBytes / totalBytes);
+            FFAppState().update(() {
+              FFAppState().percentage = percentage;
+            });
+          } else {
+            sink.close();
+            client.close();
+            FFAppState().update(() {
+              FFAppState().notConnectedStatus = true;
+            });
+          }
         },
         onDone: () {
           // Close the file when the download is complete
@@ -132,15 +139,22 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
         streamedResponse.stream.listen(
           (List<int> chunk) {
             // Write the chunk to the file
-            sink.add(chunk);
-            // Update the downloaded bytes
-            downloadedBytes += chunk.length;
-            // Calculate and print the percentage
-            double percentage = (downloadedBytes / totalBytes);
-            FFAppState().update(() {
-              FFAppState().percentage = percentage;
-            });
-            // print('Downloading: ${percentage.toStringAsFixed(2)}%');
+            if (Directory(imagesFolderPath).existsSync()) {
+              sink.add(chunk);
+              // Update the downloaded bytes
+              downloadedBytes += chunk.length;
+              // Calculate and print the percentage
+              double percentage = (downloadedBytes / totalBytes);
+              FFAppState().update(() {
+                FFAppState().percentage = percentage;
+              });
+            } else {
+              sink.close();
+              client.close();
+              FFAppState().update(() {
+                FFAppState().notConnectedStatus = true;
+              });
+            }
           },
           onDone: () {
             // Close the file when the download is complete

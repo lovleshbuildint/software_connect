@@ -54,6 +54,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         FFAppState().progressBarVisibility = false;
+        FFAppState().notConnectedStatus = false;
       });
     });
   }
@@ -387,10 +388,14 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                             setState(() {
                               FFAppState().softwareDownloadStatus =
                                   'Download Software';
+                              FFAppState().notConnectedStatus = false;
                             });
                           } else {
                             setState(() {
                               _model.notConnectStatus = true;
+                            });
+                            setState(() {
+                              FFAppState().notConnectedStatus = true;
                             });
                           }
 
@@ -583,7 +588,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (_model.notConnectStatus ?? true)
+                        if (FFAppState().notConnectedStatus)
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 0.0),
@@ -689,10 +694,16 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                             FFAppState()
                                                     .softwareDownloadStatus =
                                                 'Download Software';
+                                            FFAppState().notConnectedStatus =
+                                                false;
                                           });
                                         } else {
                                           setState(() {
                                             _model.notConnectStatus = true;
+                                          });
+                                          setState(() {
+                                            FFAppState().notConnectedStatus =
+                                                true;
                                           });
                                         }
 
@@ -901,6 +912,11 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                   _model.downloadingManualStatus =
                                                       false;
                                                 });
+                                                setState(() {
+                                                  FFAppState()
+                                                          .notConnectedStatus =
+                                                      true;
+                                                });
                                               }
 
                                               setState(() {});
@@ -1095,6 +1111,11 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                       false;
                                                   _model.downloadingManualStatus =
                                                       false;
+                                                });
+                                                setState(() {
+                                                  FFAppState()
+                                                          .notConnectedStatus =
+                                                      true;
                                                 });
                                               }
 
