@@ -66,8 +66,7 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
               FFAppState().softwareDownloadStatus =
                   "Software Download Resumed...";
             } else {
-              FFAppState().manualDownloadStatus =
-                  "Software Download Resumed...";
+              FFAppState().manualDownloadStatus = "Manual Download Resumed...";
             }
             FFAppState().progressBarVisibility = true;
             FFAppState().percentage = existingBytes / totalBytes;
@@ -105,7 +104,7 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
                   if (software) {
                     FFAppState().softwareDownloadStatus = "Software Downloaded";
                   } else {
-                    FFAppState().manualDownloadStatus = "Software Downloaded";
+                    FFAppState().manualDownloadStatus = "Manual Downloaded";
                   }
                 });
               } else {
@@ -169,7 +168,7 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
           if (software) {
             FFAppState().softwareDownloadStatus = "Software Downloading...";
           } else {
-            FFAppState().manualDownloadStatus = "Software Downloading...";
+            FFAppState().manualDownloadStatus = "Manual Downloading...";
           }
           FFAppState().progressBarVisibility = true;
         });
@@ -205,7 +204,7 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
                 if (software) {
                   FFAppState().softwareDownloadStatus = "Software Downloaded";
                 } else {
-                  FFAppState().manualDownloadStatus = "Software Downloaded";
+                  FFAppState().manualDownloadStatus = "Manual Downloaded";
                 }
               });
             } else {
@@ -291,7 +290,7 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
                     "Software Download Resumed...";
               } else {
                 FFAppState().manualDownloadStatus =
-                    "Software Download Resumed...";
+                    "Manual Download Resumed...";
               }
               FFAppState().progressBarVisibility = true;
               FFAppState().percentage = existingBytes / totalBytes;
@@ -330,7 +329,7 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
                       FFAppState().softwareDownloadStatus =
                           "Software Downloaded";
                     } else {
-                      FFAppState().manualDownloadStatus = "Software Downloaded";
+                      FFAppState().manualDownloadStatus = "Manual Downloaded";
                     }
                   });
                 } else {
@@ -396,7 +395,7 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
             if (software) {
               FFAppState().softwareDownloadStatus = "Software Downloading...";
             } else {
-              FFAppState().manualDownloadStatus = "Software Downloading...";
+              FFAppState().manualDownloadStatus = "Manual Downloading...";
             }
             FFAppState().progressBarVisibility = true;
           });
@@ -432,7 +431,7 @@ Future<String?> downloadFile(String? url, String? extention, String? deviceId,
                   if (software) {
                     FFAppState().softwareDownloadStatus = "Software Downloaded";
                   } else {
-                    FFAppState().manualDownloadStatus = "Software Downloaded";
+                    FFAppState().manualDownloadStatus = "Manual Downloaded";
                   }
                 });
               } else {
