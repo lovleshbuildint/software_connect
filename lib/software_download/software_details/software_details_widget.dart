@@ -389,6 +389,8 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                               FFAppState().softwareDownloadStatus =
                                   'Download Software';
                               FFAppState().notConnectedStatus = false;
+                              FFAppState().manualDownloadStatus =
+                                  'Download Manual';
                             });
                           } else {
                             setState(() {
@@ -696,6 +698,8 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                 'Download Software';
                                             FFAppState().notConnectedStatus =
                                                 false;
+                                            FFAppState().manualDownloadStatus =
+                                                'Download Manual';
                                           });
                                         } else {
                                           setState(() {
@@ -862,43 +866,74 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                   softwareVersionId:
                                                       widget.softwareVersionId,
                                                 );
-                                                _model.manualDownloadResponse1 =
-                                                    await actions.downloadFile(
-                                                  'https://workbenchuat.hitachi-payments.com:82${getJsonField(
-                                                    (_model.manualResponse1
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                    r'''$.url''',
-                                                  ).toString()}',
-                                                  functions.splitUrl(
-                                                      'https://workbenchuat.hitachi-payments.com:82${getJsonField(
-                                                    (_model.manualResponse1
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                    r'''$.url''',
-                                                  ).toString()}'),
-                                                  getJsonField(
-                                                    FFAppState().loginResponse,
-                                                    r'''$.deviceId''',
-                                                  ).toString(),
-                                                  getJsonField(
-                                                    _model
-                                                        .downloadManualPathCheckResponse,
-                                                    r'''$.Path''',
-                                                  ).toString(),
-                                                  widget.bankName,
-                                                  widget.modelName,
-                                                );
-                                                if (_model.manualDownloadResponse1 !=
-                                                        null &&
-                                                    _model.manualDownloadResponse1 !=
-                                                        '') {
-                                                  setState(() {
-                                                    _model.downloadingManualStatus =
-                                                        false;
-                                                    _model.downloadedManualStatus =
-                                                        true;
-                                                  });
+                                                if (getJsonField(
+                                                      (_model.manualResponse1
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.url''',
+                                                    ) !=
+                                                    null) {
+                                                  _model.manualDownloadResponse1 =
+                                                      await actions
+                                                          .downloadFile(
+                                                    'https://workbenchuat.hitachi-payments.com:82${getJsonField(
+                                                      (_model.manualResponse1
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.url''',
+                                                    ).toString()}',
+                                                    functions.splitUrl(
+                                                        'https://workbenchuat.hitachi-payments.com:82${getJsonField(
+                                                      (_model.manualResponse1
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.url''',
+                                                    ).toString()}'),
+                                                    getJsonField(
+                                                      FFAppState()
+                                                          .loginResponse,
+                                                      r'''$.deviceId''',
+                                                    ).toString(),
+                                                    getJsonField(
+                                                      _model
+                                                          .downloadManualPathCheckResponse,
+                                                      r'''$.Path''',
+                                                    ).toString(),
+                                                    widget.bankName,
+                                                    widget.modelName,
+                                                    false,
+                                                  );
+                                                  if (_model.manualDownloadResponse1 !=
+                                                          null &&
+                                                      _model.manualDownloadResponse1 !=
+                                                          '') {
+                                                    setState(() {
+                                                      _model.downloadingManualStatus =
+                                                          false;
+                                                      _model.downloadedManualStatus =
+                                                          true;
+                                                    });
+                                                  }
+                                                } else {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text('Alert'),
+                                                        content: Text(
+                                                            'No File Found'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
                                                 }
                                               } else {
                                                 setState(() {
@@ -922,17 +957,8 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
 
                                               setState(() {});
                                             },
-                                            text: () {
-                                              if (_model
-                                                  .downloadingManualStatus) {
-                                                return 'Downloading Manual...';
-                                              } else if (_model
-                                                  .downloadedManualStatus) {
-                                                return 'Manual Downloaded';
-                                              } else {
-                                                return 'Download Manual';
-                                              }
-                                            }(),
+                                            text: FFAppState()
+                                                .manualDownloadStatus,
                                             options: FFButtonOptions(
                                               width: MediaQuery.sizeOf(context)
                                                       .width *
@@ -1039,6 +1065,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                       ).toString(),
                                                       widget.bankName,
                                                       widget.modelName,
+                                                      true,
                                                     );
                                                     if (_model.softwareDownloadResponse123 !=
                                                             null &&

@@ -50,6 +50,10 @@ class FFAppState extends ChangeNotifier {
       _notConnectedStatus =
           prefs.getBool('ff_notConnectedStatus') ?? _notConnectedStatus;
     });
+    _safeInit(() {
+      _manualDownloadStatus =
+          prefs.getString('ff_manualDownloadStatus') ?? _manualDownloadStatus;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -135,6 +139,13 @@ class FFAppState extends ChangeNotifier {
   set notConnectedStatus(bool _value) {
     _notConnectedStatus = _value;
     prefs.setBool('ff_notConnectedStatus', _value);
+  }
+
+  String _manualDownloadStatus = '';
+  String get manualDownloadStatus => _manualDownloadStatus;
+  set manualDownloadStatus(String _value) {
+    _manualDownloadStatus = _value;
+    prefs.setString('ff_manualDownloadStatus', _value);
   }
 }
 
