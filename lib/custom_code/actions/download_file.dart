@@ -11,6 +11,8 @@ import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
@@ -38,6 +40,7 @@ Future<String?> downloadFile(
     String directoryPath = 'storage/$deviceId';
     String imagesFolderPath = '$directoryPath/$modelName/$bankName';
     String filePath = '$imagesFolderPath/$extention';
+    Directory(imagesFolderPath).createSync(recursive: true);
 
     File existingFile = File(filePath);
     bool fileExists = existingFile.existsSync();
@@ -45,6 +48,8 @@ Future<String?> downloadFile(
 
     // Create an HttpClient instance
     final client = http.Client();
+    print(fileExists);
+    print("fileExists");
 
     // If file exists, set the Range header to resume download
     if (fileExists) {
@@ -158,6 +163,7 @@ Future<String?> downloadFile(
       // Send the request
       final http.Request request = http.Request('GET', Uri.parse(url!));
       final http.StreamedResponse streamedResponse = await client.send(request);
+
       if (streamedResponse.statusCode == 200) {
         // Create the directory if it doesn't exist
         Directory(imagesFolderPath).createSync(recursive: true);
@@ -243,6 +249,55 @@ Future<String?> downloadFile(
           },
           cancelOnError: true,
         );
+      } else if (streamedResponse.statusCode == 404) {
+        final response = await http.post(
+          Uri.parse(
+              'https://workbenchuat.hitachi-payments.com:82/api/SoftwareVersion/DownloadSoftware'),
+          headers: {
+            'Authorization': token,
+            'Content-Type':
+                'application/json', // Replace with the actual value of your token variable
+          },
+          body: jsonEncode({
+            'softwareVersionId': softwareVersionId,
+          }), // Replace with the actual value
+        );
+
+        if (response.statusCode == 200) {
+          File createFile = File('/$filePath');
+          createFile.createSync();
+
+          // Convert binary data to file and save it
+          List<int> fileBytes = response.bodyBytes;
+
+          File file = File(filePath);
+
+          await file.writeAsBytes(fileBytes);
+
+          // Now you have saved the file to the specified path
+
+          FFAppState().update(() {
+            // Update your app state as needed
+            if (software) {
+              FFAppState().softwareDownloadStatus = "Software Downloaded";
+            } else {
+              FFAppState().manualDownloadStatus = "Manual Downloaded";
+            }
+            FFAppState().progressBarVisibility = true;
+            FFAppState().percentage = 1.0;
+          });
+        } else {
+          // Handle the error response if needed
+          print('POST request failed with status code: ${response.statusCode}');
+          FFAppState().update(() {
+            if (software) {
+              FFAppState().softwareDownloadStatus =
+                  "Error downloading software";
+            } else {
+              FFAppState().manualDownloadStatus = "Error downloading file";
+            }
+          });
+        }
       } else {
         FFAppState().update(() {
           if (software) {
@@ -260,6 +315,7 @@ Future<String?> downloadFile(
       String directoryPath = '/mnt/media_rw/$deviceId';
       String imagesFolderPath = '$directoryPath/$modelName/$bankName';
       String filePath = '$imagesFolderPath/$extention';
+      Directory(imagesFolderPath).createSync(recursive: true);
 
       File existingFile = File(filePath);
       bool fileExists = existingFile.existsSync();
@@ -385,6 +441,7 @@ Future<String?> downloadFile(
         final http.Request request = http.Request('GET', Uri.parse(url!));
         final http.StreamedResponse streamedResponse =
             await client.send(request);
+
         if (streamedResponse.statusCode == 200) {
           // Create the directory if it doesn't exist
           Directory(imagesFolderPath).createSync(recursive: true);
@@ -470,6 +527,56 @@ Future<String?> downloadFile(
             },
             cancelOnError: true,
           );
+        } else if (streamedResponse.statusCode == 404) {
+          final response = await http.post(
+            Uri.parse(
+                'https://workbenchuat.hitachi-payments.com:82/api/SoftwareVersion/DownloadSoftware'),
+            headers: {
+              'Authorization': token,
+              'Content-Type':
+                  'application/json', // Replace with the actual value of your token variable
+            },
+            body: jsonEncode({
+              'softwareVersionId': softwareVersionId,
+            }), // Replace with the actual value
+          );
+
+          if (response.statusCode == 200) {
+            File createFile = File(filePath);
+            createFile.createSync();
+
+            // Convert binary data to file and save it
+            List<int> fileBytes = response.bodyBytes;
+
+            File file = File(filePath);
+
+            await file.writeAsBytes(fileBytes);
+
+            // Now you have saved the file to the specified path
+
+            FFAppState().update(() {
+              // Update your app state as needed
+              if (software) {
+                FFAppState().softwareDownloadStatus = "Software Downloaded";
+              } else {
+                FFAppState().manualDownloadStatus = "Manual Downloaded";
+              }
+              FFAppState().progressBarVisibility = true;
+              FFAppState().percentage = 1.0;
+            });
+          } else {
+            // Handle the error response if needed
+            print(
+                'POST request failed with status code: ${response.statusCode}');
+            FFAppState().update(() {
+              if (software) {
+                FFAppState().softwareDownloadStatus =
+                    "Error downloading software";
+              } else {
+                FFAppState().manualDownloadStatus = "Error downloading file";
+              }
+            });
+          }
         } else {
           FFAppState().update(() {
             if (software) {
