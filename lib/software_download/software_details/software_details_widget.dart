@@ -1073,7 +1073,11 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                       widget.modelName,
                                                       true,
                                                       widget.softwareVersionId,
-                                                      '',
+                                                      getJsonField(
+                                                        FFAppState()
+                                                            .loginResponse,
+                                                        r'''$.token''',
+                                                      ).toString(),
                                                     );
                                                     if (_model.softwareDownloadResponse123 !=
                                                             null &&
