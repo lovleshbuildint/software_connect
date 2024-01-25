@@ -903,6 +903,11 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                     widget.modelName,
                                                     false,
                                                     widget.softwareVersionId,
+                                                    getJsonField(
+                                                      FFAppState()
+                                                          .loginResponse,
+                                                      r'''$.token''',
+                                                    ).toString(),
                                                   );
                                                   if (_model.manualDownloadResponse1 !=
                                                           null &&
@@ -1068,6 +1073,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                       widget.modelName,
                                                       true,
                                                       widget.softwareVersionId,
+                                                      '',
                                                     );
                                                     if (_model.softwareDownloadResponse123 !=
                                                             null &&
