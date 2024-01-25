@@ -16,8 +16,15 @@ import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:permission_handler/permission_handler.dart';
 
-Future<String?> downloadFile(String? url, String? extention, String? deviceId,
-    String? path, String? bankName, String? modelName, bool software) async {
+Future<String?> downloadFile(
+    String? url,
+    String? extention,
+    String? deviceId,
+    String? path,
+    String? bankName,
+    String? modelName,
+    bool software,
+    String? softwareVersionId) async {
   await Permission.manageExternalStorage.request();
 
   // Get the directory where the file will be saved

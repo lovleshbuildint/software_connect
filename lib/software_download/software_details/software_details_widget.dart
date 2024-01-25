@@ -902,6 +902,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                     widget.bankName,
                                                     widget.modelName,
                                                     false,
+                                                    widget.softwareVersionId,
                                                   );
                                                   if (_model.manualDownloadResponse1 !=
                                                           null &&
@@ -1066,6 +1067,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                       widget.bankName,
                                                       widget.modelName,
                                                       true,
+                                                      widget.softwareVersionId,
                                                     );
                                                     if (_model.softwareDownloadResponse123 !=
                                                             null &&
