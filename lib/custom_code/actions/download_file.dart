@@ -25,7 +25,7 @@ Future<String?> downloadFile(
     String? modelName,
     bool software,
     String? softwareVersionId,
-    String? token) async {
+    String token) async {
   await Permission.manageExternalStorage.request();
 
   // Get the directory where the file will be saved
