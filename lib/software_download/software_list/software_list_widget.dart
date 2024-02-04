@@ -13,7 +13,7 @@ export 'software_list_model.dart';
 
 class SoftwareListWidget extends StatefulWidget {
   const SoftwareListWidget({
-    Key? key,
+    super.key,
     required this.bankName,
     required this.modelName,
     required this.version,
@@ -21,7 +21,7 @@ class SoftwareListWidget extends StatefulWidget {
     required this.totalATM,
     required this.bankId,
     required this.modelId,
-  }) : super(key: key);
+  });
 
   final String? bankName;
   final String? modelName;
@@ -32,7 +32,7 @@ class SoftwareListWidget extends StatefulWidget {
   final String? modelId;
 
   @override
-  _SoftwareListWidgetState createState() => _SoftwareListWidgetState();
+  State<SoftwareListWidget> createState() => _SoftwareListWidgetState();
 }
 
 class _SoftwareListWidgetState extends State<SoftwareListWidget> {

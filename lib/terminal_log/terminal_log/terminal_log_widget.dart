@@ -13,10 +13,10 @@ import 'terminal_log_model.dart';
 export 'terminal_log_model.dart';
 
 class TerminalLogWidget extends StatefulWidget {
-  const TerminalLogWidget({Key? key}) : super(key: key);
+  const TerminalLogWidget({super.key});
 
   @override
-  _TerminalLogWidgetState createState() => _TerminalLogWidgetState();
+  State<TerminalLogWidget> createState() => _TerminalLogWidgetState();
 }
 
 class _TerminalLogWidgetState extends State<TerminalLogWidget> {
@@ -127,7 +127,7 @@ class _TerminalLogWidgetState extends State<TerminalLogWidget> {
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
                                             '_model.textController',
-                                            Duration(milliseconds: 2000),
+                                            Duration(milliseconds: 0),
                                             () async {
                                               setState(() {
                                                 FFAppState().searchValue =

@@ -12,14 +12,14 @@ export 'atm_model_model.dart';
 
 class AtmModelWidget extends StatefulWidget {
   const AtmModelWidget({
-    Key? key,
+    super.key,
     required this.bankId,
     required this.bankName,
     required this.totalModel,
     required this.bankType,
     required this.totalatm,
     required this.imageBin,
-  }) : super(key: key);
+  });
 
   final String? bankId;
   final String? bankName;
@@ -29,7 +29,7 @@ class AtmModelWidget extends StatefulWidget {
   final String? imageBin;
 
   @override
-  _AtmModelWidgetState createState() => _AtmModelWidgetState();
+  State<AtmModelWidget> createState() => _AtmModelWidgetState();
 }
 
 class _AtmModelWidgetState extends State<AtmModelWidget> {

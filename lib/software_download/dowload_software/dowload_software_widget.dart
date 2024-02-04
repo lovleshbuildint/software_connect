@@ -14,10 +14,10 @@ import 'dowload_software_model.dart';
 export 'dowload_software_model.dart';
 
 class DowloadSoftwareWidget extends StatefulWidget {
-  const DowloadSoftwareWidget({Key? key}) : super(key: key);
+  const DowloadSoftwareWidget({super.key});
 
   @override
-  _DowloadSoftwareWidgetState createState() => _DowloadSoftwareWidgetState();
+  State<DowloadSoftwareWidget> createState() => _DowloadSoftwareWidgetState();
 }
 
 class _DowloadSoftwareWidgetState extends State<DowloadSoftwareWidget> {
@@ -174,7 +174,7 @@ class _DowloadSoftwareWidgetState extends State<DowloadSoftwareWidget> {
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
                                             '_model.textController',
-                                            Duration(milliseconds: 2000),
+                                            Duration(milliseconds: 0),
                                             () async {
                                               setState(() {
                                                 FFAppState().searchValue =

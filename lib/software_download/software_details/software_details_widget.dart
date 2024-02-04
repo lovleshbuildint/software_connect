@@ -16,7 +16,7 @@ export 'software_details_model.dart';
 
 class SoftwareDetailsWidget extends StatefulWidget {
   const SoftwareDetailsWidget({
-    Key? key,
+    super.key,
     required this.imageBin,
     required this.softwareVersion,
     required this.modelName,
@@ -25,7 +25,7 @@ class SoftwareDetailsWidget extends StatefulWidget {
     required this.description,
     required this.softwareVersionId,
     required this.bankName,
-  }) : super(key: key);
+  });
 
   final String? imageBin;
   final String? softwareVersion;
@@ -37,7 +37,7 @@ class SoftwareDetailsWidget extends StatefulWidget {
   final String? bankName;
 
   @override
-  _SoftwareDetailsWidgetState createState() => _SoftwareDetailsWidgetState();
+  State<SoftwareDetailsWidget> createState() => _SoftwareDetailsWidgetState();
 }
 
 class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {

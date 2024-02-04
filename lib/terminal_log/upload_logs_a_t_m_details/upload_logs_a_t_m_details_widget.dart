@@ -12,7 +12,7 @@ export 'upload_logs_a_t_m_details_model.dart';
 
 class UploadLogsATMDetailsWidget extends StatefulWidget {
   const UploadLogsATMDetailsWidget({
-    Key? key,
+    super.key,
     required this.modelId,
     required this.bankId,
     required this.modelName,
@@ -20,7 +20,7 @@ class UploadLogsATMDetailsWidget extends StatefulWidget {
     required this.bankName,
     required this.location,
     required this.binImage,
-  }) : super(key: key);
+  });
 
   final String? modelId;
   final String? bankId;
@@ -31,7 +31,7 @@ class UploadLogsATMDetailsWidget extends StatefulWidget {
   final String? binImage;
 
   @override
-  _UploadLogsATMDetailsWidgetState createState() =>
+  State<UploadLogsATMDetailsWidget> createState() =>
       _UploadLogsATMDetailsWidgetState();
 }
 
