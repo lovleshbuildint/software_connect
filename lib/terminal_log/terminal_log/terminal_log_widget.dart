@@ -176,6 +176,7 @@ class _TerminalLogWidgetState extends State<TerminalLogWidget> {
                                         _model.searchVisibility = false;
                                       });
                                       setState(() {
+                                        FFAppState().deleteSearchValue();
                                         FFAppState().searchValue = '';
                                       });
                                     },

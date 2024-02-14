@@ -42,6 +42,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
       }
 
       setState(() {
+        FFAppState().deleteLoginResponse();
         FFAppState().loginResponse = null;
       });
       await showDialog(

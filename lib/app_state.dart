@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'backend/api_requests/api_manager.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:csv/csv.dart';
+import 'package:synchronized/synchronized.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'dart:convert';
 
@@ -18,41 +20,47 @@ class FFAppState extends ChangeNotifier {
   }
 
   Future initializePersistedState() async {
-    prefs = await SharedPreferences.getInstance();
-    _safeInit(() {
-      if (prefs.containsKey('ff_loginResponse')) {
+    secureStorage = FlutterSecureStorage();
+    await _safeInitAsync(() async {
+      if (await secureStorage.read(key: 'ff_loginResponse') != null) {
         try {
-          _loginResponse =
-              jsonDecode(prefs.getString('ff_loginResponse') ?? '');
+          _loginResponse = jsonDecode(
+              await secureStorage.getString('ff_loginResponse') ?? '');
         } catch (e) {
           print("Can't decode persisted json. Error: $e.");
         }
       }
     });
-    _safeInit(() {
-      _userId = prefs.getString('ff_userId') ?? _userId;
+    await _safeInitAsync(() async {
+      _userId = await secureStorage.getString('ff_userId') ?? _userId;
     });
-    _safeInit(() {
-      _searchValue = prefs.getString('ff_searchValue') ?? _searchValue;
+    await _safeInitAsync(() async {
+      _searchValue =
+          await secureStorage.getString('ff_searchValue') ?? _searchValue;
     });
-    _safeInit(() {
-      _percentage = prefs.getDouble('ff_percentage') ?? _percentage;
+    await _safeInitAsync(() async {
+      _percentage =
+          await secureStorage.getDouble('ff_percentage') ?? _percentage;
     });
-    _safeInit(() {
+    await _safeInitAsync(() async {
       _progressBarVisibility =
-          prefs.getBool('ff_progressBarVisibility') ?? _progressBarVisibility;
+          await secureStorage.getBool('ff_progressBarVisibility') ??
+              _progressBarVisibility;
     });
-    _safeInit(() {
-      _softwareDownloadStatus = prefs.getString('ff_softwareDownloadStatus') ??
-          _softwareDownloadStatus;
+    await _safeInitAsync(() async {
+      _softwareDownloadStatus =
+          await secureStorage.getString('ff_softwareDownloadStatus') ??
+              _softwareDownloadStatus;
     });
-    _safeInit(() {
+    await _safeInitAsync(() async {
       _notConnectedStatus =
-          prefs.getBool('ff_notConnectedStatus') ?? _notConnectedStatus;
+          await secureStorage.getBool('ff_notConnectedStatus') ??
+              _notConnectedStatus;
     });
-    _safeInit(() {
+    await _safeInitAsync(() async {
       _manualDownloadStatus =
-          prefs.getString('ff_manualDownloadStatus') ?? _manualDownloadStatus;
+          await secureStorage.getString('ff_manualDownloadStatus') ??
+              _manualDownloadStatus;
     });
   }
 
@@ -61,13 +69,17 @@ class FFAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  late SharedPreferences prefs;
+  late FlutterSecureStorage secureStorage;
 
   dynamic _loginResponse;
   dynamic get loginResponse => _loginResponse;
   set loginResponse(dynamic _value) {
     _loginResponse = _value;
-    prefs.setString('ff_loginResponse', jsonEncode(_value));
+    secureStorage.setString('ff_loginResponse', jsonEncode(_value));
+  }
+
+  void deleteLoginResponse() {
+    secureStorage.delete(key: 'ff_loginResponse');
   }
 
   List<String> _EmptyList = [];
@@ -103,60 +115,78 @@ class FFAppState extends ChangeNotifier {
   String get userId => _userId;
   set userId(String _value) {
     _userId = _value;
-    prefs.setString('ff_userId', _value);
+    secureStorage.setString('ff_userId', _value);
+  }
+
+  void deleteUserId() {
+    secureStorage.delete(key: 'ff_userId');
   }
 
   String _searchValue = '';
   String get searchValue => _searchValue;
   set searchValue(String _value) {
     _searchValue = _value;
-    prefs.setString('ff_searchValue', _value);
+    secureStorage.setString('ff_searchValue', _value);
+  }
+
+  void deleteSearchValue() {
+    secureStorage.delete(key: 'ff_searchValue');
   }
 
   double _percentage = 0.0;
   double get percentage => _percentage;
   set percentage(double _value) {
     _percentage = _value;
-    prefs.setDouble('ff_percentage', _value);
+    secureStorage.setDouble('ff_percentage', _value);
+  }
+
+  void deletePercentage() {
+    secureStorage.delete(key: 'ff_percentage');
   }
 
   bool _progressBarVisibility = false;
   bool get progressBarVisibility => _progressBarVisibility;
   set progressBarVisibility(bool _value) {
     _progressBarVisibility = _value;
-    prefs.setBool('ff_progressBarVisibility', _value);
+    secureStorage.setBool('ff_progressBarVisibility', _value);
+  }
+
+  void deleteProgressBarVisibility() {
+    secureStorage.delete(key: 'ff_progressBarVisibility');
   }
 
   String _softwareDownloadStatus = '';
   String get softwareDownloadStatus => _softwareDownloadStatus;
   set softwareDownloadStatus(String _value) {
     _softwareDownloadStatus = _value;
-    prefs.setString('ff_softwareDownloadStatus', _value);
+    secureStorage.setString('ff_softwareDownloadStatus', _value);
+  }
+
+  void deleteSoftwareDownloadStatus() {
+    secureStorage.delete(key: 'ff_softwareDownloadStatus');
   }
 
   bool _notConnectedStatus = false;
   bool get notConnectedStatus => _notConnectedStatus;
   set notConnectedStatus(bool _value) {
     _notConnectedStatus = _value;
-    prefs.setBool('ff_notConnectedStatus', _value);
+    secureStorage.setBool('ff_notConnectedStatus', _value);
+  }
+
+  void deleteNotConnectedStatus() {
+    secureStorage.delete(key: 'ff_notConnectedStatus');
   }
 
   String _manualDownloadStatus = '';
   String get manualDownloadStatus => _manualDownloadStatus;
   set manualDownloadStatus(String _value) {
     _manualDownloadStatus = _value;
-    prefs.setString('ff_manualDownloadStatus', _value);
+    secureStorage.setString('ff_manualDownloadStatus', _value);
   }
-}
 
-LatLng? _latLngFromString(String? val) {
-  if (val == null) {
-    return null;
+  void deleteManualDownloadStatus() {
+    secureStorage.delete(key: 'ff_manualDownloadStatus');
   }
-  final split = val.split(',');
-  final lat = double.parse(split.first);
-  final lng = double.parse(split.last);
-  return LatLng(lat, lng);
 }
 
 void _safeInit(Function() initializeField) {
@@ -169,4 +199,47 @@ Future _safeInitAsync(Function() initializeField) async {
   try {
     await initializeField();
   } catch (_) {}
+}
+
+extension FlutterSecureStorageExtensions on FlutterSecureStorage {
+  static final _lock = Lock();
+
+  Future<void> writeSync({required String key, String? value}) async =>
+      await _lock.synchronized(() async {
+        await write(key: key, value: value);
+      });
+
+  void remove(String key) => delete(key: key);
+
+  Future<String?> getString(String key) async => await read(key: key);
+  Future<void> setString(String key, String value) async =>
+      await writeSync(key: key, value: value);
+
+  Future<bool?> getBool(String key) async => (await read(key: key)) == 'true';
+  Future<void> setBool(String key, bool value) async =>
+      await writeSync(key: key, value: value.toString());
+
+  Future<int?> getInt(String key) async =>
+      int.tryParse(await read(key: key) ?? '');
+  Future<void> setInt(String key, int value) async =>
+      await writeSync(key: key, value: value.toString());
+
+  Future<double?> getDouble(String key) async =>
+      double.tryParse(await read(key: key) ?? '');
+  Future<void> setDouble(String key, double value) async =>
+      await writeSync(key: key, value: value.toString());
+
+  Future<List<String>?> getStringList(String key) async =>
+      await read(key: key).then((result) {
+        if (result == null || result.isEmpty) {
+          return null;
+        }
+        return CsvToListConverter()
+            .convert(result)
+            .first
+            .map((e) => e.toString())
+            .toList();
+      });
+  Future<void> setStringList(String key, List<String> value) async =>
+      await writeSync(key: key, value: ListToCsvConverter().convert([value]));
 }

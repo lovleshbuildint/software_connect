@@ -210,8 +210,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 setState(() {
+                                  FFAppState().deleteLoginResponse();
                                   FFAppState().loginResponse = null;
+
+                                  FFAppState().deleteUserId();
                                   FFAppState().userId = '';
+
+                                  FFAppState().deleteSearchValue();
                                   FFAppState().searchValue = '';
                                 });
 

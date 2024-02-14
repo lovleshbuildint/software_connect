@@ -33,6 +33,7 @@ class _DowloadSoftwareWidgetState extends State<DowloadSoftwareWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
+        FFAppState().deleteSearchValue();
         FFAppState().searchValue = '';
       });
       _model.dashboardResponse = await DasboardCall.call(
@@ -46,6 +47,7 @@ class _DowloadSoftwareWidgetState extends State<DowloadSoftwareWidget> {
       }
 
       setState(() {
+        FFAppState().deleteLoginResponse();
         FFAppState().loginResponse = null;
       });
       await showDialog(
@@ -224,6 +226,7 @@ class _DowloadSoftwareWidgetState extends State<DowloadSoftwareWidget> {
                                         _model.searchVisibility = false;
                                       });
                                       setState(() {
+                                        FFAppState().deleteSearchValue();
                                         FFAppState().searchValue = '';
                                       });
                                     },
