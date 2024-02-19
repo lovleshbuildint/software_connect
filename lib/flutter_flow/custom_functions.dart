@@ -71,3 +71,10 @@ int? checkIndex(
     }
   }
 }
+
+String? randomInt() {
+  // create secure random genrator
+  final random = math.Random.secure();
+  int secureRandomInt = random.nextInt(11);
+  return secureRandomInt.toString();
+}

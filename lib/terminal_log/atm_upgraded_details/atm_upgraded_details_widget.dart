@@ -6,7 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
-import '/flutter_flow/random_data_util.dart' as random_data;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -1178,8 +1178,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 modifiedDate: getCurrentTimestamp.toString(),
                                 comments: _model.textController4.text,
                                 siteLocation: _model.lcation2Controller.text,
-                                ticketNo:
-                                    random_data.randomInteger(0, 10).toString(),
+                                ticketNo: functions.randomInt(),
                               );
                               if ((_model.terminalLog?.succeeded ?? true)) {
                                 setState(() {
@@ -1257,8 +1256,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 modifiedDate: getCurrentTimestamp.toString(),
                                 comments: _model.textController4.text,
                                 siteLocation: _model.lcation1Controller.text,
-                                ticketNo:
-                                    random_data.randomInteger(0, 10).toString(),
+                                ticketNo: functions.randomInt(),
                               );
                               if ((_model.terminalLog1?.succeeded ?? true)) {
                                 setState(() {
