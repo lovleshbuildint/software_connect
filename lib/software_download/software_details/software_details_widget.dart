@@ -876,14 +876,14 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                   _model.manualDownloadResponse1 =
                                                       await actions
                                                           .downloadFile(
-                                                    'https://workbenchuat.hitachi-payments.com:82${getJsonField(
+                                                    'https://softwareconnect.hitachi-payments.com${getJsonField(
                                                       (_model.manualResponse1
                                                               ?.jsonBody ??
                                                           ''),
                                                       r'''$.url''',
                                                     ).toString()}',
                                                     functions.splitUrl(
-                                                        'https://workbenchuat.hitachi-payments.com:82${getJsonField(
+                                                        'https://softwareconnect.hitachi-payments.com${getJsonField(
                                                       (_model.manualResponse1
                                                               ?.jsonBody ??
                                                           ''),
@@ -1048,13 +1048,13 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                     _model.softwareDownloadResponse123 =
                                                         await actions
                                                             .downloadFile(
-                                                      'https://workbenchuat.hitachi-payments.com:82${functions.geturl(BankModelMultipleSoftwareDownloadCall.urlList(
+                                                      'https://softwareconnect.hitachi-payments.com${functions.geturl(BankModelMultipleSoftwareDownloadCall.urlList(
                                                         (_model.downloadSoftwareResponse123
                                                                 ?.jsonBody ??
                                                             ''),
                                                       )?[_model.currentIndex!])}',
                                                       functions.splitUrl(
-                                                          'https://workbenchuat.hitachi-payments.com:82${functions.geturl(BankModelMultipleSoftwareDownloadCall.urlList(
+                                                          'https://softwareconnect.hitachi-payments.com${functions.geturl(BankModelMultipleSoftwareDownloadCall.urlList(
                                                         (_model.downloadSoftwareResponse123
                                                                 ?.jsonBody ??
                                                             ''),

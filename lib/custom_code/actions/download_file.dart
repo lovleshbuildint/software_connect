@@ -252,7 +252,7 @@ Future<String?> downloadFile(
       } else if (streamedResponse.statusCode == 404) {
         final response = await http.post(
           Uri.parse(
-              'https://workbenchuat.hitachi-payments.com:82/api/SoftwareVersion/DownloadSoftware'),
+              'https://softwareconnect.hitachi-payments.com/api/SoftwareVersion/DownloadSoftware'),
           headers: {
             'Authorization': token,
             'Content-Type':
@@ -530,7 +530,7 @@ Future<String?> downloadFile(
         } else if (streamedResponse.statusCode == 404) {
           final response = await http.post(
             Uri.parse(
-                'https://workbenchuat.hitachi-payments.com:82/api/SoftwareVersion/DownloadSoftware'),
+                'https://softwareconnect.hitachi-payments.com/api/SoftwareVersion/DownloadSoftware'),
             headers: {
               'Authorization': token,
               'Content-Type':

@@ -21,7 +21,7 @@ class LoginCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Login',
       apiUrl:
-          'https://workbenchuat.hitachi-payments.com:82/api/Login/MobileLogin',
+          'https://softwareconnect.hitachi-payments.com/api/Login/MobileLogin',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -43,7 +43,7 @@ class DasboardCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Dasboard',
       apiUrl:
-          'https://workbenchuat.hitachi-payments.com:82/api/Mobile/GetDashboardData',
+          'https://softwareconnect.hitachi-payments.com/api/Mobile/GetDashboardData',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': '${token}',
@@ -65,7 +65,7 @@ class BankListCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Bank List',
       apiUrl:
-          'https://workbenchuat.hitachi-payments.com:82/api/Mobile/GetBankList',
+          'https://softwareconnect.hitachi-payments.com/api/Mobile/GetBankList',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': '${token}',
@@ -90,7 +90,7 @@ class BankModelListCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Bank Model List',
       apiUrl:
-          'https://workbenchuat.hitachi-payments.com:82/api/Mobile/GetBankModelList',
+          'https://softwareconnect.hitachi-payments.com/api/Mobile/GetBankModelList',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': '${token}',
@@ -119,7 +119,7 @@ class BankATMListCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Bank ATM List',
       apiUrl:
-          'https://workbenchuat.hitachi-payments.com:82/api/Mobile/GetAtmList',
+          'https://softwareconnect.hitachi-payments.com/api/Mobile/GetAtmList',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': '${token}',
@@ -153,7 +153,7 @@ class BankModelSoftwareListCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Bank Model Software List',
       apiUrl:
-          'https://workbenchuat.hitachi-payments.com:82/api/Mobile/GetSoftwareVersionListByModel',
+          'https://softwareconnect.hitachi-payments.com/api/Mobile/GetSoftwareVersionListByModel',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': '${token}',
@@ -180,7 +180,7 @@ class BankModelSoftwareDownloadCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Bank Model Software Download',
       apiUrl:
-          'https://workbenchuat.hitachi-payments.com:82/api/Mobile/DownloadSoftwareByUrl',
+          'https://softwareconnect.hitachi-payments.com/api/Mobile/DownloadSoftwareByUrl',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': '${token}',
@@ -207,7 +207,7 @@ class BankModelMultipleSoftwareDownloadCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Bank Model Multiple Software Download',
       apiUrl:
-          'https://workbenchuat.hitachi-payments.com:82/api/Mobile/DownloadSoftwareListByUrl',
+          'https://softwareconnect.hitachi-payments.com/api/Mobile/DownloadSoftwareListByUrl',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': '${token}',
@@ -240,7 +240,7 @@ class BankModelManualDownloadCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Bank Model Manual Download',
       apiUrl:
-          'https://workbenchuat.hitachi-payments.com:82/api/SoftwareVersion/DownloadManaulByUrl',
+          'https://softwareconnect.hitachi-payments.com/api/SoftwareVersion/DownloadManaulByUrl',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': '${token}',
@@ -276,7 +276,7 @@ class SoftwareSyncCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Software Sync',
       apiUrl:
-          'https://workbenchuat.hitachi-payments.com:82/api/Mobile/CreateDownlodStatus',
+          'https://softwareconnect.hitachi-payments.com/api/Mobile/CreateDownlodStatus',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': '${token}',
@@ -310,7 +310,7 @@ class CreateTerminalLogCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Create Terminal Log',
       apiUrl:
-          'https://workbenchuat.hitachi-payments.com:82/api/Mobile/CreateTerminalLog',
+          'https://softwareconnect.hitachi-payments.com/api/Mobile/CreateTerminalLog',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': '${token}',
@@ -348,7 +348,7 @@ class GetUserInfoCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Get User Info',
       apiUrl:
-          'https://workbenchuat.hitachi-payments.com:82/api/user/GETUSER/${userName}',
+          'https://softwareconnect.hitachi-payments.com/api/user/GETUSER/${userName}',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': '${token}',
