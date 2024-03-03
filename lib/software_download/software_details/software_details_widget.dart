@@ -369,7 +369,7 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                             ).toString(),
                           );
                           if (getJsonField(
-                            _model.pathCheckResponse2,
+                            _model.pathcheckResponses,
                             r'''$.Status''',
                           )) {
                             setState(() {
