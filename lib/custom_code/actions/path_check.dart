@@ -15,6 +15,10 @@ Future<dynamic> pathCheck(String? deviceId) async {
   String directoryPath2 = '/storage/$deviceId/';
   bool pathStatus = false;
 
+  if (deviceId == null || deviceId.isEmpty) {
+    return {"Status": false, "Path": "/mnt/media_rw"};
+  }
+
   if (!pathStatus) {
     try {
       Directory directory1 = Directory(directoryPath1);

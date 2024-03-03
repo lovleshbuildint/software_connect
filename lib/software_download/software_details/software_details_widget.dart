@@ -369,14 +369,9 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                             ).toString(),
                           );
                           if (getJsonField(
-                                _model.pathcheckResponses,
-                                r'''$.Status''',
-                              ) &&
-                              (getJsonField(
-                                    FFAppState().loginResponse,
-                                    r'''$.deviceId''',
-                                  ) !=
-                                  null)) {
+                            _model.pathCheckResponse2,
+                            r'''$.Status''',
+                          )) {
                             setState(() {
                               _model.connectedStatus = true;
                             });
