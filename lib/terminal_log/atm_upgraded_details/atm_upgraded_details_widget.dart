@@ -1048,6 +1048,11 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                         <FFUploadedFile>[];
 
                                     try {
+                                      showUploadMessage(
+                                        context,
+                                        'Uploading file...',
+                                        showLoading: true,
+                                      );
                                       selectedUploadedFiles = selectedFiles
                                           .map((m) => FFUploadedFile(
                                                 name: m.storagePath
@@ -1057,6 +1062,8 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                               ))
                                           .toList();
                                     } finally {
+                                      ScaffoldMessenger.of(context)
+                                          .hideCurrentSnackBar();
                                       _model.isDataUploading2 = false;
                                     }
                                     if (selectedUploadedFiles.length ==
@@ -1065,8 +1072,16 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                         _model.uploadedLocalFile2 =
                                             selectedUploadedFiles.first;
                                       });
+                                      showUploadMessage(
+                                        context,
+                                        'Success!',
+                                      );
                                     } else {
                                       setState(() {});
+                                      showUploadMessage(
+                                        context,
+                                        'Failed to upload file',
+                                      );
                                       return;
                                     }
                                   }
