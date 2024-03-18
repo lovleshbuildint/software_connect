@@ -1099,6 +1099,48 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                           );
                                                         },
                                                       );
+                                                      _model.softwareSyncResponse123 =
+                                                          await SoftwareSyncCall
+                                                              .call(
+                                                        token: getJsonField(
+                                                          FFAppState()
+                                                              .loginResponse,
+                                                          r'''$.token''',
+                                                        ).toString(),
+                                                        softwareVersionId: widget
+                                                            .softwareVersionId,
+                                                        syncBy:
+                                                            FFAppState().userId,
+                                                        syncDate: dateTimeFormat(
+                                                            'y-M-d',
+                                                            getCurrentTimestamp),
+                                                      );
+                                                      if (!(_model
+                                                              .softwareSyncResponse123
+                                                              ?.succeeded ??
+                                                          true)) {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title:
+                                                                  Text('Alert'),
+                                                              content: Text(
+                                                                  '${(_model.softwareSyncResponse123?.bodyText ?? '')}_____${getCurrentTimestamp.toString()}'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
+                                                      }
                                                     }
                                                     setState(() {
                                                       _model.currentIndex =
