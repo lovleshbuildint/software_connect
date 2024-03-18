@@ -1190,7 +1190,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                                 ).toString(),
                                 createdDate: getCurrentTimestamp.toString(),
                                 modifiedDate: getCurrentTimestamp.toString(),
-                                comments: _model.textController4.text,
+                                comments: 'Logs',
                                 siteLocation: _model.lcation2Controller.text,
                                 ticketNo: functions.randomInt(),
                               );
