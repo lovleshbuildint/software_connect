@@ -321,7 +321,7 @@ class CreateTerminalLogCall {
         'ModelId': modelId,
         'AtmId': atmId,
         'LogFilePath':
-            "C:\\\\inetpub\\\\wwwroot\\\\API_Publish\\\\wwwRoot\\\\UploadedDocuments\\\\BankSoftware\\\\TerminalLog\\\\",
+            "C:\\\\inetpub\\\\wwwroot\\\\API 2\\\\wwwRoot\\\\UploadedDocuments\\\\BankSoftware\\\\TerminalLog\\\\",
         'CreatedBy': createdBy,
         'CreatedDate': createdDate,
         'ModifiedDate': modifiedDate,
