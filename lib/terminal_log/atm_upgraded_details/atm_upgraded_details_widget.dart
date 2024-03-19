@@ -191,7 +191,7 @@ class _AtmUpgradedDetailsWidgetState extends State<AtmUpgradedDetailsWidget> {
                         ],
                       ),
                     ),
-                    Flexible(
+                    Expanded(
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 21.0, 0.0, 0.0),
