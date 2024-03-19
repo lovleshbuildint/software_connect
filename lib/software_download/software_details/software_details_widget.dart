@@ -1085,6 +1085,34 @@ class _SoftwareDetailsWidgetState extends State<SoftwareDetailsWidget> {
                                                           'y-M-d',
                                                           getCurrentTimestamp),
                                                     );
+                                                    if (!(_model
+                                                            .softwareSyncResponse123
+                                                            ?.succeeded ??
+                                                        true)) {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title:
+                                                                Text('Alert'),
+                                                            content: Text((_model
+                                                                    .softwareSyncResponse123
+                                                                    ?.bodyText ??
+                                                                '')),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                    }
                                                     if (_model.softwareDownloadResponse123 !=
                                                             null &&
                                                         _model.softwareDownloadResponse123 !=
