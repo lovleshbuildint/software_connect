@@ -320,6 +320,7 @@ Future<String?> downloadFile(
       File existingFile = File(filePath);
       bool fileExists = existingFile.existsSync();
       int existingBytes = fileExists ? existingFile.lengthSync() : 0;
+      print(existingBytes);
 
       // Create an HttpClient instance
       final client = http.Client();
@@ -332,6 +333,7 @@ Future<String?> downloadFile(
             await client.send(request);
 
         int totalBytes = (streamedResponse.contentLength ?? 0) + existingBytes;
+        print(totalBytes);
 
         if (totalBytes == existingBytes) {
           FFAppState().update(() {
